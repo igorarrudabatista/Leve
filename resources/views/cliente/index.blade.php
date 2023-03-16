@@ -72,12 +72,12 @@
 
                   </tr>
                 </thead>
-                @foreach($empresa_cliente as $empresa_clientes )
+                @foreach($cliente as $empresa_clientes )
                 
                 <tbody>
                   <tr>
-                    <td class="cell"><a href="{{asset('/cliente/edit/')}}/{{$empresa_clientes->id}}">
-                      <img src="{{asset('/img/produtos/')}}/{{$empresa_clientes->image}}" > </a></td>
+                    <td class="cell"><a href="{{ route('cliente.edit',$empresa_clientes->id) }}">
+                      <img src="{{asset('/images/clientes/')}}/{{$empresa_clientes->image}}" width="60px" > </a></td>
                     <td class="cell">{{$empresa_clientes->id}}</td>
                     <td class="cell"><span class="truncate">{{$empresa_clientes->Nome_Empresa}}</span></td>
                     <td class="cell">{{$empresa_clientes->Telefone}}</td>

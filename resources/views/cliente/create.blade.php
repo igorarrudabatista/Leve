@@ -46,13 +46,13 @@
                   <div class="col-auto">
                     <div class="item-label"><strong>CNPJ</strong></div>
                       <div class="item-data">
-                      <input type="text" class="form-control" id="Cnpj" name="Cnpj" onkeypress="$(this).mask('00.000.000/0000-00')">
+                      {!! Form::text('Cnpj', null, array('class' => 'form-control')) !!}
                       <div class="item-label"><strong>Nome Empresa</strong></div>
-                      <input type="text" class="form-control" id="Nome_Empresa" name="Nome_Empresa" required>
+                      {!! Form::text('Nome_Empresa', null, array('class' => 'form-control')) !!}
                       <div class="item-label"><strong>Telefone</strong></div>
-                      <input type="text" class="form-control" id="Telefone" name="Telefone" Placeholder="(DDD)+Telefone" onkeypress="$(this).mask('(00) 00000-0000')"  >    
+                      {!! Form::text('Telefone', null, array('class' => 'form-control')) !!}
                       <div class="item-label"><strong>Email</strong></div>
-                      <input type="text" class="form-control" id="Email" name="Email" >
+                      {!! Form::text('Email', null, array('class' => 'form-control')) !!}
 
                     </div>
                   </div><!--//col-->
@@ -66,12 +66,11 @@
                 <div class="row justify-content-between align-items-center">
                   <div class="col-auto">
                     <div class="item-label"><strong>Web Site </strong></div>
-                    <input type="text" class="form-control" id="Site" name="Site" Placeholder="www.site.com.br" >
-
+                    {!! Form::text('Site', null, array('class' => 'form-control')) !!}
                     <div class="item-label"><strong>Instagram:</strong></div>
-                    <input type="text" class="form-control" id="Instagram" name="Instagram">
+                    {!! Form::text('Instagram', null, array('class' => 'form-control')) !!}
                     <div class="item-label"><strong>Facebook:</strong></div>
-                    <input type="text" class="form-control" id="Facebook" name="Facebook">                    
+                    {!! Form::text('Facebook', null, array('class' => 'form-control')) !!}               
                   </div><!--//col-->
                   
                 </div><!--//row-->
@@ -105,51 +104,26 @@
               
           
 
-              <div class="item border-bottom py-3">
+             <div class="item border-bottom py-3">
                 <div class="row justify-content-between align-items-center">
                   <div class="col-auto">
                     <div class="item-label"><strong>Endereço</strong></div>
-                    <input type="text" class="form-control" id="Endereco" name="Endereco"  >
+                    {!! Form::text('Endereco', null, array('class' => 'form-control')) !!}
                     <div class="item-label"><strong>CEP</strong></div>
-                    <input type="text" class="form-control" id="Cep" name="Cep"  onkeypress="$(this).mask('00000-000')" >
+                    {!! Form::text('Cep', null, array('class' => 'form-control')) !!}
                     <div class="item-label"><strong>N°</strong></div>
-                    <input type="text" class="form-control" id="Numero" name="Numero"  >
+                    {!! Form::text('Numero', null, array('class' => 'form-control')) !!}
                     <div class="item-label"><strong>Bairro:</strong></div>
-                    <input type="text" class="form-control" id="Bairro" name="Bairro"  >
+                    {!! Form::text('Bairro', null, array('class' => 'form-control')) !!}
                     <div class="item-label"><strong>Estado:</strong></div>
-                    <select class="form-control" id="estado" name="Estado">
-                      <option value="Acre">Acre</option>
-                      <option value="Alagoas">Alagoas</option>
-                      <option value="Amapá">Amapá</option>
-                      <option value="Amazonas">Amazonas</option>
-                      <option value="Bahia">Bahia</option>
-                      <option value="Ceará">Ceará</option>
-                      <option value="Distrito Federal">Distrito Federal</option>
-                      <option value="Espírito Santo">Espírito Santo</option>
-                      <option value="Goiás">Goiás</option>
-                      <option value="Maranhão">Maranhão</option>
-                      <option value="Mato Grosso">Mato Grosso</option>
-                      <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-                      <option value="Minas GeraisG">Minas Gerais</option>
-                      <option value="Pará">Pará</option>
-                      <option value="Paraíba">Paraíba</option>
-                      <option value="Paraná">Paraná</option>
-                      <option value="Pernambuco">Pernambuco</option>
-                      <option value="Piauí">Piauí</option>
-                      <option value="Rio de Janeiro">Rio de Janeiro</option>
-                      <option value="Rio Grande do Norte">Rio Grande do Norte</option>
-                      <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-                      <option value="Rondônia">Rondônia</option>
-                      <option value="Roraima">Roraima</option>
-                      <option value="Santa Catarina">Santa Catarina</option>
-                      <option value="São Paulo">São Paulo</option>
-                      <option value="Sergipe">Sergipe</option>
-                      <option value="Tocantins">Tocantins</option>
-                      <option value="Estrangeiro">Estrangeiro</option>
-                    </select>
+                    {!! Form::select('Estado', ['Acre' => 'Acre', 'Alagoas' => 'Alagoas', 'Amapá' => 'Amapá', 'Amazonas' => 'Amazonas' , 'Bahia' => 'Bahia', 'Ceará' => 'Ceará', 'Distrito Federal' => 'Distrito Federal',
+                      'Espírito Santo' => 'Espírito Santo', 'Goiás' => 'Goiás', 'Maranhão' => 'Maranhão', 'Mato Grosso' => 'Mato Grosso', 'Mato Grosso do Sul' => 'Mato Grosso do Sul', 'Minas Gerais' => 'Minas Gerais', 'Pará' => 'Pará',
+                      'Paraíba' => 'Paraíba', 'Paraná' => 'Paraná', 'Pernambuco' =>'Pernambuco', 'Piauí' => 'Piauí', 'Rio de Janeiro' => 'Rio de Janeiro', 'Rio Grande do Norte' => 'Rio Grande do Norte', 'Rio Grande do Sul' =>'Rio Grande do Sul',
+                      'Rondônia' => 'Rondônia', 'Roraima' => 'Roraima', 'Santa Catarina' => 'Santa Catarina', 'São Paulo' => 'São Paulo', 'Sergipe' => 'Sergipe', 'Tocantins' => 'Tocantins', 'Estrangeiro' => 'Estrangeiro'    
+                       ], null, ['class' => 'choices form-select']) !!}
                     
                     <div class="item-label"><strong>Cidade:</strong></div>
-                    <input type="text" class="form-control" id="Cidade" name="Cidade">
+                    {!! Form::text('Cidade', null, array('class' => 'form-control')) !!}
 
                   </div><!--//col-->             
                 </div><!--//row-->

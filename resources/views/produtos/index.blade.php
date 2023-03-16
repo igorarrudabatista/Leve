@@ -9,8 +9,8 @@
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
-              <h1 class="app-page-title mb-0">Perfil</h1>
-        <a href="{{asset('/roles/create')}}"  button type="submit" class="btn app-btn-secondary">+ Perfil </button> </a>
+              <h1 class="app-page-title mb-0">Produtos</h1>
+        <a href="{{asset('/produtos/create')}}"  button type="submit" class="btn app-btn-secondary">+ Produtos </button> </a>
 
         </div>
         <div class="col-auto">
@@ -62,33 +62,55 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell">N°</th>
+                    <th class="cell">Imagem</th>
+                    <th class="cell">Id</th>
                     <th class="cell">Nome</th>
+                    <th class="cell">Categoria</th>
+                    <th class="cell">Quantidade</th>
+                    <th class="cell">Preço</th>
                     <th class="cell">Ações</th>
                     <th class="cell"></th>
 
                   </tr>
                 </thead>
-                @foreach ($roles as $key => $role)
+                @foreach($produto as $produtos )
                 
                 <tbody>
                   <tr>
-                  <td>{{ ++$i }}</td>
-                  <td>{{ $role->name }}</td>
-
-
-                   
-                    <td class="cell">{{$role->id}}</td>
-                    <td class="cell"> 
-                        <span class="truncate">{{ $role->name }}</span></td>
-
-          
                     <td class="cell">
-                    <a class="btn btn-success" href="{{ route('roles.show',$role->id) }}">Ver</a>
-                    <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Editar</a>
-                    {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
-                     {!! Form::close() !!}
+                      <img src="images/produtos/{{$produtos->image}}" width="80px"> </img>
+                      </td>
+                    <td class="cell">{{$produtos->id}}</td>
+                    <td class="cell"><span class="truncate">{{$produtos->Nome_Produto}}</span></td>
+                    <td class="cell">{{$produtos->Categoria_Produto}}</td>
+
+
+                    <td class="cell">
+                    @if ($produtos->Quantidade_Produto == '')
+                       <span class="badge bg-warning"> Quantidade não lançado </span>
+                    @elseif  ($produtos->Preco_Produto != '')
+                           <big> <span class="badge bg-info">   {{$produtos->Quantidade_Produto }}</span> </big>
+                    @endif
+                    
+                    <td class="cell" >
+                      
+                    
+
+                    @if ($produtos->Preco_Produto == '')
+                       <span class="badge bg-danger"> Valor não lançado </span>
+                    @elseif  ($produtos->Preco_Produto != '')
+                            <span class="badge bg-success"> R$ {{$produtos->Preco_Produto }}</span>
+                    @endif
+
+
+
+                    <td class="cell">
+                      <a class="btn btn-warning" href="{{ route('produtos.edit',$produtos->id) }}">Editar</a>
+                      {!! Form::open(['method' => 'DELETE','route' => ['produtos.destroy', $produtos->id],'style'=>'display:inline']) !!}
+                      {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+
+
+                    {!! Form::close() !!}
 
 
                     </td>

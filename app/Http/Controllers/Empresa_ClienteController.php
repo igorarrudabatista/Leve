@@ -33,18 +33,18 @@ class Empresa_ClienteController extends Controller
      */
     public function index()
     {
-        $empresa_cliente = Empresa_Cliente::all();
+        $cliente = Empresa_Cliente::all();
 
         $search = request('search');
 
         if($search) {
-            $empresa_cliente = Empresa_Cliente::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
+            $cliente = Empresa_Cliente::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $empresa_cliente = Empresa_Cliente::all();
+                $cliente = Empresa_Cliente::all();
             }
         
-        return view('cliente.index', ['empresa_cliente'=> $empresa_cliente, 'search' => $search]);
+        return view('cliente.index', ['cliente'=> $cliente, 'search' => $search]);
 
     }
     
@@ -61,7 +61,7 @@ class Empresa_ClienteController extends Controller
 
    public function export () {
         
-    $empresa_cliente = Empresa_Cliente::all();
+    $cliente = Empresa_Cliente::all();
 
     return Excel::download(new ClienteExport, 'clientes.xlsx');
 }
@@ -90,9 +90,9 @@ class Empresa_ClienteController extends Controller
 //      * @return \Illuminate\Http\Response
 //      */
 
-    public function show(Empresa_Cliente $empresa_cliente)
+    public function show(Empresa_Cliente $cliente)
     {
-        return view('cliente.show',compact('empresa_cliente'));
+        return view('cliente.show',compact('cliente'));
     }
 //     /**
 //      * Show the form for editing the specified resource.
@@ -100,9 +100,9 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(Empresa_Cliente $empresa_cliente)
+     public function edit(Empresa_Cliente $cliente)
      {
-         return view('cliente.edit',compact('empresa_cliente'));
+         return view('cliente.edit',compact('cliente'));
      }
     
 //     /**
@@ -112,14 +112,10 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, Empresa_Cliente $empresa_cliente)
+     public function update(Request $request, Empresa_Cliente $cliente)
      {
-        //   request()->validate([
-        //      'name' => 'required',
-        //      'detail' => 'required',
-        //  ]);
     
-         $empresa_cliente->update($request->all());
+         $cliente->update($request->all());
     
          return redirect()->route('cliente.index')
                          ->with('edit','Cliente Atualiazado com sucesso!');
@@ -131,9 +127,9 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(Empresa_Cliente $empresa_cliente)
+     public function destroy(Empresa_Cliente $cliente)
      {
-         $empresa_cliente->delete();
+         $cliente->delete();
     
          return redirect()->route('cliente.index')
                          ->with('delete','Empresa deletada com sucesso!');

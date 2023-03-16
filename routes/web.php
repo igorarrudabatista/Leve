@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\
     {
 
-    Empresa_ClienteController, MinhaEmpresaController,
+    Empresa_ClienteController, MinhaEmpresaController, ProdutoController,
     AgendaController,
     HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
@@ -27,8 +27,16 @@ use App\Http\Controllers\
 
 Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 
+Route::resource('roles',                     RoleController::class);
+Route::resource('users',                     UserController::class);
+Route::resource('conselho',                     ConselhoController::class);
 Route::resource('cliente',                     Empresa_ClienteController::class);
 Route::resource('minhaempresa',                MinhaEmpresaController::class);
+Route::resource('produtos',                    ProdutoController::class);
+
+
+
+
 
 Route::middleware('auth')->group(function () {
 

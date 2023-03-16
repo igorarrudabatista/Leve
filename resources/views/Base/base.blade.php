@@ -22,7 +22,7 @@
     
     <!-- App CSS -->  
     <link id="theme-style" rel="stylesheet" href="{{asset('css/base/portal.css')}}">
-    <link id="theme-style" rel="stylesheet" href="{{asset('ccss/upload-style.css')}}">
+    <link id="theme-style" rel="stylesheet" href="{{asset('css/upload-style.css')}}">
 
 
 </head> 
@@ -213,6 +213,19 @@
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->
 
+					    <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a href="{{asset('/produtos')}}" class="nav-link">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
+  <path fill-rule="evenodd" d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Produtos</span>
+					        </a><!--//nav-link-->
+					    </li><!--//nav-item-->
+
 
 					    <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -283,13 +296,13 @@
 					   
 					    <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					        <a class="nav-link" href="charts.html">
+					        <a class="nav-link" href="{{asset('/roles')}}">
 						        <span class="nav-icon">
 						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	  <path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
 	</svg>
 						         </span>
-		                         <span class="nav-link-text">Charts</span>
+		                         <span class="nav-link-text">Perfis</span>
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->
 					    
@@ -373,6 +386,7 @@
     <!-- Page Specific JS -->
     <script src="{{asset('js/base/app.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+	<script src="{{asset('/js/upload-script.js')}}"></script>
 
 	<script src="{{asset('js/form-empresa-script.js')}}"></script>
 

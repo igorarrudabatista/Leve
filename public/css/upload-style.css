@@ -220,16 +220,7 @@
     stroke-dashoffset: 100;
   }
 }
-body {
-  background: #E8EBF3;
-  height: 100vh;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 body .socials {
   position: fixed;
   display: block;
