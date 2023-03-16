@@ -25,6 +25,7 @@ use App\Http\Controllers\
 //     return view('painel');
 // })->middleware(['auth', 'verified'])->name('painel');
 
+Route::middleware('auth')->group(function () {
 Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 
 Route::resource('roles',                     RoleController::class);
@@ -58,7 +59,6 @@ Route::get('/orcamento/export',                   [OrcamentoController::class,  
 
 
 
-Route::middleware('auth')->group(function () {
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

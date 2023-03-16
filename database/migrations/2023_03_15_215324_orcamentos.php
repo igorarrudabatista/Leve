@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('orcamentos', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->string('Numero_Orcamento');
+            // $table->string('Numero_Orcamento');
             $table->string('Data')->nullable();
             $table->string('Validade')->nullable();
             $table->string('Garantia')->nullable();
@@ -33,7 +33,7 @@ return new class extends Migration
             // $table->unsignedInteger('empresa_cliente_id');
             // $table->foreign('empresa_cliente_id')->references('id')->on('empresa__cliente');
 
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
+            // $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
           //$table->foreignId('produto_id')->constrained('produtos')->onDelete('cascade');
             //$table->integer('Quantidade');

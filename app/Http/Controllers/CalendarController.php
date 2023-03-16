@@ -10,8 +10,7 @@ class CalendarController extends Controller
 {
     public function index()
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count();
+ 
 
         
         $events = array();
@@ -47,7 +46,7 @@ class CalendarController extends Controller
             ];
         }
         return view('calendar.index', ['events'    => $events,
-                                       'userCount' => $userCount]);
+                                       ]);
     }
     public function store(Request $request)
     {

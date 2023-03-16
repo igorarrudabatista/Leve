@@ -21,6 +21,17 @@
 </head>
 <body>
 
+    <div class="app-wrapper">
+	    
+        <div class="app-content pt-3 p-md-3 p-lg-4">
+          <div class="container-xl">
+            
+                  <div class="row gy-4">
+                    <div class="col-12 col-lg-12">
+                      <div class="app-card app-card-account shadow-sm  flex-column align-items-start">
+                  <div class="app-card-header p-3 border-bottom-0">
+      
+      
 
   <!-- Modal -->
   <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

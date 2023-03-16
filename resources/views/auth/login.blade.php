@@ -1,118 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in - Voler Admin Dashboard</title>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
     
-    <link rel="shortcut icon" href="{{asset('images/favicon.svg')}}" type="image/x-icon">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script src="{{asset('/plugins/fontawesome/js/all.min.js')}}"></script>
 
-<body>
-    <div id="auth">
-        
-<div class="container">
-    <div class="row">
-        <div class="col-md-5 col-sm-12 mx-auto">
-            <div class="card pt-4">
-                <div class="card-body">
-                    <div class="text-center mb-5">
+    
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
+    <link rel="stylesheet" href="{{asset('css/portal.css')}}">
 
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
 
-                            
-                        {{-- <img src="{{images/favicon.svg')}}" height="48" class='mb-4'> --}}
-                        <h3>Acesso ao Sistema</h3>
-                        <p>Por favor, faça o login para acessar o sistema.</p>
+</head> 
+
+<body class="app app-login p-0">    	
+    <div class="row g-0 app-auth-wrapper">
+	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
+		    <div class="d-flex flex-column align-content-end">
+			    <div class="app-auth-body mx-auto">	
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html">
+                        <img class="logo-icon me-2" src="{{asset('images/app-logo.svg')}}" ></a>
                     </div>
-                    <form action="index.html">
-                        <div class="form-group position-relative has-icon-left">
-                            {{-- <label for="username">Usuário</label> --}}
-                            <div class="position-relative">
+					<h2 class="auth-heading text-center mb-5">Acesso ao Sistema</h2>
+			        <div class="auth-form-container text-start">
+
+						<form class="auth-form login-form"  method="POST" action="{{ route('login') }}">  
+                                @csrf
+						
+                                <div class="email mb-3">
+                                <div class="position-relative">
 
                               
                                     <x-input-label  for="email" :value="__('Usuário')" />
-                                    <x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
+                                    <x-text-input id="email" class="form-control signin-email" type="email" name="email" :value="old('email')" required autofocus />
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                     </div>
                                     <div class="form-control-icon">
                                         <i data-feather="user"></i>
                                     </div>
+							</div><!--//form-group-->
+							<div class="password mb-3">
+								<label class="sr-only" for="signin-password">Password</label>
+                                <div class="position-relative">
+                                    <!-- Password -->
+                                    <x-input-label for="password" :value="__('Senha')" />
+                                    <x-text-input id="password" class="form-control signin-password"  type="password" name="password" required autocomplete="current-password" />
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                </div>
+								<div class="extra mt-3 row justify-content-between">
+									<div class="col-6">
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="RememberPassword">
+											<label class="form-check-label" for="RememberPassword">
+										Lembrar
+											</label>
+										</div>
+									</div><!--//col-6-->
+									<div class="col-6">
+										<div class="forgot-password text-end">
+											<a href="{{ __('esqueci-senha') }}" >Esqueceu a senha?</a>
+										</div>
+									</div><!--//col-6-->
+								</div><!--//extra-->
+							</div><!--//form-group-->
+							<div class="text-center">
+								<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">Entrar</button>
+							</div>
+						</form>
+						
+					</div><!--//auth-form-container-->	
 
-
-                                {{-- <input type="text" class="form-control" id="username" for="email" :value="__('Email')">
-                                <div class="form-control-icon">
-                                    <i data-feather="user"></i>
-                                </div> --}}
-                             </div> 
-                 
-
-                        
-                        <div class="form-group position-relative has-icon-left">
-                            <div class="clearfix">
-                                {{-- <label for="password">Password</label> --}}
-                                <a href="{{ __('esqueci-senha') }}" class='float-end'>
-                                    <small>Esqueceu a senha?</small>
-                                </a>
-                            </div>
-                            <div class="position-relative">
-                                 <!-- Password -->
-        
-            <x-input-label for="password" :value="__('Senha')" />
-
-            <x-text-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-     
-        <div class="form-control-icon">
-            <i data-feather="lock"></i>
-        </div>
-                                {{-- <input type="password" class="form-control" for="password" :value="__('Password')" >
-                                <div class="form-control-icon">
-                                    <i data-feather="lock"></i>
-                                </div> --}}
-                            </div>
-                        </div>
-
-                        <div class='form-check clearfix my-4'>
-                            <div class="checkbox float-start">
-                                <input type="checkbox" id="checkbox1" class='form-check-input' >
-                                <label for="checkbox1">{{ __('Lembrar') }}</label>
-                            </div>
-                            <div class="float-end">
-                                <a href="{{ __('registrar') }}">Não possui cadastro?</a>
-                            </div>
-                        </div>
-                        <div class="clearfix">
-                            <button class="btn btn-primary float-end"> {{ __('Entrar') }}</button>
-                        </div>
-                    </form>
-                    <div class="divider">
-                        <div class="divider-text">OU</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-block mb-2 btn-primary"><i data-feather="facebook"></i> Facebook</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-block mb-2 btn-secondary"><i data-feather="github"></i> Github</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    </div>
-    <script src="{{asset('js/feather-icons/feather.min.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
+			    </div><!--//auth-body-->
+		    
+                <footer class="app-auth-footer">
+				    <div class="container text-center py-3">
+				         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+			        <small class="copyright">Desenvolvido <span class="sr-only"> </span><i class="fas fa-heart" style="color: #fb866a;"></i> por <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank"> Web Monkey</a> </small>
+				       
+				    </div>
+			    </footer><!--//app-auth-footer-->	
+		    </div><!--//flex-column-->   
+	    </div><!--//auth-main-col-->
+	    <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
+		    <div class="auth-background-holder">
+		    </div>
+		    <div class="auth-background-mask"></div>
+		    <div class="auth-background-overlay p-3 p-lg-5">
+			    <div class="d-flex flex-column align-content-end h-100">
+				    <div class="h-100"></div>
+				    <div class="overlay-content p-3 p-lg-4 rounded">
+                        <h5 class="mb-3 overlay-title">Este Sistema foi desenvolvido para a Empresa </h5>
+					    <div> Leve Limpo  </div>
+				    </div>
+				</div>
+		    </div><!--//auth-background-overlay-->
+	    </div><!--//auth-background-col-->
     
-    <script src="{{asset('js/main.js')}}"></script>
-</body>
+    </div><!--//row-->
 
-</html>
+
+</body>
+</html> 
+

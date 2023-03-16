@@ -114,7 +114,7 @@ class OrcamentoController extends Controller
 
         $editar_orcamento = Orcamento::findOrFail($id);
         $empresa_cliente = Empresa_cliente::all();
-        $empresa = MinhaEmpresa::all();
+        $minha_empresa = MinhaEmpresa::all();
         $produto = Produto::all();
 
         $titulo = "Edita Cliente";
@@ -125,7 +125,7 @@ class OrcamentoController extends Controller
             return view('orcamento.edit', [
                 'editar_orcamento' => $editar_orcamento, 
                 'empresa_cliente' => $empresa_cliente,
-                'empresa' => $empresa,
+                'minha_empresa' => $minha_empresa,
                 'produto' => $produto,
             
             compact('titulo')]);

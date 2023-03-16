@@ -80,13 +80,15 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell">Id</th>
-                    <th class="cell">Cliente</th>
+                    <th class="cell">N° Orçamento</th>
+                    <th class="cell">Nome Cliente</th>
                     <th class="cell">Valor</th>
                     <th class="cell">Status</th>
                     <th class="cell">Gerar PDF</th>
-                    <th class="cell">Ações</th>
                     <th class="cell"></th>
+                    <th class="cell"></th>
+                    <th class="cell"></th>
+                    <th class="cell">Status</th>
 
                   </tr>
                 </thead>
@@ -97,25 +99,19 @@
 
 
           <td class="cell">
-          <span class="cell-label">N. Orçamento:</span>{{$order->Numero_Orcamento}}
+          <span class="cell-label">{{$order->id}}</span>
           </td>
         
           <td class="cell">
-            <span class="cell-label">Cliente:</span>{{$order->empresa_cliente->Nome_Empresa ?? ''}}
+            <span class="cell-label">{{$order->empresa_cliente->Nome_Empresa ?? ''}}</span>
           </td>
        
          <!-- <div class="product-cell numero_orcamento">
           <span class="cell-label">Valor:</span>{{$order->empresa_cliente->Nome_Empresa ?? ''}}
          </div> -->
          <td class="cell">
-        <div class="product-cell price"><span class="cell-label">Valor:</span> R$ {{$order->Valor}}  </div>  
+        <div class="product-cell price"><span class="cell-label">R$ {{$order->Valor}}</span> </div>  
       </td>
-
-    
-        
-
- 
-
 
       <td class="cell">
 
@@ -129,51 +125,36 @@
             <a class="dropdown-item bg-danger text-light"  href="{{asset('/orcamento/update/status_cancelado')}}/{{$order->id}}"> <i class="fas fa-times"></i> Cancelar</a>
           </div>
         </div>
-      </div>
        
     </td>
-    <td class="cell">
-
-      <div class="btn-group product-cell pdf " role="group">
-  <button id="btnGroupDrop1" type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="far fa-file-pdf"></i>   Gerar PDF
-  </button>
-</td>
-<td class="cell">
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     
-    <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo1/')}}/{{$order->id}}">Modelo 1</a>
-    <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo2/')}}/{{$order->id}}">Modelo 2</a>
-    <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo3/')}}/{{$order->id}}">Modelo 3</a>
-    <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo4/')}}/{{$order->id}}">Modelo 4</a>
-    <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo5/')}}/{{$order->id}}">Modelo 5</a>
-    <a class="dropdown-item active" href="{{asset('/orcamento/modelos/modelo6/')}}/{{$order->id}}">Modelo 6</a>
-  </div>
-
-  
-  
-</td>
-</div>
-<td class="cell">
-
-      <div class="product-cell acao"><span class="cell-label">Ação:</span>       
-      <!-- <form action="{{asset('/orcamento')}}/{{$order->id}}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger delete-btn"> <ion-icon name="trash-outline"> </ion-icon>Deletar</button>
-          </form>   -->
-          <form action="{{asset('/orcamento')}}/{{$order->id}}" method="POST">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Deletar</button>
-                        </form>
+    <td class="cell">
+      <div class="btn-group product-cell pdf " role="group">
+        <button id="btnGroupDrop1" type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="far fa-file-pdf"></i> Gerar PDF </button>
       </div>
     </td>
+
     <td class="cell">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
+        <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo1/')}}/{{$order->id}}">Modelo 1</a>
+        <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo2/')}}/{{$order->id}}">Modelo 2</a>
+        <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo3/')}}/{{$order->id}}">Modelo 3</a>
+        <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo4/')}}/{{$order->id}}">Modelo 4</a>
+        <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo5/')}}/{{$order->id}}">Modelo 5</a>
+        <a class="dropdown-item active" href="{{asset('/orcamento/modelos/modelo6/')}}/{{$order->id}}">Modelo 6</a>
+      </div>
+
+</td>
+
+<td class="cell">
+  <a class="btn btn-warning" href="{{asset('/orcamento/edit')}}/{{$order->id}}">Editar</a>
+ </td>
 
 
-            <div class="product-cell status2"> <span class="cell-label">Status:</span>
+    
+    <td class="cell">
+     <div class="product-cell status2"> <span class="cell-label"></span>
 
       @if ($order->Status == 'Cancelado')
       <span class="dropdown-item bg-danger text-light"> <i class="fas fa-times">  </i>  CANCELADO   </span> 
@@ -191,16 +172,25 @@
       @endif
 
 
-</div> 
+     </td>
 
-</td>
-</div>
+     <td class="cell">
+      @csrf
+      @method('DELETE')
+        
+        <form action="{{asset('/orcamento')}}/{{$order->id}}" method="POST">
+                          @csrf
+                          <input name="_method" type="hidden" value="DELETE">
 
-@endforeach
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- partial -->
-@endsection
+                          <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Deletar</button>
+                      </form>
+
+ 
+   
+  </td>
+    </tr>
+
+     @endforeach
+                  </table>
+              </div></div></div>
+  <!-- partial -->

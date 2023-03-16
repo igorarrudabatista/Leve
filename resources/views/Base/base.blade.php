@@ -11,6 +11,8 @@
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
     <link rel="shortcut icon" href="favicon.ico"> 
+
+	
     
     <!-- FontAwesome JS-->
     <!-- <script defer src="assets/plugins/fontawesome/js/all.min.js"></script> -->
@@ -150,12 +152,12 @@
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
 				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                <img src="assets/images/user.png" alt="user profile"></a>
+                                <img src="assets/images/user.png">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Minha conta</a></li>
 								<li><a class="dropdown-item" href="settings.html">Configurações</a></li>
 								<li><hr class="dropdown-divider"></li>
-								<li><a  href="{{asset('/logout')}}" class="dropdown-item" href="login.html">Sair</a></li>
+								<li><a  href="{{asset('/logout')}}" class="dropdown-item" href="{{asset('/logout')}}">Sair</a></li>
 							</ul>
 			            </div><!--//app-user-dropdown--> 
 		            </div><!--//app-utilities-->
@@ -187,6 +189,17 @@
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->
 		
+                        <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link" href="{{asset('/calendar/index')}}">
+						        <span class="nav-icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+									  </svg>
+						         </span>
+		                         <span class="nav-link-text">Agenda</span>
+					        </a><!--//nav-link-->
+					    </li><!--//nav-item-->
                         <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 					        <a class="nav-link" href="{{asset('/minhaempresa')}}">
@@ -367,9 +380,10 @@
     
     @yield('content')
 
-	
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <!-- Javascript -->         
+{{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> --}}
+    <!-- Javascript -->  
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+       
     <script src="{{asset('base/popper.min.js')}}"></script>
     <script src="{{asset('base/bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- <script src="assets/plugins/popper.min.js"></script>
@@ -455,6 +469,8 @@
 		  
 		  
 		  </script>
+
+		  
 		
 
 </body>
