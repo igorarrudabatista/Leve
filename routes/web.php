@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\
     {
 
-    Empresa_ClienteController, MinhaEmpresaController, ProdutoController,
+    Empresa_ClienteController, MinhaEmpresaController, ProdutoController, OrcamentoController,
     AgendaController,
     HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
@@ -35,6 +35,26 @@ Route::resource('minhaempresa',                MinhaEmpresaController::class);
 Route::resource('produtos',                    ProdutoController::class);
 
 
+//Orçamentos
+Route::get('orcamento/create_orcamento',                        [OrcamentoController::class, 'create']);
+Route::post('/orcamento',                                       [OrcamentoController::class, 'store']);
+Route::get('/orcamento/show_orcamento',                         [OrcamentoController::class, 'show']);
+Route::get('/orcamento/edit/{id}',                              [OrcamentoController::class, 'edit']);
+Route::put('/orcamento/update/{id}',                            [OrcamentoController::class, 'update']);
+//Route::get('/orcamento/update/status/{id}',        [OrcamentoController::class, 'update_status']);
+Route::get('/orcamento/update/status_vendarealizada/{id}',      [OrcamentoController::class, 'update_vendarealizada']);
+Route::get('/orcamento/update/status_cancelado/{id}',           [OrcamentoController::class, 'update_cancelado']);
+Route::get('/orcamento/update/status_pendente/{id}',            [OrcamentoController::class, 'update_pendente']);
+//
+Route::delete('/orcamento/{id}',                  [OrcamentoController::class, 'destroy']);
+Route::get('/orcamento/modelos/modelo1/{id}',     [OrcamentoController::class, 'modelo1']);
+Route::get('/orcamento/modelos/modelo2/{id}',     [OrcamentoController::class, 'modelo2']);
+Route::get('/orcamento/modelos/modelo3/{id}',     [OrcamentoController::class, 'modelo3']);
+Route::get('/orcamento/modelos/modelo4/{id}',     [OrcamentoController::class, 'modelo4']);
+Route::get('/orcamento/modelos/modelo5/{id}',     [OrcamentoController::class, 'modelo5']);
+Route::get('/orcamento/modelos/modelo6/{id}',     [OrcamentoController::class, 'modelo6']);
+
+Route::get('/orcamento/export',                   [OrcamentoController::class,   'export']);
 
 
 

@@ -36,8 +36,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total Sales</h4>
-                            <div class="stats-figure">$12,628</div>
+                            <h4 class="stats-type mb-1">Clientes cadastrados</h4>
+                            <div class="stats-figure">{{$clientes}}</div>
                             <div class="stats-meta text-success">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
@@ -50,8 +50,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Expenses</h4>
-                            <div class="stats-figure">$2,250</div>
+                            <h4 class="stats-type mb-1">Produtos Cadastrados</h4>
+                            <div class="stats-figure">{{$produto}}</div>
                             <div class="stats-meta text-success">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
@@ -63,7 +63,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Projects</h4>
+                            <h4 class="stats-type mb-1">Contratos</h4>
                             <div class="stats-figure">23</div>
                             <div class="stats-meta">
                                 Open</div>
@@ -74,7 +74,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Invoices</h4>
+                            <h4 class="stats-type mb-1">Recibos</h4>
                             <div class="stats-figure">6</div>
                             <div class="stats-meta">New</div>
                         </div><!--//app-card-body-->
@@ -97,7 +97,7 @@
                                     
                                 </div><!--//col-->
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Invoices</h4>
+                                    <h4 class="app-card-title">Recibos</h4>
                                 </div><!--//col-->
                             </div><!--//row-->
                         </div><!--//app-card-header-->
@@ -106,7 +106,7 @@
                             <div class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquet eros vel diam semper mollis.</div>
                         </div><!--//app-card-body-->
                         <div class="app-card-footer p-4 mt-auto">
-                           <a class="btn app-btn-secondary" href="#">Create New</a>
+                           <a class="btn app-btn-secondary" href="#">Criar</a>
                         </div><!--//app-card-footer-->
                     </div><!--//app-card-->
                 </div><!--//col-->
@@ -151,7 +151,7 @@
                                     
                                 </div><!--//col-->
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Tools</h4>
+                                    <h4 class="app-card-title">Suporte</h4>
                                 </div><!--//col-->
                             </div><!--//row-->
                         </div><!--//app-card-header-->
@@ -160,7 +160,7 @@
                             <div class="intro">Sed maximus, libero ac pharetra elementum, turpis nisi molestie neque, et tincidunt velit turpis non enim.</div>
                         </div><!--//app-card-body-->
                         <div class="app-card-footer p-4 mt-auto">
-                           <a class="btn app-btn-secondary" href="#">Create New</a>
+                           <a class="btn app-btn-secondary" href="#">Fale com o Suporte</a>
                         </div><!--//app-card-footer-->
                     </div><!--//app-card-->
                 </div><!--//col-->

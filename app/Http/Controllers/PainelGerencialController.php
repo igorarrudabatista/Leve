@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\FICHA;
-use App\Models\ALUNO;
-use App\Models\ESCOLA;
+use App\Models\Empresa_Cliente;
+use App\Models\Produto;
 use App\Models\User;
 
 
@@ -21,13 +20,13 @@ class PainelGerencialController extends Controller
 
             // $userCount  =  FICHA::where('status_id', '=', auth()->id())
             // ->count();
-            // $alunos = ALUNO::count();
-            // $escolas = ESCOLA::count();
+             $clientes = Empresa_Cliente::count();
+             $produto = Produto::count();
             // $totalfichas = FICHA::count();
             // $fichasNAOtramitadas = FICHA::where('status_id', '=', NULL)->count();
             // $fichasTramitadas = FICHA::where('status_id', '!=', NULL)->count();
         
-            return view('painel.painel-dashboard');
+            return view('painel.painel-dashboard',compact('clientes', 'produto'));
 
         }
 

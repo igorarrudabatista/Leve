@@ -62,10 +62,9 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell">N°</th>
-                    <th class="cell">Nome</th>
+                    <th class="cell">ID</th>
+                    <th class="cell">Nome do Perfil</th>
                     <th class="cell">Ações</th>
-                    <th class="cell"></th>
 
                   </tr>
                 </thead>
@@ -73,14 +72,11 @@
                 
                 <tbody>
                   <tr>
-                  <td>{{ ++$i }}</td>
+                    <td class="cell">{{$role->id}}</td>
                   <td>{{ $role->name }}</td>
 
 
                    
-                    <td class="cell">{{$role->id}}</td>
-                    <td class="cell"> 
-                        <span class="truncate">{{ $role->name }}</span></td>
 
           
                     <td class="cell">
