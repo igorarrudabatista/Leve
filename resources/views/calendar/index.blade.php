@@ -56,7 +56,7 @@
         <div class="row">
             <div class="col-12">
                 <h3 class="text-center mt-10">Calendário Pessoal</h3>
-                <p class="text-center mt-10" > <strong> Apenas você consegue criar e visualizar os seus eventos. </strong></p>
+                <p class="text-center mt-10" > <small> Todos os registros dos eventos ficarão visíveis apenas para o seu usuário. </small></p>
                 <div class="col-md-12  mt-5 mb-5">
 
                     <div id="calendar">

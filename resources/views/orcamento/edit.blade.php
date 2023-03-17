@@ -101,7 +101,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroupPrepend2">Dias</strong></span>
                 </div>
-                <input type="text" class="form-control" id="Validade" name="Validade" >
+                <input type="text" class="form-control" id="Validade" name="Validade" value="{{$editar_orcamento->Validade}}" >
               </div>
             </div>
 
@@ -111,32 +111,32 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroupPrepend2">Meses/Dias</strong></span>
                 </div>
-                <input type="text" class="form-control" id="Garantia" name="Garantia" >
+                <input type="text" class="form-control" id="Garantia" name="Garantia" value="{{$editar_orcamento->Garantia}}">
               </div>
             </div>
 
 
             <div class="col-md-4 mb-4">
               <label for="validationDefault03"><strong>Forma de Pagamento </strong></label>
-              <input type="text" class="form-control" id="Forma_Pagamento" name="Forma_Pagamento" value="Cartão de crédito Pix e Boleto" >
+              <input type="text" class="form-control" id="Forma_Pagamento" name="Forma_Pagamento" value="{{$editar_orcamento->Forma_Pagamento}}">
             </div>
           </div>
           <div class="row">
 
             <div class="col-md-2 mb-4">
               <label for="validationDefault03"><strong>Desconto </strong></label>
-              <input type="text" class="form-control" id="Desconto" placeholder="Valor" name="Desconto">
+              <input type="text" class="form-control" id="Desconto" placeholder="Valor" name="Desconto" value="{{$editar_orcamento->Desconto}}">
             </div>
             <div class="col-md-2 mb-4">
               <label for="validationDefault03"><strong>Taxas </strong></label>
-              <input type="text" class="form-control" id="Taxas" placeholder="Valor" name="Taxas">
+              <input type="text" class="form-control" id="Taxas" placeholder="Valor" name="Taxas" value="{{$editar_orcamento->Taxas}}">
             </div>
           </div>
           <div class="form-row">
 
             <div class="col-md-3 mb-3">
               <label for="validationDefault03"><strong>Descrição do Orçamento </strong></label>
-              <textarea rows="5" class="form-control" id="Descricao" name="Descricao" required> </textarea>
+              <textarea rows="5" class="form-control" id="Descricao" name="Descricao" required value="{{$editar_orcamento->Descricao}}"> </textarea>
             </div>
           </div>
 

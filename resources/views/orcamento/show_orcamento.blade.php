@@ -14,11 +14,11 @@
 
 
 <!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
-  rel="stylesheet"
-/>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet"/>
 
 <div class="app-wrapper">
 	    
@@ -27,8 +27,8 @@
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
-              <h1 class="app-page-title mb-0">Orçamento</h1>
-        <a href="{{asset('/orcamento/create_orcamento')}}"  button type="submit" class="btn app-btn-secondary">Criar Orçamento</button> </a>
+              <h1 class="app-page-title mb-0">Orçamentos</h1><br>
+        <a href="{{asset('/orcamento/create_orcamento')}}"  button type="submit" class="btn bg-primary text-light ">Adicionar Orçamento</button> </a>
 
         </div>
         <div class="col-auto">
@@ -55,10 +55,9 @@
   <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
   <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
 </svg>
-                  Download CSV
+                  Download
               </a>
               </div>
-            </div><!--//row-->
           </div><!--//table-utilities-->
         </div><!--//col-auto-->
       </div><!--//row-->
@@ -80,15 +79,14 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
+                    <th class="cell">Status</th>
                     <th class="cell">N° Orçamento</th>
                     <th class="cell">Nome Cliente</th>
                     <th class="cell">Valor</th>
                     <th class="cell">Status</th>
                     <th class="cell">Gerar PDF</th>
-                    <th class="cell"></th>
-                    <th class="cell"></th>
-                    <th class="cell"></th>
-                    <th class="cell">Status</th>
+                    <th class="cell">Editar</th>
+                    <th class="cell">Deletar</th>
 
                   </tr>
                 </thead>
@@ -97,7 +95,27 @@
 
 @foreach($orders as $order )
 
+    
+<td class="cell">
+     <div class=""> <span class=""></span>
 
+      @if ($order->Status == 'Cancelado')
+      <span class="btn bg-danger text-light"> <i class="fas fa-times">  </i>  CANCELADO   </span> 
+
+      @elseif  ($order->Status == 'Aprovado')
+      <span class="btn bg-success text-light"> <i class="fas fa-check"></i> APROVADO </span> 
+            
+      @elseif  ($order->Status == 'Pendente')
+      <span class="btn bg-warning text-light"><i class="fas fa-exclamation-triangle"></i> PENDENTE</span> 
+
+      {{-- @if ($order->Status == 'Cancelada')
+      <span class="status active">Cancelada</span>   --}}    
+      @else
+      <span class="btn  text-info"> SEM STATUS </span> 
+      @endif
+
+
+     </td>
           <td class="cell">
           <span class="cell-label">{{$order->id}}</span>
           </td>
@@ -112,19 +130,24 @@
          <td class="cell">
         <div class="product-cell price"><span class="cell-label">R$ {{$order->Valor}}</span> </div>  
       </td>
-
+    
       <td class="cell">
-
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Alterar Status
-          </button>
-          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+<!-- Default dropright button -->
+<div class="btn-group dropright">
+  <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Alterar Status
+  </button>
+  <div class="dropdown-menu">
+    <!-- Dropdown menu links -->
+    <div>
             <a class="dropdown-item bg-success text-light" href="{{asset('/orcamento/update/status_vendarealizada')}}/{{$order->id}}"> <i class="fas fa-check"></i> Aprovado</a>
             <a class="dropdown-item bg-warning text-light" href="{{asset('/orcamento/update/status_pendente')}}/{{$order->id}}"> <i class="fas fa-exclamation-triangle"></i> Pendente</a> 
             <a class="dropdown-item bg-danger text-light"  href="{{asset('/orcamento/update/status_cancelado')}}/{{$order->id}}"> <i class="fas fa-times"></i> Cancelar</a>
           </div>
-        </div>
+  </div>
+</div>
+
+
        
     </td>
     
@@ -133,9 +156,8 @@
         <button id="btnGroupDrop1" type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="far fa-file-pdf"></i> Gerar PDF </button>
       </div>
-    </td>
+    
 
-    <td class="cell">
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
         <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo1/')}}/{{$order->id}}">Modelo 1</a>
         <a class="dropdown-item"        href="{{asset('/orcamento/modelos/modelo2/')}}/{{$order->id}}">Modelo 2</a>
@@ -152,27 +174,7 @@
  </td>
 
 
-    
-    <td class="cell">
-     <div class="product-cell status2"> <span class="cell-label"></span>
 
-      @if ($order->Status == 'Cancelado')
-      <span class="dropdown-item bg-danger text-light"> <i class="fas fa-times">  </i>  CANCELADO   </span> 
-
-      @elseif  ($order->Status == 'Aprovado')
-      <span class="dropdown-item bg-success text-light"> <i class="fas fa-check"></i> APROVADO </span> 
-            
-      @elseif  ($order->Status == 'Pendente')
-      <span class="dropdown-item bg-warning text-light"><i class="fas fa-exclamation-triangle"></i> PENDENTE</span> 
-
-      {{-- @if ($order->Status == 'Cancelada')
-      <span class="status active">Cancelada</span>   --}}    
-      @else
-      <span class="dropdown-item bg-primary text-light"> SEM STATUS </span> 
-      @endif
-
-
-     </td>
 
      <td class="cell">
       @csrf
@@ -188,9 +190,8 @@
  
    
   </td>
-    </tr>
-
-     @endforeach
-                  </table>
-              </div></div></div>
-  <!-- partial -->
+</tr>
+@endforeach
+    
+                  </table> </div> </div> </div> </div>
+@endsection

@@ -25,6 +25,7 @@
     <!-- App CSS -->  
     <link id="theme-style" rel="stylesheet" href="{{asset('css/base/portal.css')}}">
     <link id="theme-style" rel="stylesheet" href="{{asset('css/upload-style.css')}}">
+	
 
 
 </head> 
