@@ -272,7 +272,7 @@ form input[type=submit] {
         </button>
       </div>
     </div>
-    <div class="products-area-wrapper ">
+    {{-- <div class="products-area-wrapper ">
      
       @if (session('msg'))
       <center>
@@ -282,14 +282,21 @@ form input[type=submit] {
       @endif
       </div>
 
-      
-      
-      {{-- @if ($minhaempresa === null) 
-      aaa
-      @endif --}}
+       --}}
+       {{-- @foreach ($minhaempresa as $criar_empresas)
+
+   
 
       
       
+      @if ($criar_empresas->Nome_Empresa == '')
+      <span class="badge bg-danger"> Valor não lançado </span>
+   @elseif  ($criar_empresas->Nome_Empresa  != '')
+   <span class="badge bg-danger"> Valor não lançado </span>
+   @endif
+
+
+   @endforeach --}}
       {{-- 
         @if (is_null($criar_empresas->id)) 
         

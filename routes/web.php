@@ -30,10 +30,10 @@ Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
-Route::resource('conselho',                     ConselhoController::class);
-Route::resource('cliente',                     Empresa_ClienteController::class);
-Route::resource('minhaempresa',                MinhaEmpresaController::class);
-Route::resource('produtos',                    ProdutoController::class);
+// Route::resource('conselho',                  ConselhoController::class);
+Route::resource('cliente',                   Empresa_ClienteController::class);
+Route::resource('minhaempresa',              MinhaEmpresaController::class);
+Route::resource('produtos',                  ProdutoController::class);
 
 
 //Orçamentos

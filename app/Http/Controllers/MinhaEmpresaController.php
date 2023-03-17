@@ -26,9 +26,9 @@ class MinhaEmpresaController extends Controller
      */
     public function index()
     {
-        $minhaempresa = MinhaEmpresa::latest()->paginate(5);
-        return view('minhaempresa.index',compact('minhaempresa'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $minhaempresa = MinhaEmpresa::get();
+        return view('minhaempresa.index',compact('minhaempresa'));
+        
     }
     
     /**

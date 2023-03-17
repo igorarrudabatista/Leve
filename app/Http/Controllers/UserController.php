@@ -9,7 +9,6 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
 use Illuminate\Support\Arr;
-use App\Models\FICHA;
 
     
 class UserController extends Controller
@@ -21,10 +20,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+    
         $data = User::orderBy('id','DESC')->paginate(5);
-        return view('users.index',compact('data', 'userCount'))
+        return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
@@ -35,10 +33,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+       
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles','userCount'));
+        return view('users.create',compact('roles'));
     }
     
     /**
@@ -86,13 +83,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('users.edit',compact('user','roles','userRole', 'userCount'));
+        return view('users.edit',compact('user','roles','userRole'));
     }
     
     /**
