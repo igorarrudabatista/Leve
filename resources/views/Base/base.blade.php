@@ -153,7 +153,7 @@
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
 				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                <img src="assets/images/user.png">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</a>
+                                <img src="{{asset('/images/user.png')}}"> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Minha conta</a></li>
 								<li><a class="dropdown-item" href="settings.html">Configurações</a></li>
@@ -171,7 +171,8 @@
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">Leve Limpo</span></a>
+		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{asset('/images/app-logo.svg')}}" alt="logo">
+					<span class="logo-text">Leve Limpo</span></a>
 	
 		        </div><!--//app-branding-->  
 		        
