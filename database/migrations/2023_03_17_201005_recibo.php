@@ -13,6 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('recibo', function (Blueprint $table) {
+
+        $table->increments('id');
+        $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
+      //  $table->foreignId('produtos_id')->constrained('produtos')->onDelete('cascade');
+        $table->string('DescProdutos')->nullable();
+
+        $table->string('DataEntrega')->nullable();
+        $table->string('DataRetirada')->nullable();
+        $table->string('Descrição')->nullable();
+        $table->string('MensagemCliente')->nullable();
+        $table->string('Observacoes')->nullable();
+
         // Cliente 
         // Data de Entrega
         // Data da Retirada
@@ -23,7 +36,8 @@ return new class extends Migration
         // Mensagem para o cliente
         // Observações
         // Campo para Assinaturas (cliente e empresa)
-    }
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -32,6 +46,7 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('recibo');
+
     }
 };
