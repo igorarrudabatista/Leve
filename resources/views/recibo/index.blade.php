@@ -80,10 +80,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nome do Prazo</th>
-                            <th>Dias do Prazo</th>
+                            <th>Cliente</th>
                             <th>Data de Criação</th>
                             <th>Data de Atualização</th>
+                            <th>Imprimir Recibo</th>
                             <th>Ações</th>
                           
                         </tr>
@@ -94,16 +94,23 @@
                         <tr>
                
                            <td>{{$recibos->id }}</td>
-
-                           <td>{{$recibos->ParmPerfilAcessoNivel?? 'Sem registros'  }}</td>
+                           {{$order->empresa_cliente->Nome_Empresa ?? ''}}
+                           <td>{{$recibos->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</td>
+                           {{-- <td> <small> {{json_encode ($recibos->DescProdutos)  }} </small></td> --}}
                            
-                           <td>{{$recibos->ParmPrazoDias ?? 'Sem registros'}}</td>
 
-          
-                           <td>{{$recibos->created_at ??  'Sem registros'}} </td>
-                           <td>{{$recibos->updated_at ??  'Sem registros'}} </td>
-                           <td> <a class="btn btn-warning" href="{{ route('recibo.edit',$recibos->id) }}">Editar</a>
-                           {!! Form::open(['method' => 'DELETE','route' => ['recibo.destroy', $recibos->id],'style'=>'display:inline']) !!}
+                           <td>{{$recibos->DataEntrega ??  'Sem registros'}} </td>
+                           <td>{{$recibos->DataRetirada ??  'Sem registros'}} </td>
+                           <td> <a href="###" button type="button" class="btn btn-outline-secondary" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                            <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                            <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+                          </svg>
+                            Imprimir
+                            </button> </a>
+                           </td>
+                            <td> <a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>
+                           {!! Form::open(['method' => 'DELETE','route' => ['recibos.destroy', $recibos->id],'style'=>'display:inline']) !!}
                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
                            {!! Form::close() !!}

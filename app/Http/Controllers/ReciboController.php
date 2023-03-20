@@ -28,9 +28,11 @@ class ReciboController extends Controller
      */
     public function index()
     {
-        $recibo = Recibo::latest()->paginate(5);
-        return view('recibo.index',compact('recibo'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+      //  $recibo = Recibo::get();
+        $recibo = Recibo::with('empresa_cliente')->get();
+
+        $empresa_cliente = Empresa_Cliente::get();
+        return view('recibo.index',compact('recibo','empresa_cliente'));
     }
     
     /**
@@ -40,7 +42,8 @@ class ReciboController extends Controller
      */
     public function create()
     {
-        $empresa_cliente = Empresa_Cliente::get();
+        $empresa_cliente=Empresa_Cliente::get();
+
         return view('recibo.create', compact('empresa_cliente'));
     }
     
@@ -52,14 +55,11 @@ class ReciboController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
+    
     
         Recibo::create($request->all());
     
-        return redirect()->route('recibo.index')
+        return redirect()->route('recibos.index')
                         ->with('success','Product created successfully.');
     }
     

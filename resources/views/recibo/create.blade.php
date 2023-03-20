@@ -51,7 +51,8 @@
                                         <select name="empresa_cliente_id" id="empresa_cliente_id" class="form-control">
                                             <option value="" disabled> </option>
                                             @foreach ($empresa_cliente as $empresa_clientes	)
-                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->id}} - {{$empresa_clientes->empresa_cliente_id}} </option>
+                                            <option value="">Selecione o Cliente </option>
+                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_Empresa}} </option>
                                             @endforeach
                                         </select>
 
@@ -100,20 +101,20 @@
                                 <br/>
                                 <hr>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Mango"><big> Locação Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Orange"> Hig. Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Apple"> Manicure <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Ombro Tintura <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Mango"> Capa <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Orange"> Toalha Banho <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Apple"> Tapete <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Lençol <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Roupãp <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Locação Toalha PE <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Cobertor <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Travesseiro / Almofada <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Hig. Toalha <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="fruits[]" value="Banana"> Caminha </big> <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"><big> Locação Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Hig. Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Manicure <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Ombro Tintura <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"> Capa <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Toalha Banho <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Tapete <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Lençol <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Roupão <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Locação Toalha PE <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Cobertor <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Travesseiro / Almofada <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Hig. Toalha <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Caminha </big> <br/>
                                 </div>
                                </div>
 
@@ -122,20 +123,20 @@
                                 <br>
 
                                 <hr>
-                                        <input type="checkbox"  class="custom-control-input" name="fruits[]" value="Toalha Preta"><big> Toalha Preta <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Dourada"> Toalha Dourada <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Rosa"> Toalha Rosa <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Azul Escuro"> Toalha Azul Escuro <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Verde"> Toalha Verde <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Cinza"> Toalha Cinza <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Laranja"> Toalha Laranja <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Azul Claro"> Toalha Azul Claro <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Bordô"> Toalha Bordô <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Lilás"> Toalha Lilás <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Vermelha"> Toalha Vermelha <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Azul"> Toalha Azul <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Verde Claro"> Toalha Verde Claro <br/>
-                                        <input type="checkbox" name="fruits[]" value="Toalha Marrom"> Toalha Marrom </big> <br/>
+                                        <input type="checkbox"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"><big> Toalha Preta <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Dourada"> Toalha Dourada <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Rosa"> Toalha Rosa <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Escuro"> Toalha Azul Escuro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde"> Toalha Verde <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Cinza"> Toalha Cinza <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Laranja"> Toalha Laranja <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Claro"> Toalha Azul Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Bordô"> Toalha Bordô <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Lilás"> Toalha Lilás <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Vermelha"> Toalha Vermelha <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul"> Toalha Azul <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde Claro"> Toalha Verde Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Marrom"> Toalha Marrom </big> <br/>
 
                                 </div>
 
@@ -148,7 +149,7 @@
                         <div v-show="currentstep == 3">
                             <h3>Passo 3</h3>
                             <div class="form-group">
-                                <label for="textarea">Observações</label>
+                                <label for="textarea">Observações:</label>
                                 <textarea class="form-control" name="textarea" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
                             </div>
                             <br>
@@ -158,9 +159,9 @@
                             </div>
                   
                         </div>
+                        
                 
-                        <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="steps.length" @step-change="stepChanged">
-                        </step>
+                        <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="steps.length" @step-change="stepChanged"> </step>
                 
                         <script type="x-template" id="step-navigation-template">
                             <ol class="step-indicator">
@@ -172,7 +173,7 @@
                         <script type="x-template" id="step-navigation-step-template">
                             <li :class="indicatorclass">
                                 <div class="step"><i :class="step.icon_class"></i></div>
-                                <div class="caption hidden-xs hidden-sm">Step <span v-text="step.id"></span>: <span v-text="step.title"></span></div>
+                                <div class="caption hidden-xs hidden-sm">Passo <span v-text="step.id"></span>: <span v-text="step.title"></span></div>
                             </li>
                         </script>
                 
@@ -184,13 +185,17 @@
                                 <button type="button" class="btn btn-primary" @click="nextStep" :disabled="laststep">
                                     Próximo
                                 </button>
-                                <button type="submit" class="btn btn-primary" v-if="laststep">
-                                    Salvar
-                                </button>
+
+                                <input type="submit" class="btn btn-primary" @click="nextStep" :disabled="firststep" value="Salvar Recibo"/>
+
+                            
                             </div>
                         </script>
+
+
                     </div>
                 </div>
+
                 </form>
 
 
@@ -215,7 +220,7 @@
         </div>
 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
-        <script src="{{asset('js/step-by-step/script.js')}}"></script>
+    <script src="{{asset('js/step-by-step/script.js')}}"></script>
 
 
 

@@ -18,13 +18,15 @@ return new class extends Migration
         $table->increments('id');
         $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
       //  $table->foreignId('produtos_id')->constrained('produtos')->onDelete('cascade');
-        $table->string('DescProdutos')->nullable();
-
+        $table->json('DescProdutos')->nullable();
         $table->string('DataEntrega')->nullable();
         $table->string('DataRetirada')->nullable();
         $table->string('Descrição')->nullable();
         $table->string('MensagemCliente')->nullable();
         $table->string('Observacoes')->nullable();
+
+        $table->timestamps();
+
 
         // Cliente 
         // Data de Entrega
