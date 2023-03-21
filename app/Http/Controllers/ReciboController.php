@@ -71,7 +71,7 @@ class ReciboController extends Controller
      */
     public function show(Recibo $recibo)
     {
-        return view('recibo.show',compact('recibo'));
+        return view('recibos.show',compact('recibo'));
     }
     
     /**
@@ -82,7 +82,12 @@ class ReciboController extends Controller
      */
     public function edit(Recibo $recibo)
     {
-        return view('recibo.edit',compact('recibo'));
+
+        $recibos = Recibo::with('empresa_cliente')->get();
+
+       $empresa_cliente=Empresa_Cliente::get();
+
+        return view('recibos.edit',compact('recibo','empresa_cliente', 'recibos'));
     }
     
     /**
@@ -101,7 +106,7 @@ class ReciboController extends Controller
     
         $recibo->update($request->all());
     
-        return redirect()->route('recibo.index')
+        return redirect()->route('recibos.index')
                         ->with('success','Product updated successfully');
     }
     
@@ -115,7 +120,7 @@ class ReciboController extends Controller
     {
         $recibo->delete();
     
-        return redirect()->route('recibo.index')
+        return redirect()->route('recibos.index')
                         ->with('success','Product deleted successfully');
     }
 }

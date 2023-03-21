@@ -1,92 +1,212 @@
 @extends('base.base')
 @section('content')
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Cadastro de Prazos</h3>
-                <!-- <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a> -->
 
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastro de Prazos</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet"/>
 
-    </div>
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<link id="theme-style" rel="stylesheet" href="{{asset('css/step-by-step/style.css')}}">
+
+<div class="app-wrapper">
+	    
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+      <div class="container-xl">
+        
+        <div class="row g-3 mb-4 align-items-center justify-content-between">
+          <div class="col-auto">
+  
+  
+          </div>
+
+        </div><!--//row-->
 
 <section id="multiple-column-form">
     <div class="row match-height">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-
-                </div>
-
+      
+<br>
                 <div class="text-center mb-5">
-                    <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de Informações de Prazos</h3>
-                    <p></p>
+                    <img src="{{asset('/images/i.webp')}}" height="88" class='mb-4'>
+                    <h3>Recibos</h3>
+                    <p>Editando o Recibo do cliente: <strong> {{$recibo->empresa_cliente->Nome_Empresa}} </strong></p>
                 </div>
 
-                {!! Form::model($prazo, ['method' => 'PATCH','route' => ['prazo.update', $prazo->id]]) !!}
+                {!! Form::open(array('route' => 'recibos.store','method'=>'POST')) !!}
 
-
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form">
+                <div class="container">
+                    <div id="app">
+                        <step-navigation :steps="steps" :currentstep="currentstep">
+                        </step-navigation>
+                        
+                        <div v-show="currentstep == 1">
+                            <h3>Passo 1</h3>
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                    
-                                        <label for="first-name-column">Nome Perfil</label>
-                                        {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!}
+                                        <label for="first-name-column"><strong> Cliente </strong></label>
+
+                                        <select name="empresa_cliente_id" id="empresa_cliente_id" class="form-control">
+                                            <option value="" disabled> </option>
+                                            @foreach ($empresa_cliente as $empresa_clientes	)
+                                            <option value="">Selecione o Cliente </option>
+                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_Empresa}} </option>
+                                            @endforeach
+                                        </select>
+
+
+                                        {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
 
                                         <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
                                    </div>
 
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-3 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="email-id-column">Dias</label>
+                                        <label for="email-id-column"><strong> Data de Entrega </strong></label>
                                         <div class="position-relative">
 
-                                        {!! Form::text('ParmPrazoDias', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!}
+                                      {!! Form::date('DataEntrega', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
 
-                                            <div class="form-control-icon">
-                                                <i data-feather="mail"></i>
-                                            </div>
+                                         
                                             
                                     </div>
                                 </div>
 
                                 </div>
-                         
-                           
-                          
-          
+                                <div class="col-md-3 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="email-id-column"> <strong> Data de Retirada </strong></label>
+                                        <div class="position-relative">
+
+                                       {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
+                                          
+                                            
+                                    </div>
+                                </div>
+
+                            </div>          
 
                                 </div>
-                             
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Salvar</button>
+                        </div>
+                
+                        <div v-show="currentstep == 2">
+                           
+                            <h3>Produtos</h3> 
+                            <div class="form-group">
+                                <div class="row">
+                                <div class="col-md-6 col-12">
+                      
+                                <br/>
+                                <hr>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"><big> Locação Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Hig. Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Manicure <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Ombro Tintura <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"> Capa <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Toalha Banho <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Tapete <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Lençol <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Roupão <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Locação Toalha PE <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Cobertor <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Travesseiro / Almofada <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Hig. Toalha <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Caminha </big> <br/>
                                 </div>
+                               </div>
+
+                               <div class="col-md-6 col-12">
+                                <div class="form-group has-icon-left">
+                                <br>
+
+                                <hr>
+                                        <input type="checkbox"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"><big> Toalha Preta <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Dourada"> Toalha Dourada <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Rosa"> Toalha Rosa <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Escuro"> Toalha Azul Escuro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde"> Toalha Verde <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Cinza"> Toalha Cinza <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Laranja"> Toalha Laranja <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Claro"> Toalha Azul Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Bordô"> Toalha Bordô <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Lilás"> Toalha Lilás <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Vermelha"> Toalha Vermelha <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul"> Toalha Azul <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde Claro"> Toalha Verde Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Marrom"> Toalha Marrom </big> <br/>
+
+                                </div>
+
+                                
                             </div>
+                            </div>
+                        </div>
+                        </div>
+                
+                        <div v-show="currentstep == 3">
+                            <h3>Passo 3</h3>
+                            <div class="form-group">
+                                <label for="textarea">Observações:</label>
+                                <textarea class="form-control" name="textarea" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="textarea">Mensagem para o Cliente:</label>
+                                <textarea class="form-control" name="textarea" rows="4" placeholder="Escreva aqui"> </textarea>
+                            </div>
+                  
+                        </div>
+                        
+                
+                        <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="steps.length" @step-change="stepChanged"> </step>
+                
+                        <script type="x-template" id="step-navigation-template">
+                            <ol class="step-indicator">
+                                <li v-for="step in steps" is="step-navigation-step" :key="step.id" :step="step" :currentstep="currentstep">
+                                </li>
+                            </ol>
+                        </script>
+                
+                        <script type="x-template" id="step-navigation-step-template">
+                            <li :class="indicatorclass">
+                                <div class="step"><i :class="step.icon_class"></i></div>
+                                <div class="caption hidden-xs hidden-sm">Passo <span v-text="step.id"></span>: <span v-text="step.title"></span></div>
+                            </li>
+                        </script>
+                
+                        <script type="x-template" id="step-template">
+                            <div class="step-wrapper" :class="stepWrapperClass">
+                                <button type="button" class="btn btn-primary" @click="lastStep" :disabled="firststep">
+                                    Voltar
+                                </button>
+                                <button type="button" class="btn btn-primary" @click="nextStep" :disabled="laststep">
+                                    Próximo
+                                </button>
+
+                                <input type="submit" class="btn btn-primary" @click="nextStep" :disabled="firststep" value="Salvar Recibo"/>
+
+                            
+                            </div>
+                        </script>
+
+
+                    </div>
+                </div>
+
+                </form>
+
+
+                            
+
+
+                                        {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
+
+                                        <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
+
+                             
                             {!! Form::close() !!}
                             
                         </form>
@@ -98,6 +218,11 @@
     </div>
 
         </div>
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
+    <script src="{{asset('js/step-by-step/script.js')}}"></script>
+
+
 
 </section>
 @endsection

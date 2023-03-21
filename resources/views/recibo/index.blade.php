@@ -110,8 +110,10 @@
                             </button> </a>
                            </td>
                             <td> <a class="btn btn-warning" href="{{ route('recibos.edit',$recibos->id) }}">Editar</a>
+                                           
                            {!! Form::open(['method' => 'DELETE','route' => ['recibos.destroy', $recibos->id],'style'=>'display:inline']) !!}
-                           {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                         
+                           {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
 
                            {!! Form::close() !!}
  </td>
