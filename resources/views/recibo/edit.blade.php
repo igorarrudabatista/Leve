@@ -34,7 +34,9 @@
                     <p>Editando o Recibo do cliente: <strong> {{$recibo->empresa_cliente->Nome_Empresa}} </strong></p>
                 </div>
 
-                {!! Form::open(array('route' => 'recibos.store','method'=>'POST')) !!}
+
+                {!! Form::model($recibo, ['method' => 'PATCH','route' => ['recibos.update', $recibo->id]]) !!}
+
 
                 <div class="container">
                     <div id="app">
@@ -47,15 +49,9 @@
                                 <div class="col-md-6 col-12">
                                    
                                         <label for="first-name-column"><strong> Cliente </strong></label>
+                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$recibo->empresa_cliente->Nome_Empresa}}" disabled> 
 
-                                        <select name="empresa_cliente_id" id="empresa_cliente_id" class="form-control">
-                                            <option value="" disabled> </option>
-                                            @foreach ($empresa_cliente as $empresa_clientes	)
-                                            <option value="">Selecione o Cliente </option>
-                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_Empresa}} </option>
-                                            @endforeach
-                                        </select>
-
+                                        
 
                                         {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
 
@@ -101,20 +97,26 @@
                                 <br/>
                                 <hr>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"><big> Locação Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Hig. Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Manicure <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Ombro Tintura <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"> Capa <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Toalha Banho <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Tapete <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Lençol <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Roupão <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Locação Toalha PE <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Cobertor <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Travesseiro / Almofada <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Hig. Toalha <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Caminha </big> <br/>
+
+                                    <label class="checkbox-inline">
+
+
+                                      
+                                    {{-- <input type="checkbox" name="DescProdutos[]" value="Locação Toalha Hair" <?php if (in_array("Locação Toalha Hair", $recibo->DescProdutos)) { echo "checked"; } ?>> Locação Toalha Hair <br> --}}
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha Hair"<?php if (in_array("Locação Toalha Hair", $recibo->DescProdutos)) { echo "checked"; } ?>><big> Locação Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha Hair "<?php if (in_array("Hig. Toalha Hair", $recibo->DescProdutos)) { echo "checked"; } ?>> Hig. Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Manicure"<?php if (in_array("Manicure", $recibo->DescProdutos)) { echo "checked"; } ?>> Manicure <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Ombro Tintura"<?php if (in_array("Ombro Tintura", $recibo->DescProdutos)) { echo "checked"; } ?>> Ombro Tintura <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Capa"<?php if (in_array("Capa", $recibo->DescProdutos)) { echo "checked"; } ?>> Capa <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Toalha Banho"<?php if (in_array("Toalha Banho", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Banho <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Tapete"<?php if (in_array("Tapete", $recibo->DescProdutos)) { echo "checked"; } ?>> Tapete <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Lençol"<?php if (in_array("Lençol", $recibo->DescProdutos)) { echo "checked"; } ?>> Lençol <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Roupão"<?php if (in_array("Roupão", $recibo->DescProdutos)) { echo "checked"; } ?>> Roupão <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha PE"<?php if (in_array("Locação Toalha PE", $recibo->DescProdutos)) { echo "checked"; } ?>> Locação Toalha PE <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Cobertor"<?php if (in_array("Cobertor", $recibo->DescProdutos)) { echo "checked"; } ?>> Cobertor <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Travesseiro / Almofada"<?php if (in_array("Locação Toalha Hair", $recibo->DescProdutos)) { echo "checked"; } ?>> Travesseiro / Almofada <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha"<?php if (in_array("Hig. Toalha", $recibo->DescProdutos)) { echo "checked"; } ?>> Hig. Toalha <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Caminha"<?php if (in_array("Caminha", $recibo->DescProdutos)) { echo "checked"; } ?>> Caminha </big> <br/>
                                 </div>
                                </div>
 
@@ -123,20 +125,20 @@
                                 <br>
 
                                 <hr>
-                                        <input type="checkbox"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"><big> Toalha Preta <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Dourada"> Toalha Dourada <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Rosa"> Toalha Rosa <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Escuro"> Toalha Azul Escuro <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde"> Toalha Verde <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Cinza"> Toalha Cinza <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Laranja"> Toalha Laranja <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Claro"> Toalha Azul Claro <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Bordô"> Toalha Bordô <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Lilás"> Toalha Lilás <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Vermelha"> Toalha Vermelha <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul"> Toalha Azul <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde Claro"> Toalha Verde Claro <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Marrom"> Toalha Marrom </big> <br/>
+                                        <input type="checkbox"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"<?php if (in_array("Toalha Preta", $recibo->DescProdutos)) { echo "checked"; } ?>><big> Toalha Preta <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Dourada"<?php if (in_array("Toalha Dourada", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Dourada <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Rosa"<?php if (in_array("Toalha Rosa", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Rosa <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Escuro"<?php if (in_array("Toalha Azul Escuro", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Azul Escuro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde"<?php if (in_array("Toalha Verde", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Verde <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Cinza"<?php if (in_array("Toalha Cinza", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Cinza <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Laranja"<?php if (in_array("Toalha Laranja", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Laranja <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Claro"<?php if (in_array("Toalha Azul Claro", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Azul Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Bordô"<?php if (in_array("Toalha Bordô", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Bordô <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Lilás"<?php if (in_array("Toalha Lilás", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Lilás <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Vermelha"<?php if (in_array("Toalha Vermelha", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Vermelha <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul"<?php if (in_array("Toalha Azul", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Azul <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde Claro"<?php if (in_array("Toalha Verde Claro", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Verde Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Marrom"<?php if (in_array("Toalha Marrom", $recibo->DescProdutos)) { echo "checked"; } ?>> Toalha Marrom </big> <br/>
 
                                 </div>
 

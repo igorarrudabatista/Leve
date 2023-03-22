@@ -49,9 +49,8 @@
                                         <label for="first-name-column"><strong> Cliente </strong></label>
 
                                         <select name="empresa_cliente_id" id="empresa_cliente_id" class="form-control">
-                                            <option value="" disabled> </option>
+                                            <option value="1"> Selecione a empresa </option>
                                             @foreach ($empresa_cliente as $empresa_clientes	)
-                                            <option value="">Selecione o Cliente </option>
                                             <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_Empresa}} </option>
                                             @endforeach
                                         </select>
@@ -81,7 +80,8 @@
                                         <div class="position-relative">
 
                                        {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
-                                          
+                                       {{ Form::checkbox('DescProdutos', 'DescProdutos', true) }}
+
                                             
                                     </div>
                                 </div>
@@ -100,21 +100,24 @@
                       
                                 <br/>
                                 <hr>
+
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"><big> Locação Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Hig. Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Manicure <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Ombro Tintura <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Mango"> Capa <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Orange"> Toalha Banho <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Apple"> Tapete <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Lençol <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Roupão <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Locação Toalha PE <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Cobertor <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Travesseiro / Almofada <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Hig. Toalha <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Banana"> Caminha </big> <br/>
+
+
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha Hair"><big> Locação Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha Hair "> Hig. Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Manicure"> Manicure <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Ombro Tintura"> Ombro Tintura <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Capa"> Capa <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Toalha Banho"> Toalha Banho <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Tapete"> Tapete <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Lençol"> Lençol <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Roupão"> Roupão <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha PE"> Locação Toalha PE <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Cobertor"> Cobertor <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Travesseiro / Almofada"> Travesseiro / Almofada <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha"> Hig. Toalha <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Caminha"> Caminha </big> <br/>
                                 </div>
                                </div>
 

@@ -28,11 +28,22 @@ class ReciboController extends Controller
      */
     public function index()
     {
-      //  $recibo = Recibo::get();
-        $recibo = Recibo::with('empresa_cliente')->get();
-
+        $recibo = Recibo::with('empresa_cliente')->get();  
         $empresa_cliente = Empresa_Cliente::get();
-        return view('recibo.index',compact('recibo','empresa_cliente'));
+        $search = request('search');
+
+        if($search) {
+            $empresa_cliente = Empresa_Cliente::where([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
+
+             } else {
+                $empresa_cliente = Empresa_Cliente::all();
+            }
+
+        return view('recibo.index', ['recibo'=> $recibo, 
+                                     'empresa_cliente' => $empresa_cliente,
+                                     'search' => $search,
+                                    ]);
+
     }
     
     /**
@@ -87,7 +98,7 @@ class ReciboController extends Controller
 
        $empresa_cliente=Empresa_Cliente::get();
 
-        return view('recibos.edit',compact('recibo','empresa_cliente', 'recibos'));
+        return view('recibo.edit',compact('recibo','empresa_cliente', 'recibos'));
     }
     
     /**
