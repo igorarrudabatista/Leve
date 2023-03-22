@@ -47,6 +47,11 @@ class PermissionTableSeeder extends Seeder
             'contrato-create',
             'contrato-edit',
             'contrato-delete',
+            ///orcamento
+            'orcamento-list',
+            'orcamento-create',
+            'orcamento-edit',
+            'orcamento-delete',
 
             
         ];

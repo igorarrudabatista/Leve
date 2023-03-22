@@ -18,24 +18,50 @@ Use Alert;
 
 class OrcamentoController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:orcamento-list|orcamento-create|orcamento-edit|orcamento-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:orcamento-create', ['only' => ['create','store']]);
+         $this->middleware('permission:orcamento-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:orcamento-delete', ['only' => ['destroy']]);
+    }
+
+    public function index()
+    {
+        $orcamento = Orcamento::with('produto')->get();
+        $empresa_cliente = Empresa_cliente::all();
+        $empresa = MinhaEmpresa::all();
+        $produto = Produto::all();
+
+        $search = request('search');
+
+        if ($search) {
+            $orcamento = Orcamento::where([['Numero_Orcamento',   'like', '%' . $search . '%']])->get();
+        } else {
+            $orcamento = Orcamento::all();
+        }
+        
+
+        return view('orcamento.index', [
+            'orcamento'         => $orcamento,
+            'search'            => $search,
+            'empresa_cliente'   => $empresa_cliente,
+            'produto'           => $produto,
+            'empresa'           => $empresa
+        ]);
+    }
     public function create()
     {
 
-        $empresa_cliente = Empresa_cliente::all();
-
+        $empresa_cliente = Empresa_cliente::all(); 
         $orcamento = Orcamento::all();
         $minha_empresa = MinhaEmpresa::all();
         $produto = Produto::all();
 
-        // $Produto = [$produto];
-        // $Quantidade = [$orcamento];
-        // $Preco = [$orcamento];
-
-
 
 
         return view(
-            'orcamento.create_orcamento',
+            'orcamento.create',
             [
                 'empresa_cliente' =>   $empresa_cliente,
                 'orcamento'       =>   $orcamento,
@@ -44,8 +70,59 @@ class OrcamentoController extends Controller
             ]
         );
     }
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
+    public function show(Orcamento $orcamento)
+    {
+        return view('orcamento.show',compact('orcamento'));
+    }
 
+    public function edit(Orcamento $orcamento)
+    {       
+        $orcamento=Orcamento::get();
+        $empresa_cliente = Empresa_cliente::all();
+        $produto = Produto::all();
+
+        return view('orcamento.edit', [
+                'orcamento' => $orcamento, 
+                'empresa_cliente' => $empresa_cliente,
+                'produto' => $produto,
+            
+         ]);
+    
+        }
+
+    public function update(Request $request, Orcamento $orcamento)
+    {
+
+        $orcamento->update($request->all());
+
+        
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+        for ($product=0; $product < count($products); $product++) {
+            if ($products[$product] != '') {
+                $orcamento->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+            }
+
+    return redirect()->route('orcamento.index')
+                     ->with('success','Product updated successfully');
+   
+    }
+}   
+
+    public function destroy(Orcamento $orcamento)
+    {
+        $orcamento->delete();
+    
+        return redirect()->route('orcamento.index')
+                        ->with('success','Product deleted successfully');
+    }
     public function export () {
         
     
@@ -57,7 +134,7 @@ class OrcamentoController extends Controller
     {
         
         // dd($request->all());
-        $order = Orcamento::create($request->all());
+        $orcamento = Orcamento::create($request->all());
         
         
         
@@ -65,121 +142,21 @@ class OrcamentoController extends Controller
         $quantities = $request->input('quantities', []);
         for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {
-                $order->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+                $orcamento->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
             }
         }
         
         toast('Orçamento criado com sucesso!','success');
        
     
-        return redirect('/orcamento/show_orcamento');
+        return redirect('/orcamento');
     }
     
 
 
-    public function show()
-    {
-
-        $orders = Orcamento::with('produto')->get();
-
-        //$orders = Orcamento::all();
-
-        $empresa_cliente = Empresa_cliente::all();
-        $empresa = MinhaEmpresa::all();
-        $produto = Produto::all();
-
-        $search = request('search');
-
-        if ($search) {
-            $criar_orcamento = Orcamento::where([['Numero_Orcamento',   'like', '%' . $search . '%']])->get();
-        } else {
-            $criar_orcamento = Orcamento::all();
-        }
-        
-
-        return view('orcamento.show_orcamento', [
-            'orders'            => $criar_orcamento,
-            'search'            => $search,
-            'empresa_cliente'   => $empresa_cliente,
-            'produto'           => $produto,
-            'empresa'           => $empresa
-        ]);
-    }
 
 
 
-    public function edit($id)
-    {
-        
-
-        $editar_orcamento = Orcamento::findOrFail($id);
-        $empresa_cliente = Empresa_cliente::all();
-        $minha_empresa = MinhaEmpresa::all();
-        $produto = Produto::all();
-
-        $titulo = "Edita Cliente";
-
-      
-
-
-            return view('orcamento.edit', [
-                'editar_orcamento' => $editar_orcamento, 
-                'empresa_cliente' => $empresa_cliente,
-                'minha_empresa' => $minha_empresa,
-                'produto' => $produto,
-            
-            compact('titulo')]);
-    
-        }
-
-    public function update(Request $request, $id)
-    {
-
-
-    $Orcamento = Orcamento::find($id);
-
-   // $Orcamento = Orcamento::create($request->all());
-        
-     Orcamento::findOrFail($request->id)->update($request->all());
-       
-       // Orcamento::findOrFail($request->id) -> update();
-       
-       $Orcamento->save();
-
-       
-       
-    //    $products = $request->input('products', []);
-    //    $quantities = $request->input('quantities', []);
-    //    for ($product=0; $product < count($products); $product++) {
-    //        if ($products[$product] != '') {
-    //            $Orcamento->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
-    //         }
-    //     }
-        
-        toast('Orçamento editado com sucesso!','success');
-
-        return redirect('/orcamento/show_orcamento');
-    }
-
-
-    // public function update_status(Request $request, $id)    {
-
-    //     // $order = Orcamento::find($id);
-    //     // $order -> Status  = $request -> Status;
-    //     // $order -> save();
-
-
-    //     $order = Orcamento::find($id);
-
-    //    // $order =  new Orcamento();
-    //    $cancelado = 'Cancelado';
-    //    $order -> Status   = $cancelado;
-    //    $order -> save();
-           
-    //     toast('Status do Orçamento alterado para Cancelado com sucesso!','success');
-
-    //     return redirect('/orcamento/show_orcamento');
-    // }
     public function update_vendarealizada(Request $request, $id)    {
 
       $order = Orcamento::find($id);
@@ -408,16 +385,17 @@ class OrcamentoController extends Controller
         ]);
     }
 
-    public function destroy($id)
-    {
-    // toast('Orçamento deletado com sucesso!','error');
 
-    Orcamento::findOrFail($id)->delete();
- //   Alert::question('Realemte deseja deletar este item?', '');
+//     public function destroy($Orcamento $orcamento)
+//     {
+//     // toast('Orçamento deletado com sucesso!','error');
+//     $orcamento->delete();
+//    // Orcamento::findOrFail($id)->delete();
+//  //   Alert::question('Realemte deseja deletar este item?', '');
 
-        return redirect('/orcamento/show_orcamento');
-        return back();
-    }
+//         return redirect()->route('recibos.index')
+//  ->with('success','Product deleted successfully');
+//     }
 
 
         public function geraPdf($id) {

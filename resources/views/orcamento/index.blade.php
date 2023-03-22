@@ -28,7 +28,7 @@
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
               <h1 class="app-page-title mb-0">Orçamentos</h1><br>
-        <a href="{{asset('/orcamento/create_orcamento')}}"  button type="submit" class="btn bg-primary text-light ">Adicionar Orçamento</button> </a>
+        <a href="{{asset('/orcamento/create')}}"  button type="submit" class="btn bg-primary text-light ">Adicionar Orçamento</button> </a>
 
         </div>
         <div class="col-auto">
@@ -93,7 +93,7 @@
 
 
 
-@foreach($orders as $order )
+@foreach($orcamento as $order )
 
     
 <td class="cell">
@@ -224,23 +224,21 @@
 </td>
 
 <td class="cell">
-  <a class="btn btn-warning" href="{{asset('/orcamento/edit')}}/{{$order->id}}">Editar</a>
+  <td> <a class="btn btn-warning" href="{{ route('orcamento.edit',$order->id) }}">Editar</a>
+
+  {{-- <a class="btn btn-warning" href="{{asset('/orcamento/edit')}}/{{$order->id}}">Editar</a> --}}
  </td>
 
 
 
 
      <td class="cell">
-      @csrf
-      @method('DELETE')
-        
-        <form action="{{asset('/orcamento')}}/{{$order->id}}" method="POST">
-                          @csrf
-                          <input name="_method" type="hidden" value="DELETE">
 
-                          <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Deletar</button>
-                      </form>
+      {!! Form::open(['method' => 'DELETE','route' => ['orcamento.destroy', $order->id],'style'=>'display:inline']) !!}
+      {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
 
+      {!! Form::close() !!}
+    
  
    
   </td>

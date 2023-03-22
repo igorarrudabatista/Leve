@@ -1,4 +1,4 @@
 php artisan serve
 php artisan migrate
-php artisa db:seed PermissionTableSeeder
-php artisa db:seed CreateAdminUserSeeder
+php artisan db:seed PermissionTableSeeder
+php artisan db:seed CreateAdminUserSeeder

@@ -26,8 +26,18 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+
         $produto = Produto::get();
-        return view('produtos.index',compact('produto'));
+
+        $search = request('search');
+
+        if($search) {
+            $produto = Produto::where([['Nome_Produto', 'like', '%'.$search. '%' ]])->get();
+
+             } else {
+                $produto = Produto::all();
+            }
+        return view('produtos.index',compact('produto','search'));
        
     }
     
@@ -118,10 +128,10 @@ class ProdutoController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Produto $produto) 
     {
+        $produto->update($request->all());
 
-        $data = $request->all();
 
         
         // Imagem do produto upload
@@ -140,7 +150,9 @@ class ProdutoController extends Controller
         }
         toast('Cliente editado com sucesso!','success');
 
-     Produto::findOrFail($request->id) -> update ($data);
+
+
+     
      return redirect('/produtos');
     }
     

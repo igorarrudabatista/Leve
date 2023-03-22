@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa_Cliente;
 use App\Models\Recibo;
+use App\Models\MinhaEmpresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -82,7 +83,16 @@ class ReciboController extends Controller
      */
     public function show(Recibo $recibo)
     {
-        return view('recibos.show',compact('recibo'));
+        $recibo          = Recibo::with('empresa_cliente')->get();  
+        $empresa_cliente = Empresa_Cliente::get();
+        $minha_empresa   = MinhaEmpresa::get();
+
+        return view('recibo.index', ['recibo'=> $recibo, 
+                    'empresa_cliente' => $empresa_cliente,
+                    'minha_empresa' => $minha_empresa
+
+       ]);
+
     }
     
     /**
@@ -93,10 +103,8 @@ class ReciboController extends Controller
      */
     public function edit(Recibo $recibo)
     {
-
         $recibos = Recibo::with('empresa_cliente')->get();
-
-       $empresa_cliente=Empresa_Cliente::get();
+        $empresa_cliente=Empresa_Cliente::get();
 
         return view('recibo.edit',compact('recibo','empresa_cliente', 'recibos'));
     }
@@ -110,11 +118,7 @@ class ReciboController extends Controller
      */
     public function update(Request $request, Recibo $recibo)
     {
-        //  request()->validate([
-        //     'name' => 'required',
-        //     'detail' => 'required',
-        // ]);
-    
+ 
         $recibo->update($request->all());
     
         return redirect()->route('recibos.index')
@@ -130,7 +134,6 @@ class ReciboController extends Controller
     public function destroy(Recibo $recibo)
     {
         $recibo->delete();
-    
         return redirect()->route('recibos.index')
                         ->with('success','Product deleted successfully');
     }
