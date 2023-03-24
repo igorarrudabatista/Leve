@@ -34,6 +34,7 @@
                     <p>Crie os seus recibos aqui!</p>
                 </div>
 
+      
                 {!! Form::open(array('route' => 'recibos.store','method'=>'POST')) !!}
 
                 <div class="container">
@@ -44,7 +45,7 @@
                         <div v-show="currentstep == 1">
                             <h3>Passo 1</h3>
                             <div class="row">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-5 col-12">
                                    
                                         <label for="first-name-column"><strong> Cliente </strong></label>
 
@@ -80,7 +81,6 @@
                                         <div class="position-relative">
 
                                        {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
-                                       {{ Form::checkbox('DescProdutos', 'DescProdutos', true) }}
 
                                             
                                     </div>
@@ -93,61 +93,49 @@
                 
                         <div v-show="currentstep == 2">
                            
-                            <h3>Produtos</h3> 
-                            <div class="form-group">
+                            <h3>Selecione os Produtos e Quantidades</h3> 
+                            <div class="card-body">
+                              <table class="table" id="products_table">
+                                <thead>
+                                  <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <!-- <th>Preço</th> -->
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr id="product0">
+                                    <td>
+                                      <select name="products[]"  class="form-control id_select2_example"  >
+                                        <option value="">-- Selecione o produto --</option>
+                                         @foreach ($produto as $produtos)
+                                        <option value="{{$produtos->id}}" data-img_ssrc="{{asset('/img/produtos/')}}/{{$produtos->image}}">  
+                                           {{$produtos->Nome_Produto}} - R$ {{$produtos->Preco_Produto}} 
+                                          @endforeach 
+                                        </option>
+                                        
+                                      </select>
+                                    </td>
+                                    <td>
+                    
+                    
+                                      <input type="number" name="quantities[]"  class="form-control" value="1" />
+                                    </td>
+                    
+                                  </tr>
+                                  <tr id="product1"></tr>
+                                </tbody>
+                              </table>
+                    
+                    
                                 <div class="row">
-                                <div class="col-md-6 col-12">
-                      
-                                <br/>
-                                <hr>
-
-                                <div class="custom-control custom-checkbox">
-
-
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha Hair"><big> Locação Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha Hair "> Hig. Toalha Hair <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Manicure"> Manicure <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Ombro Tintura"> Ombro Tintura <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Capa"> Capa <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Toalha Banho"> Toalha Banho <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Tapete"> Tapete <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Lençol"> Lençol <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Roupão"> Roupão <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha PE"> Locação Toalha PE <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Cobertor"> Cobertor <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Travesseiro / Almofada"> Travesseiro / Almofada <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha"> Hig. Toalha <br/>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Caminha"> Caminha </big> <br/>
+                                <div class="col-md-12">
+                                    <button id="add_row" class="btn btn-success pull-left"> + Adicionar Produto</button> 
+                                    <button id='delete_row' class="pull-right btn btn-danger"> - Deletar</button>
+                                  </div>
                                 </div>
-                               </div>
-
-                               <div class="col-md-6 col-12">
-                                <div class="form-group has-icon-left">
-                                <br>
-
-                                <hr>
-                                        <input type="checkbox"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"><big> Toalha Preta <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Dourada"> Toalha Dourada <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Rosa"> Toalha Rosa <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Escuro"> Toalha Azul Escuro <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde"> Toalha Verde <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Cinza"> Toalha Cinza <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Laranja"> Toalha Laranja <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Claro"> Toalha Azul Claro <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Bordô"> Toalha Bordô <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Lilás"> Toalha Lilás <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Vermelha"> Toalha Vermelha <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul"> Toalha Azul <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde Claro"> Toalha Verde Claro <br/>
-                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Marrom"> Toalha Marrom </big> <br/>
-
-                                </div>
-
-                                
-                            </div>
-                            </div>
-                        </div>
-                        </div>
+                    
+                                <br><br> </div> </div>
                 
                         <div v-show="currentstep == 3">
                             <h3>Passo 3</h3>
@@ -221,10 +209,18 @@
     </div>
 
         </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript">
+      function swapImage(){
+        var image = document.getElementById("imageToSwap");
+        var dropd = document.getElementById("dlist");
+        image.src = dropd.value;	
+      };
+      </script>
+s
 
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
     <script src="{{asset('js/step-by-step/script.js')}}"></script>
-
 
 
 </section>

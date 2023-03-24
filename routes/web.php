@@ -27,6 +27,7 @@ use App\Http\Controllers\
 
 Route::middleware('auth')->group(function () {
 Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/recibo/invoice/{id}',   [ReciboController::class, 'invoice']);
 
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
@@ -39,35 +40,11 @@ Route::resource('contratos',                 ContratosController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
 
 
-//Orçamentos
-// Route::get('orcamento/create_orcamento',                        [OrcamentoController::class, 'create']);
-// Route::post('/orcamento',                                       [OrcamentoController::class, 'store']);
-// Route::get('/orcamento/show_orcamento',                         [OrcamentoController::class, 'show']);
-// Route::get('/orcamento/edit/{id}',                              [OrcamentoController::class, 'edit']);
-// Route::put('/orcamento/update/{id}',                            [OrcamentoController::class, 'update']);
-// //Route::get('/orcamento/update/status/{id}',        [OrcamentoController::class, 'update_status']);
-// Route::get('/orcamento/update/status_vendarealizada/{id}',      [OrcamentoController::class, 'update_vendarealizada']);
-// Route::get('/orcamento/update/status_cancelado/{id}',           [OrcamentoController::class, 'update_cancelado']);
-// Route::get('/orcamento/update/status_pendente/{id}',            [OrcamentoController::class, 'update_pendente']);
-// //
-// Route::delete('/orcamento/{id}',                  [OrcamentoController::class, 'destroy']);
-// Route::get('/orcamento/modelos/modelo1/{id}',     [OrcamentoController::class, 'modelo1']);
-// Route::get('/orcamento/modelos/modelo2/{id}',     [OrcamentoController::class, 'modelo2']);
-// Route::get('/orcamento/modelos/modelo3/{id}',     [OrcamentoController::class, 'modelo3']);
-// Route::get('/orcamento/modelos/modelo4/{id}',     [OrcamentoController::class, 'modelo4']);
-// Route::get('/orcamento/modelos/modelo5/{id}',     [OrcamentoController::class, 'modelo5']);
-// Route::get('/orcamento/modelos/modelo6/{id}',     [OrcamentoController::class, 'modelo6']);
-
-// Route::get('/orcamento/export',                   [OrcamentoController::class,   'export']);
-
-
-
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');  
     
-
 
 
 /// API

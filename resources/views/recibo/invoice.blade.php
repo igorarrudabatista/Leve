@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Invoice template</title>
+  <title>Recibo - Leve Limpo</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
   <link id="theme-style" rel="stylesheet" href="{{asset('css/recibo/style.css')}}">
 
@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-7">
         <p>
-          <strong>{{$recibo->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</strong><br>
+          <strong>{{$recibo->MinhaEmpresa->Nome_Empresa ?? 'Sem registros'  }}</strong><br>
           6B Rue Aux-Saussaies-Des-Dames<br>
           57950 MONTIGNY-LES-METZ
         </p>
@@ -31,21 +31,19 @@
       <div class="col-5">
         <br><br><br>
         <p>
-          <strong>Energies54</strong><br>
-          Réf. Client <em>C00022</em><br>
-          12 Rue de Verdun<br>
-          54250 JARNY
+          <strong>{{$recibo->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</strong><br>
+         CNPJ: <em>{{$recibo->empresa_cliente->Cnpj ?? 'Sem registros'  }}</em><br>
+         {{$recibo->empresa_cliente->Endereco ?? 'Sem registros'  }} {{$recibo->empresa_cliente->Estado ?? 'Sem registros'  }} - {{$recibo->empresa_cliente->Cidade ?? 'Sem registros'  }}<br>
         </p>
       </div>
     </div>
     <br>
     <br>
-    <h6>Audits et rapports mensuels (1er Novembre 2016 - 30 Novembre 2016)</h6>
     <br>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Description</th>
+          <th>Produtos</th>
           <th>Quantité</th>
           <th>Unité</th>
           <th>PU HT</th>
@@ -53,59 +51,46 @@
           <th>Total HT</th>
         </tr>
       </thead>
+      @foreach($recibox as $recibos )
+
       <tbody>
         <tr>
-          <td>Audits et rapports mensuels</td>
+          {{-- <td>{{json_decode($recibos->['DescProdutos']) }} --}}
+
+
+          </td>
           <td>1</td>
           <td>Jour</td>
           <td class="text-right">500,00€</td>
           <td>20%</td>
           <td class="text-right">500,00€</td>
         </tr>
-        <tr>
-          <td>Génération des rapports d'activité</td>
-          <td>4</td>
-          <td>Rapport</td>
-          <td class="text-right">800,00€</td>
-          <td>20%</td>
-          <td class="text-right">3 200,00€</td>
-        </tr>
+        @endforeach
+
       </tbody>
     </table>
     <div class="row">
       <div class="col-8">
       </div>
-      <div class="col-4">
+      <div class="col-6">
         <table class="table table-sm text-right">
           <tr>
-            <td><strong>Total HT</strong></td>
-            <td class="text-right">3 700,00€</td>
+            <td><strong>Data da Entrega:</strong></td>
+            <td class="text-left">{{$recibos->DataEntrega}}</td>
           </tr>
           <tr>
-            <td>TVA 20%</td>
-            <td class="text-right">740,00€</td>
+            <td><strong> Data da Retirada: </strong></td>
+            <td class="text-left">{{$recibos->DataRetirada}}</td>
           </tr>
           <tr>
-            <td><strong>Total TTC</strong></td>
-            <td class="text-right">4 440,00€</td>
+            <td><strong>Obs.</strong></td>
+            <td class="text-left">{{$recibos->Observacoes}}</td>
           </tr>
         </table>
       </div>
     </div>
     
-    <p class="conditions">
-      En votre aimable règlement
-      <br>
-      Et avec nos remerciements.
-      <br><br>
-      Conditions de paiement : paiement à réception de facture, à 15 jours.
-      <br>
-      Aucun escompte consenti pour règlement anticipé.
-      <br>
-      Règlement par virement bancaire.
-      <br><br>
-      En cas de retard de paiement, indemnité forfaitaire pour frais de recouvrement : 40 euros (art. L.4413 et L.4416 code du commerce).
-    </p>
+    <h6> <strong> {{$recibos->MensagemCliente}} </strong>   </h6>
     
     <br>
     <br>
