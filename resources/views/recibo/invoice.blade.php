@@ -13,7 +13,7 @@
   <div class="invoice">
     <div class="row">
       <div class="col-7">
-        <img src="https://s3.eu-central-1.amazonaws.com/zl-clients-sharings/90Tech.png" class="logo">
+        <img src="{{asset('/images/user.png')}}" class="logo">
       </div>
       <div class="col-5">
         <h1 class="document-type display-4">RECIBO</h1>
@@ -23,9 +23,9 @@
     <div class="row">
       <div class="col-7">
         <p>
-          <strong>{{$recibo->MinhaEmpresa->Nome_Empresa ?? 'Sem registros'  }}</strong><br>
-          6B Rue Aux-Saussaies-Des-Dames<br>
-          57950 MONTIGNY-LES-METZ
+          <strong>{{$recibo->minha_empresa ?? 'Nome não encontrado'  }}</strong><br>
+          {{$recibo->endereco ?? 'endereco não encontrado'  }}<br>
+          
         </p>
       </div>
       <div class="col-5">
@@ -43,27 +43,22 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Produtos</th>
-          <th>Quantité</th>
-          <th>Unité</th>
-          <th>PU HT</th>
-          <th>TVA</th>
-          <th>Total HT</th>
+          <th>Nome do Produto</th>
+          <th>Quantidade</th>
+          <th>Preço</th>
+          
         </tr>
       </thead>
-      @foreach($recibox as $recibos )
 
       <tbody>
         <tr>
-          {{-- <td>{{json_decode($recibos->['DescProdutos']) }} --}}
-
-
+            @foreach($recibo->produto as $item)
+            
           </td>
-          <td>1</td>
-          <td>Jour</td>
-          <td class="text-right">500,00€</td>
-          <td>20%</td>
-          <td class="text-right">500,00€</td>
+          <td>{{$item->Nome_Produto}}</td>
+          <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
+          <td class="text-right">R$ {{$preco= $item['Preco_Produto']}}</td>
+   
         </tr>
         @endforeach
 
@@ -76,21 +71,21 @@
         <table class="table table-sm text-right">
           <tr>
             <td><strong>Data da Entrega:</strong></td>
-            <td class="text-left">{{$recibos->DataEntrega}}</td>
+            <td class="text-left">{{$recibo->DataEntrega}}</td>
           </tr>
           <tr>
             <td><strong> Data da Retirada: </strong></td>
-            <td class="text-left">{{$recibos->DataRetirada}}</td>
+            <td class="text-left">{{$recibo->DataRetirada}}</td>
           </tr>
           <tr>
-            <td><strong>Obs.</strong></td>
-            <td class="text-left">{{$recibos->Observacoes}}</td>
+            <td> <strong> Obs.*: </strong> {{$recibo->Observacoes}} </td>
           </tr>
+   
         </table>
       </div>
     </div>
-    
-    <h6> <strong> {{$recibos->MensagemCliente}} </strong>   </h6>
+    <hr><br>
+    <h6> <strong> <center> {{$recibo->MensagemCliente}} </strong>   </center> </h6>
     
     <br>
     <br>

@@ -56,8 +56,8 @@ class ReciboController extends Controller
      */
     public function create()
     {
-        $produto = Produto::get();
-        $empresa_cliente=Empresa_Cliente::get();
+        $produto = Produto::orderBy('id','asc')->get();
+        $empresa_cliente=Empresa_Cliente::orderBy('id', 'asc')->get();
 
         return view('recibo.create', compact('empresa_cliente','produto'));
     }
@@ -103,11 +103,12 @@ class ReciboController extends Controller
          return view('recibo.show',compact('recibo'));
      }
 
+     
     public function invoice($id)
     {
 
         $recibo = Recibo::with('empresa_cliente')->findOrFail($id);
-
+        
       //  $recibo          = Recibo::with('empresa_cliente')->get();  
         $minha_empresa   = MinhaEmpresa::all();
         $recibox   = Recibo::all();
@@ -128,34 +129,45 @@ class ReciboController extends Controller
      */
     public function edit(Recibo $recibo)
     {
+        $produto = Produto::get();
+        $recibo->load('produto');
+
         $recibos = Recibo::with('empresa_cliente')->get();
         $empresa_cliente = Empresa_Cliente::get();
 
-        return view('recibo.edit',compact('recibo','empresa_cliente', 'recibos'));
+        return view('recibo.edit',compact('recibo','empresa_cliente', 'recibos', 'produto'));
     }
     
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Recibo $recibo)
     {
- 
+
         $recibo->update($request->all());
-    
-        return redirect()->route('recibos.index')
-                        ->with('success','Product updated successfully');
+
+        $recibo->produto()->detach();
+
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+        for ($product=0; $product < count($products); $product++) {
+            if ($products[$product] != '') {
+                $recibo->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+            }
+
+            return redirect()->route('recibos.index')
+            ->with('success','Product updated successfully');
+   
     }
+}   
+
+    // public function update(Request $request, Recibo $recibo)
+    // {
+ 
+    //     $recibo->update($request->all());
     
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+    //     return redirect()->route('recibos.index')
+    //                     ->with('success','Product updated successfully');
+    // }
+    
+
     public function destroy(Recibo $recibo)
     {
         $recibo->delete();

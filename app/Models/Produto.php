@@ -24,4 +24,9 @@ class Produto extends Model
     //  public function orcamento(){
     //     return $this->hasmany(Orcamento::class);
     // }
+
+    public function recibo()
+    {
+        return $this->belongsToMany(Recibo::class);
+    }
 }

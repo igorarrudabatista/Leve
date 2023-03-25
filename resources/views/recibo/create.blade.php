@@ -92,14 +92,15 @@
                         </div>
                 
                         <div v-show="currentstep == 2">
+                          <br>
                            
-                            <h3>Selecione os Produtos e Quantidades</h3> 
+                           <center> <h3>Selecione os Produtos e Quantidades</h3> </center>
                             <div class="card-body">
                               <table class="table" id="products_table">
                                 <thead>
                                   <tr>
-                                    <th>Produto</th>
-                                    <th>Quantidade</th>
+                                    <th><h3> <strong> Produto: </strong> </h3></th>
+                                    <th><h3> <strong> Quantidade:  </strong> </h3></th>
                                     <!-- <th>Preço</th> -->
                                   </tr>
                                 </thead>
@@ -110,7 +111,7 @@
                                         <option value="">-- Selecione o produto --</option>
                                          @foreach ($produto as $produtos)
                                         <option value="{{$produtos->id}}" data-img_ssrc="{{asset('/img/produtos/')}}/{{$produtos->image}}">  
-                                           {{$produtos->Nome_Produto}} - R$ {{$produtos->Preco_Produto}} 
+                                           {{$produtos->Nome_Produto}}
                                           @endforeach 
                                         </option>
                                         
@@ -141,12 +142,12 @@
                             <h3>Passo 3</h3>
                             <div class="form-group">
                                 <label for="textarea">Observações:</label>
-                                <textarea class="form-control" name="textarea" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
+                                <textarea class="form-control" name="Observacoes" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="textarea">Mensagem para o Cliente:</label>
-                                <textarea class="form-control" name="textarea" rows="4" placeholder="Escreva aqui"> </textarea>
+                                <textarea class="form-control" name="MensagemCliente" rows="4" placeholder="Escreva aqui"> </textarea>
                             </div>
                   
                         </div>

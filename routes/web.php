@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\
     {
 
-    Empresa_ClienteController, MinhaEmpresaController, ProdutoController, OrcamentoController, ReciboController, ContratosController,
+    Empresa_ClienteController, MinhaEmpresaController, ProdutoController, OrcamentoController, ReciboController, ContratoController,
     AgendaController,
     HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
@@ -34,9 +34,9 @@ Route::resource('users',                     UserController::class);
 // Route::resource('conselho',                  ConselhoController::class);
 Route::resource('cliente',                   Empresa_ClienteController::class);
 Route::resource('minhaempresa',              MinhaEmpresaController::class);
-Route::resource('recibos',                   ReciboController::class);
 Route::resource('produtos',                  ProdutoController::class);
-Route::resource('contratos',                 ContratosController::class);
+Route::resource('recibos',                   ReciboController::class);
+Route::resource('contratos',                 ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
 
 

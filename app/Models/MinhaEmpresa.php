@@ -15,7 +15,7 @@ class MinhaEmpresa extends Model
 
 
 
-    public function orcamento(){
-        return $this->belongsTo(Orcamento::class);
+    public function recibo(){
+        return $this->belongsTo(Recibo::class);
     }
 }
