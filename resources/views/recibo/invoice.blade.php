@@ -13,7 +13,7 @@
   <div class="invoice">
     <div class="row">
       <div class="col-7">
-        <img src="{{asset('/images/user.png')}}" class="logo">
+        <img src="{{asset('/images/logo_levelimpo.png')}}" class="logo">
       </div>
       <div class="col-5">
         <h1 class="document-type display-4">RECIBO</h1>
@@ -45,7 +45,7 @@
         <tr>
           <th>Nome do Produto</th>
           <th>Quantidade</th>
-          <th>Preço</th>
+          {{-- <th>Preço</th> --}}
           
         </tr>
       </thead>
@@ -57,7 +57,7 @@
           </td>
           <td>{{$item->Nome_Produto}}</td>
           <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
-          <td class="text-right">R$ {{$preco= $item['Preco_Produto']}}</td>
+          {{-- <td class="text-right">R$ {{$preco= $item['Preco_Produto']}}</td> --}}
    
         </tr>
         @endforeach
@@ -93,10 +93,10 @@
     <br>
     
     <p class="bottom-page text-right">
-      90TECH SAS - N° SIRET 80897753200015 RCS METZ<br>
-      6B, Rue aux Saussaies des Dames - 57950 MONTIGNY-LES-METZ 03 55 80 42 62 - www.90tech.fr<br>
-      Code APE 6201Z - N° TVA Intracom. FR 77 808977532<br>
-      IBAN FR76 1470 7034 0031 4211 7882 825 - SWIFT CCBPFRPPMTZ
+     Leve Limpo<br>
+     Rua Tenente Eulálio Guerra, 722 – Bairro Araés<br>
+     Cuiabá – MT<br>
+     CNPJ: 19.418.179/0001-20
     </p>
   </div>
 </div>

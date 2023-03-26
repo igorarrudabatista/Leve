@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade');
             $table->foreignId('minhaempresa_id')->constrained('empresas')->onDelete('cascade');
-            $table->string('valor_produto')->nullable();
+            $table->string('msg_valor_produto')->nullable();
 
 
 

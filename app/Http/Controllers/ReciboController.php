@@ -120,6 +120,22 @@ class ReciboController extends Controller
        ]);
 
     }
+    public function contrato($id)
+    {
+
+        $recibo = Recibo::with('empresa_cliente')->findOrFail($id);
+        
+      //  $recibo          = Recibo::with('empresa_cliente')->get();  
+        $minha_empresa   = MinhaEmpresa::all();
+        $recibox   = Recibo::all();
+
+        return view('recibo.contrato', ['recibo'        => $recibo, 
+                                       'minha_empresa' => $minha_empresa,
+                                       'recibox'       => $recibox
+
+       ]);
+
+    }
     
     /**
      * Show the form for editing the specified resource.

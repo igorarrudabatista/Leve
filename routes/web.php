@@ -27,7 +27,8 @@ use App\Http\Controllers\
 
 Route::middleware('auth')->group(function () {
 Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::get('/recibo/invoice/{id}',   [ReciboController::class, 'invoice']);
+Route::get('/recibo/invoice/{id}',    [ReciboController::class, 'invoice']);
+Route::get('/recibo/contrato/{id}',   [ReciboController::class, 'contrato']);
 
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);

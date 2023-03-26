@@ -35,15 +35,15 @@ class ContratoController extends Controller
         $search = request('search');
 
         if($search) {
-            $contrato = Contrato::where([['', 'like', '%'.$search. '%' ]])->get();
+            $contrato = Contrato::where([['id', 'like', '%'.$search. '%' ]])->get();
 
              } else {
                 $contrato = Contrato::all();
             }
 
         return view('contrato.index', ['contrato'=> $contrato, 
-                                     'search' => $search,
-                                    ]);
+                                       'search' => $search,
+                                      ]);
 
     }
     
@@ -54,9 +54,11 @@ class ContratoController extends Controller
      */
     public function create()
     {
+        $empresa_cliente = Empresa_Cliente::get();
+        $produto = Produto::get();
         $contrato = Contrato::orderBy('id','asc')->get();
 
-        return view('contrato.create', compact('contrato'));
+        return view('contrato.create', compact('contrato','empresa_cliente','produto'));
     }
     
     /**
