@@ -30,6 +30,9 @@ Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::get('/recibo/invoice/{id}',    [ReciboController::class, 'invoice']);
 Route::get('/recibo/contrato/{id}',   [ReciboController::class, 'contrato']);
 
+Route::get('/contrato/invoice/{id}',   [ContratoController::class, 'invoice']);
+Route::get('/contrato/contrato/{id}',   [ContratoController::class, 'contrato']);
+
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
 // Route::resource('conselho',                  ConselhoController::class);
@@ -37,7 +40,7 @@ Route::resource('cliente',                   Empresa_ClienteController::class);
 Route::resource('minhaempresa',              MinhaEmpresaController::class);
 Route::resource('produtos',                  ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
-Route::resource('contratos',                 ContratoController::class);
+Route::resource('contrato',                 ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
 
 

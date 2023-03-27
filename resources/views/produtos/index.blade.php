@@ -63,7 +63,6 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell">Imagem</th>
                     <th class="cell">Id</th>
                     <th class="cell">Nome</th>
                     <th class="cell">Categoria</th>
@@ -78,9 +77,7 @@
                 
                 <tbody>
                   <tr>
-                    <td class="cell">
-                      <img src="images/produtos/{{$produtos->image}}" width="80px"> </img>
-                      </td>
+              
                     <td class="cell">{{$produtos->id}}</td>
                     <td class="cell"><span class="truncate">{{$produtos->Nome_Produto}}</span></td>
                     <td class="cell">{{$produtos->Categoria_Produto}}</td>
@@ -126,20 +123,9 @@
                 </tbody>
               </table>
                 </div><!--//table-responsive-->
-            </div><!--//app-card-body-->		
-            <nav class="app-pagination">
-							<ul class="pagination justify-content-center">
-								<li class="page-item disabled">
-									<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Voltar</a>
-							    </li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item">
-								    <a class="page-link" href="#">Próxima</a>
-								</li>
-							</ul>
-						</nav><!--//app-pagination-->
+            </div><!--//app-card-body-->	
+
+
         </div><!--//app-card-->
           </div><!--//tab-pane-->
     </div><!--//tab-content-->
@@ -148,13 +134,7 @@
     </div><!--//container-fluid-->
   </div><!--//app-content-->
   
-  <footer class="app-footer">
-    <div class="container text-center py-3">
-         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-        <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-       
-    </div>
-  </footer><!--//app-footer-->
+
   
 </div><!--//app-wrapper-->    		
 @endsection

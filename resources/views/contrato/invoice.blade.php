@@ -17,15 +17,14 @@
       </div>
       <div class="col-5">
         <h1 class="document-type display-4">RECIBO</h1>
-        <p class="text-right">Data de emissão: <strong> {{ date('d/m/Y') }}</strong></p>
+        <p class="text-right">Data de emissão: <strong> {{ date('d-m-Y') }}</strong></p>
       </div>
     </div>
     <div class="row">
       <div class="col-7">
         <p>
-          <strong>Leve Limpo</strong><br>
-         Rua Tenente Eulálio Guerra, 722 <br>Bairro: Araés <br>
-         Cuiabá - MT
+          <strong>{{$recibo->minha_empresa ?? 'Nome não encontrado'  }}</strong><br>
+          {{$recibo->endereco ?? 'endereco não encontrado'  }}<br>
           
         </p>
       </div>
@@ -34,8 +33,7 @@
         <p>
           <strong>{{$recibo->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</strong><br>
          CNPJ: <em>{{$recibo->empresa_cliente->Cnpj ?? 'Sem registros'  }}</em><br>
-         {{$recibo->empresa_cliente->Endereco ?? 'Sem registros'  }} {{$recibo->empresa_cliente->Cidade ?? 'Sem registros'  }} - {{$recibo->empresa_cliente->Estado ?? 'Sem registros'  }}<br>
-        Tel: <i>{{$recibo->empresa_cliente->Telefone ?? 'Sem registros'  }} </i>
+         {{$recibo->empresa_cliente->Endereco ?? 'Sem registros'  }} {{$recibo->empresa_cliente->Estado ?? 'Sem registros'  }} - {{$recibo->empresa_cliente->Cidade ?? 'Sem registros'  }}<br>
         </p>
       </div>
     </div>
@@ -89,7 +87,10 @@
     <hr><br>
     <h6> <strong> <center> {{$recibo->MensagemCliente}} </strong>   </center> </h6>
     
-
+    <br>
+    <br>
+    <br>
+    <br>
     
     <p class="bottom-page text-right">
      Leve Limpo<br>
@@ -98,7 +99,7 @@
      CNPJ: 19.418.179/0001-20
     </p>
   </div>
-</div> 
+</div>
 <!-- partial -->
   
 </body>

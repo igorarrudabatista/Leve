@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('Nome_Empresa');
             $table->string('Cnpj')->nullable();
+            $table->string('Nome_responsavel');
+            $table->string('Nome_fantasia');
             $table->string('Cpf')->nullable();
             $table->string('Email')->nullable();
             $table->string('Telefone')->nullable();

@@ -158,7 +158,7 @@
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
 				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                                <img src="{{asset('/images/user.png')}}"> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</a>
+                                <img src="{{asset('/images/user-logo.png')}}"> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}</a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Minha conta</a></li>
 								<li><a class="dropdown-item" href="settings.html">Configurações</a></li>
@@ -176,8 +176,8 @@
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{asset('/images/app-logo.svg')}}" alt="logo">
-					<span class="logo-text">Leve Limpo</span></a>
+		            <a class="app-logo" href="index.html">
+						<centeR> <img class=" me-2" src="{{asset('/images/logo_levelimpo.png')}}" width="100px" alt="logo"> </centeR> 
 	
 		        </div><!--//app-branding-->  
 		        
@@ -262,6 +262,18 @@
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item--> --}}
 					    <li class="nav-item has-submenu">
+							<li class="nav-item">
+								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+								<a class="nav-link" href="{{asset('/contrato')}}">
+									<span class="nav-icon">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+											<path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+											<path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+										  </svg>
+									 </span>
+									 <span class="nav-link-text">Contratos</span>
+								</a><!--//nav-link-->
+							</li><!--//nav-item-->
 					    <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 					        <a class="nav-link" href="{{asset('/recibos')}}">
@@ -274,18 +286,7 @@
 		                         <span class="nav-link-text">Recibos</span>
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->
-					    <li class="nav-item">
-					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					        <a class="nav-link" href="{{asset('/contratos')}}">
-						        <span class="nav-icon">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
-										<path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-										<path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-									  </svg>
-						         </span>
-		                         <span class="nav-link-text">Contratos</span>
-					        </a><!--//nav-link-->
-					    </li><!--//nav-item-->
+
 					    <li class="nav-item has-submenu">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 					        <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
@@ -305,7 +306,8 @@
 					        </a><!--//nav-link-->
 					        <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
 						        <ul class="submenu-list list-unstyled">
-							        <li class="submenu-item"><a class="submenu-link" href="{{asset('/users/create')}}">Usuários do sistema</a></li>
+							        <li class="submenu-item"><a class="submenu-link" href="{{asset('/users')}}">Usuários do sistema</a></li>
+
 							        <li class="submenu-item"><a class="submenu-link" href="{{asset('/roles/create')}}">Perfil</a></li>
 						        </ul>
 					        </div>

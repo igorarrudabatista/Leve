@@ -107,11 +107,9 @@ class ReciboController extends Controller
     public function invoice($id)
     {
 
-        $recibo = Recibo::with('empresa_cliente')->findOrFail($id);
-        
-      //  $recibo          = Recibo::with('empresa_cliente')->get();  
-        $minha_empresa   = MinhaEmpresa::all();
-        $recibox   = Recibo::all();
+        $recibo        = Recibo::with('empresa_cliente')->findOrFail($id);
+        $minha_empresa = MinhaEmpresa::all();
+        $recibox       = Recibo::all();
 
         return view('recibo.invoice', ['recibo'        => $recibo, 
                                        'minha_empresa' => $minha_empresa,

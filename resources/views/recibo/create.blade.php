@@ -30,7 +30,7 @@
 <br>
                 <div class="text-center mb-5">
                     <img src="{{asset('/images/i.webp')}}" height="88" class='mb-4'>
-                    <h3>Recibos</h3>
+                    <h3>RECIBOS</h3>
                     <p>Crie os seus recibos aqui!</p>
                 </div>
 

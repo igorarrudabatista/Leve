@@ -10,8 +10,9 @@ class MinhaEmpresa extends Model
     use HasFactory;
     protected $table = 'empresas';
 
-    protected $guarded = [];
-
+    protected $fillable = [
+        'Nome_Empresa', 'Cnpj', 'Email', 'Telefone', 'Site', 'image', 'facebook_url', 'instagram_url', 'linkedin_url'
+    ];
 
 
 

@@ -1,49 +1,29 @@
 @extends('base.base')
 @section('content')
 
-<div class="main-content container-fluid">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Cadastro de Usuários</h3>
-                <!-- <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a> -->
+<div class="app-wrapper">
+	    
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+      <div class="container-xl">
+        
+        <div class="row g-3 mb-4 align-items-center justify-content-between">
+          <div class="col-auto">
+  
+  
+          </div>
 
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cadastro de Usuário</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-
-    </div>
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+        </div><!--//row-->
 
 <section id="multiple-column-form">
     <div class="row match-height">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-
-                </div>
-
+      
+<br>
                 <div class="text-center mb-5">
-                    <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de Usuários do sistema</h3>
-                    <p></p>
+                    <img src="{{asset('/images/User-logo.png')}}" height="140" class='mb-4'>
+                    <h3>USUÁRIOS DO SISTEMA</h3>
+                    <p>Criar acesso ao sistema <strong> </strong></p>
                 </div>
 
                 {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
@@ -55,7 +35,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                    
-                                        <label for="first-name-column">Nome</label>
+                                        <label for="first-name-column"><strong> Nome </strong></label>
                                         {!! Form::text('name', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!}
 
                                         <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
@@ -63,7 +43,7 @@
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="email-id-column">Email</label>
+                                        <label for="email-id-column"><strong> Email</strong></label>
                                         <div class="position-relative">
 
                                         {!! Form::text('email', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!}
@@ -78,7 +58,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="email-id-column">Senha</label>
+                                        <label for="email-id-column"><strong> Senha</strong></label>
                                         <div class="position-relative">
 
                                         {!! Form::password('password', array('placeholder' => 'Senha','class' => 'form-control')) !!}
@@ -93,7 +73,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="email-id-column">Senha</label>
+                                        <label for="email-id-column"><strong> Senha</strong></label>
                                         <div class="position-relative">
 
                                         {!! Form::password('confirm-password', array('placeholder' => 'Confirme a Senha','class' => 'form-control')) !!}
@@ -108,7 +88,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
-                                        <label for="email-id-column">Perfil</label>
+                                        <label for="email-id-column"><strong> Perfil</strong></label>
                                         <div class="position-relative">
 
                                         {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}

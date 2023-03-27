@@ -49,10 +49,7 @@ class MinhaEmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
+  
     
         MinhaEmpresa::create($request->all());
     
@@ -79,7 +76,7 @@ class MinhaEmpresaController extends Controller
      */
     public function edit(MinhaEmpresa $minhaempresa)
     {
-        return view('minhaempresas.edit',compact('minhaempresa'));
+        return view('minhaempresa.edit',compact('minhaempresa'));
     }
     
     /**
@@ -91,14 +88,11 @@ class MinhaEmpresaController extends Controller
      */
     public function update(Request $request, MinhaEmpresa $minhaempresa)
     {
-         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
+
     
         $minhaempresa->update($request->all());
     
-        return redirect()->route('minhaempresas.index')
+        return redirect()->route('minhaempresa.index')
                         ->with('success','Product updated successfully');
     }
     
@@ -112,7 +106,7 @@ class MinhaEmpresaController extends Controller
     {
         $minhaempresa->delete();
     
-        return redirect()->route('minhaempresas.index')
+        return redirect()->route('minhaempresa.index')
                         ->with('success','Product deleted successfully');
     }
 }

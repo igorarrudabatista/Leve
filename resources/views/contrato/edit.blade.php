@@ -29,13 +29,13 @@
       
 <br>
                 <div class="text-center mb-5">
-                    <img src="{{asset('/images/i.webp')}}" height="88" class='mb-4'>
-                    <h3>RECIBOS</h3>
-                    <p>Crie os seus recibos aqui!</p>
+                    <img src="{{asset('/images/contratos.png')}}" height="188" class='mb-4'>
+                    <h3>CONTRATOS</h3>
+                    <p>Editando o contrato da empresa: <strong> {{$contrato->empresa_cliente->Nome_Empresa}} </strong></p>
                 </div>
 
       
-                {!! Form::model($recibo, ['method' => 'PATCH','route' => ['recibos.update', $recibo->id]]) !!}
+                {!! Form::model($contrato, ['method' => 'PATCH','route' => ['contrato.update', $contrato->id]]) !!}
 
                 <div class="container">
                     <div id="app">
@@ -45,44 +45,44 @@
                         <div v-show="currentstep == 1">
                             <h3>Passo 1</h3>
                             <div class="row">
-                                <div class="col-md-5 col-12">
+                                <center>
+                                <div class="col-md-5 col-6">
                                    
-                                        <label for="first-name-column"><strong> Cliente </strong></label>
+                                        <label for="first-name-column"><strong> Selecione o Cliente </strong></label>
+                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$contrato->empresa_cliente->Nome_Empresa}}" disabled> 
 
-                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$recibo->empresa_cliente->Nome_Empresa}}" disabled> 
-
-
+                     
 
                                         {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
 
                                         <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
-                                   </div>
-
+                                   </div> </center>
+{{-- 
                                 <div class="col-md-3 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column"><strong> Data de Entrega </strong></label>
                                         <div class="position-relative">
 
-                                          {!! Form::date('DataEntrega', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
+                                      {!! Form::date('DataEntrega', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
 
                                          
                                             
                                     </div>
                                 </div>
 
-                                </div>
-                                <div class="col-md-3 col-12">
+                                </div> --}}
+                                {{-- <div class="col-md-3 col-12">
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column"> <strong> Data de Retirada </strong></label>
                                         <div class="position-relative">
 
-                                          {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
+                                       {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
 
                                             
                                     </div>
                                 </div>
 
-                            </div>          
+                            </div>           --}}
 
                                 </div>
                         </div>
@@ -100,15 +100,15 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach (old('products', $recibo->produto->count() ? $recibo->produto : ['']) as $order_product)
+                                  @foreach (old('products', $contrato->produto->count() ? $contrato->produto : ['']) as $order_product)
                                   <tr id="product{{ $loop->index }}">
                                       <td>
                                           <select name="products[]" class="form-control">
                                               <option value="">-- Selecione os produtos --</option>
                                               @foreach ($produto as $produtos)
-                                                  <option value="{{ $recibo->id }}"
+                                                  <option value="{{ $contrato->id }}"
                                                       @if (old('products.' . $loop->parent->index, optional($order_product)->id) == $produtos->id) selected @endif
-                                                  >{{ $produtos->Nome_Produto }} (${{ number_format($produtos->Preco_Produto, 2) }})</option>
+                                                  >{{ $produtos->Nome_Produto }}</option>
                                               @endforeach
                                           </select>
                                       </td>
@@ -118,7 +118,7 @@
                                       </td>
                                   </tr>
                               @endforeach
-                              <tr id="product{{ count(old('products', $recibo->produto->count() ? $recibo->produto : [''])) }}"></tr>
+                              <tr id="product{{ count(old('products', $contrato->produto->count() ? $contrato->produto : [''])) }}"></tr>
                               </tbody>
                           </table>
                     
@@ -219,26 +219,4 @@ s
 
 
 </section>
-@endsection
-
-@section('scripts')
-    <script>
-      $(document).ready(function(){
-        let row_number = {{ count(old('products', $recibo->produto->count() ? $recibo->produto : [''])) }};
-        $("#add_row").click(function(e){
-          e.preventDefault();
-          let new_row_number = row_number - 1;
-          $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
-          $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
-          row_number++;
-        });
-        $("#delete_row").click(function(e){
-          e.preventDefault();
-          if(row_number > 1){
-            $("#product" + (row_number - 1)).html('');
-            row_number--;
-          }
-        });
-      });
-    </script>
 @endsection

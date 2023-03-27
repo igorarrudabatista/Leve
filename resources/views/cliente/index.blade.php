@@ -62,7 +62,6 @@
                   <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell"></th>
                     <th class="cell">Id</th>
                     <th class="cell">Nome</th>
                     <th class="cell">Telefone</th>
@@ -76,8 +75,6 @@
                 
                 <tbody>
                   <tr>
-                    <td class="cell"><a href="{{ route('cliente.edit',$empresa_clientes->id) }}">
-                      <img src="{{asset('/images/clientes/')}}/{{$empresa_clientes->image}}" width="60px" > </a></td>
                     <td class="cell">{{$empresa_clientes->id}}</td>
                     <td class="cell"><span class="truncate">{{$empresa_clientes->Nome_Empresa}}</span></td>
                     <td class="cell">{{$empresa_clientes->Telefone}}</td>

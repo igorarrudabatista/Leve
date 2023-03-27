@@ -30,12 +30,11 @@
 <br>
                 <div class="text-center mb-5">
                     <img src="{{asset('/images/i.webp')}}" height="88" class='mb-4'>
-                    <h3>RECIBOS</h3>
+                    <h3>Recibos</h3>
                     <p>Crie os seus recibos aqui!</p>
                 </div>
 
-      
-                {!! Form::model($recibo, ['method' => 'PATCH','route' => ['recibos.update', $recibo->id]]) !!}
+                {!! Form::open(array('route' => 'recibos.store','method'=>'POST')) !!}
 
                 <div class="container">
                     <div id="app">
@@ -49,8 +48,12 @@
                                    
                                         <label for="first-name-column"><strong> Cliente </strong></label>
 
-                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$recibo->empresa_cliente->Nome_Empresa}}" disabled> 
-
+                                        <select name="empresa_cliente_id" id="empresa_cliente_id" class="form-control">
+                                            <option value="1"> Selecione a empresa </option>
+                                            @foreach ($empresa_cliente as $empresa_clientes	)
+                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_Empresa}} </option>
+                                            @endforeach
+                                        </select>
 
 
                                         {{-- {!! Form::text('ParmPerfilAcessoNivel', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!} --}}
@@ -63,7 +66,7 @@
                                         <label for="email-id-column"><strong> Data de Entrega </strong></label>
                                         <div class="position-relative">
 
-                                          {!! Form::date('DataEntrega', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
+                                      {!! Form::date('DataEntrega', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
 
                                          
                                             
@@ -76,7 +79,7 @@
                                         <label for="email-id-column"> <strong> Data de Retirada </strong></label>
                                         <div class="position-relative">
 
-                                          {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
+                                       {!! Form::date('DataRetirada', null, array('placeholder' => 'E-mail','class' => 'form-control')) !!} 
 
                                             
                                     </div>
@@ -90,58 +93,75 @@
                         <div v-show="currentstep == 2">
                            
                             <h3>Selecione os Produtos e Quantidades</h3> 
-                            <div class="card-body">
-                              <table class="table" id="products_table">
-                                <thead>
-                                  <tr>
-                                    <th><h3> <strong> Produto </strong> </h3></th>
-                                    <th><h3> <strong> Quantidade </strong> </h3></th>
-                                    <!-- <th>Preço</th> -->
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach (old('products', $recibo->produto->count() ? $recibo->produto : ['']) as $order_product)
-                                  <tr id="product{{ $loop->index }}">
-                                      <td>
-                                          <select name="products[]" class="form-control">
-                                              <option value="">-- Selecione os produtos --</option>
-                                              @foreach ($produto as $produtos)
-                                                  <option value="{{ $recibo->id }}"
-                                                      @if (old('products.' . $loop->parent->index, optional($order_product)->id) == $produtos->id) selected @endif
-                                                  >{{ $produtos->Nome_Produto }} (${{ number_format($produtos->Preco_Produto, 2) }})</option>
-                                              @endforeach
-                                          </select>
-                                      </td>
-                                      <td>
-                                          <input type="number" name="quantities[]" class="form-control"
-                                                 value="{{ (old('quantities.' . $loop->index) ?? optional(optional($order_product)->pivot)->Quantidade) ?? '1' }}" />
-                                      </td>
-                                  </tr>
-                              @endforeach
-                              <tr id="product{{ count(old('products', $recibo->produto->count() ? $recibo->produto : [''])) }}"></tr>
-                              </tbody>
-                          </table>
-                    
-                    
+                            <div class="form-group">
                                 <div class="row">
-                                <div class="col-md-12">
-                                    <button id="add_row" class="btn btn-success pull-left"> + Adicionar Produto</button> 
-                                    <button id='delete_row' class="pull-right btn btn-danger"> - Deletar</button>
-                                  </div>
+                                <div class="col-md-4 col-12">
+                      
+                                <br/>
+                                <hr>
+
+                                <div class="custom-control custom-checkbox">
+
+                                    <label> Produtos </label> <br>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha Hair"><big> Locação Toalha Hair
+                                    <input type="number"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"> <br/>
+
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha Hair "> Hig. Toalha Hair <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Manicure"> Manicure <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Ombro Tintura"> Ombro Tintura <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Capa"> Capa <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Toalha Banho"> Toalha Banho <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Tapete"> Tapete <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Lençol"> Lençol <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Roupão"> Roupão <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Locação Toalha PE"> Locação Toalha PE <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Cobertor"> Cobertor <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Travesseiro / Almofada"> Travesseiro / Almofada <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Hig. Toalha"> Hig. Toalha <br/>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="DescProdutos[]" value="Caminha"> Caminha </big> <br/>
                                 </div>
-                    
-                                <br><br> </div> </div>
+                               </div>
+
+
+
+                               <div class="col-md-4 col-12">
+                                <div class="form-group has-icon-left">
+                                <br>
+
+                                <hr>
+                                        <input type="checkbox"  class="custom-control-input" name="DescProdutos[]" value="Toalha Preta"><big> Toalha Preta <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Dourada"> Toalha Dourada <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Rosa"> Toalha Rosa <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Escuro"> Toalha Azul Escuro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde"> Toalha Verde <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Cinza"> Toalha Cinza <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Laranja"> Toalha Laranja <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul Claro"> Toalha Azul Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Bordô"> Toalha Bordô <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Lilás"> Toalha Lilás <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Vermelha"> Toalha Vermelha <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Azul"> Toalha Azul <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Verde Claro"> Toalha Verde Claro <br/>
+                                        <input type="checkbox" name="DescProdutos[]" value="Toalha Marrom"> Toalha Marrom </big> <br/>
+
+                                </div>
+
+                                
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                 
                         <div v-show="currentstep == 3">
                             <h3>Passo 3</h3>
                             <div class="form-group">
                                 <label for="textarea">Observações:</label>
-                                <textarea class="form-control" name="Observacoes" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
+                                <textarea class="form-control" name="textarea" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="textarea">Mensagem para o Cliente:</label>
-                                <textarea class="form-control" name="MensagemCliente" rows="4" placeholder="Escreva aqui"> </textarea>
+                                <textarea class="form-control" name="textarea" rows="4" placeholder="Escreva aqui"> </textarea>
                             </div>
                   
                         </div>
@@ -204,41 +224,11 @@
     </div>
 
         </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script type="text/javascript">
-      function swapImage(){
-        var image = document.getElementById("imageToSwap");
-        var dropd = document.getElementById("dlist");
-        image.src = dropd.value;	
-      };
-      </script>
-s
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js'></script>
     <script src="{{asset('js/step-by-step/script.js')}}"></script>
 
 
-</section>
-@endsection
 
-@section('scripts')
-    <script>
-      $(document).ready(function(){
-        let row_number = {{ count(old('products', $recibo->produto->count() ? $recibo->produto : [''])) }};
-        $("#add_row").click(function(e){
-          e.preventDefault();
-          let new_row_number = row_number - 1;
-          $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
-          $('#products_table').append('<tr id="product' + (row_number + 1) + '"></tr>');
-          row_number++;
-        });
-        $("#delete_row").click(function(e){
-          e.preventDefault();
-          if(row_number > 1){
-            $("#product" + (row_number - 1)).html('');
-            row_number--;
-          }
-        });
-      });
-    </script>
+</section>
 @endsection
