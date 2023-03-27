@@ -1,6 +1,6 @@
 @extends('base.base')
-
 @section('content')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 <div class="app-wrapper">

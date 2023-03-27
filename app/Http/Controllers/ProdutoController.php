@@ -92,7 +92,8 @@ class ProdutoController extends Controller
 
         toast('Produto criado com sucesso!','success');
 
-        return redirect('/produtos');
+        return redirect('/produtos')->with('success','produto criado com sucesso!');
+
 
         
         // return redirect()->route('produtos.index')
@@ -119,6 +120,8 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         return view('produtos.edit',compact('produto'));
+                    
+
     }
     
     /**
@@ -153,7 +156,7 @@ class ProdutoController extends Controller
 
 
      
-     return redirect('/produtos');
+        return redirect('/produtos')->with('edit','Produto editado com sucesso!');
     }
     
     /**
@@ -167,7 +170,7 @@ class ProdutoController extends Controller
         $produto->delete();
     
         return redirect()->route('produtos.index')
-                        ->with('success','produto deleted successfully');
+                        ->with('delete','produto deletado com sucesso!');
     }
 }
 
