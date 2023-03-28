@@ -17,6 +17,7 @@
       </div>
       <div class="col-5">
         <h1 class="document-type display-4">RECIBO</h1>
+        <p class="text-right">N° {{$recibo->id}}</strong></p>
         <p class="text-right">Data de emissão: <strong> {{ date('d/m/Y') }}</strong></p>
       </div>
     </div>
