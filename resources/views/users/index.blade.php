@@ -62,29 +62,61 @@
 
     
 
-    <section class="section">
-        <div class="card">
+      <div class="card-body">
+        @if ($message = Session::get('success'))
+  
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-success" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
             
-            <div class="card">
-        
-        <div class="card-body">
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        
-            @elseif ($message = Session::get('edit'))
-               <div class="alert alert-warning">
-                    <p>{{ $message }}</p>
-                </div>
-
-            @elseif ($message = Session::get('delete'))
-                <div class="alert alert-danger">
-                    <p>{{ $message }}</p>
-                </div>
-            </div>
+          </div><!--//inner-->
+        </div><!--//app-card-->
+      
+        @elseif ($message = Session::get('edit'))
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-edit" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+      
+        @elseif ($message = Session::get('delete'))
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-delete" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
         </div>
-            @endif
+      
+        @endif
                 
                 <table class='table table-striped' id="table1">
                     <thead>
@@ -95,7 +127,6 @@
                             <th>Perfil de Acesso</th>
                             <th>Data de Criação</th>
                             <th>Data de Atualização</th>
-                            <th>Ver</th>
                             <th>Ações</th>
                           
                         </tr>
@@ -120,13 +151,12 @@
         </td>
                            <td>{{$user->created_at ??  'Sem registros'}} </td>
                            <td>{{$user->updated_at ??  'Sem registros'}} </td>
-                           <td> <a class="btn btn-primary" href="{{ route('users.show',$user->id) }}">Ver</a>
                            <td> <a class="btn btn-warning" href="{{ route('users.edit',$user->id) }}">Editar</a>
                            {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
                            {!! Form::close() !!}
- </td>
+                           </td>
 
 
                             

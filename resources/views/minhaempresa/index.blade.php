@@ -48,25 +48,28 @@
                 <div class="card">
 
                     <div class="card-body">
+                      
+
+   
+                       
                         
+
                         @foreach($minhaempresa as $minhaempresas)
-                        <h5 class="card-title">{{$minhaempresas->Nome_Empresa}}
+                        <h5 class="card-title"><strong> Nome da Empresa: </strong> {{$minhaempresas->Nome_Empresa ?? 'Não informado'}}
                         </h5>
                         
                         <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{$minhaempresas->Cnpj}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->Email}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->Site}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->Telefone}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->facebook_url}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->instagram_url}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->linkedin_url}}  </li>
-                        <li class="list-group-item">{{$minhaempresas->Cnpj}}  </li>
+                        <li class="list-group-item"><strong> CNPJ: </strong> {{$minhaempresas->Cnpj ?? 'Não informado'}}  </li>
+                        <li class="list-group-item"><strong> E-mail: </strong> {{$minhaempresas->Email ?? 'Não informado'}}  </li>
+                        <li class="list-group-item"><strong> SITE: </strong> {{$minhaempresas->Site ?? 'Não informado'}}  </li>
+                        <li class="list-group-item"><strong> Telefone:</strong>  {{$minhaempresas->Telefone ?? 'Não informado'}}  </li>
+                        <li class="list-group-item"><strong> Facebook:</strong>  {{$minhaempresas->facebook_url ?? 'Não informado'}}  </li>
+                        <li class="list-group-item"><strong> Instagram:</strong>  {{$minhaempresas->instagram_url ?? 'Não informado'}}  </li>
+                        <li class="list-group-item"><strong> Linkedin: </strong>  {{$minhaempresas->linkedin_url ?? 'Não informado'}}  </li>
                       </ul>
                       
                       <a class="btn btn-warning" href="{{ route('minhaempresa.edit',$minhaempresas->id) }}">Editar</a>
 
-                      <a href="#" class="btn btn-primary">Editar empresa</a>
                     </div>
                   </div>
 

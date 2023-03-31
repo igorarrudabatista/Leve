@@ -54,7 +54,7 @@ class MinhaEmpresaController extends Controller
         MinhaEmpresa::create($request->all());
     
         return redirect()->route('minhaempresa.index')
-                        ->with('success','Product created successfully.');
+                        ->with('success','Minha Empresa criada com sucesso!');
     }
     
     /**
@@ -93,7 +93,7 @@ class MinhaEmpresaController extends Controller
         $minhaempresa->update($request->all());
     
         return redirect()->route('minhaempresa.index')
-                        ->with('success','Product updated successfully');
+                        ->with('success','Minha Empresa atualizada com sucesso!');
     }
     
     /**
@@ -107,6 +107,6 @@ class MinhaEmpresaController extends Controller
         $minhaempresa->delete();
     
         return redirect()->route('minhaempresa.index')
-                        ->with('success','Product deleted successfully');
+                        ->with('success','Minha Empresa foi deletada com sucesso!');
     }
 }

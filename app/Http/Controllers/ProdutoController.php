@@ -92,7 +92,7 @@ class ProdutoController extends Controller
 
         toast('Produto criado com sucesso!','success');
 
-        return redirect('/produtos')->with('success','produto criado com sucesso!');
+        return redirect('/produtos')->with('success','Produto criado com sucesso!');
 
 
         
@@ -170,7 +170,7 @@ class ProdutoController extends Controller
         $produto->delete();
     
         return redirect()->route('produtos.index')
-                        ->with('delete','produto deletado com sucesso!');
+                        ->with('delete','Produto deletado com sucesso!');
     }
 }
 

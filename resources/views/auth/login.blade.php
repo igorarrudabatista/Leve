@@ -99,7 +99,7 @@
 			    <div class="d-flex flex-column align-content-end h-100">
 				    <div class="h-100"></div>
 				    <div class="overlay-content p-3 p-lg-4 rounded">
-                        <h5 class="mb-3 overlay-title">Este Sistema foi desenvolvido para a Empresa </h5>
+                        <h5 class="mb-3 overlay-title">Sistema desenvolvido para a Empresa </h5>
 					    <div> Leve Limpo  </div>
 				    </div>
 				</div>

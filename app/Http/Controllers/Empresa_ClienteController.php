@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Http;
 
 use App\Models\Empresa_Cliente;
 
@@ -55,8 +56,22 @@ class Empresa_ClienteController extends Controller
 //      */
    public function create()
    {
+    $clientes = Empresa_Cliente::all();
 
-       return view('cliente.create');
+    $search = request('search');
+    $response = Http::get('https://brasilapi.com.br/api/cnpj/v1/' . $search);
+
+    $result = '';
+
+    $data = json_decode($response); // convert JSON into objects 
+    
+    dd($data);
+    return view('cliente.create', ['search' => $search,
+                                   'data' =>$data,
+                                   'clientes' =>$clientes,
+                                   'result' =>$result,
+                                  ]);
+
    }
 
    public function export () {
@@ -132,7 +147,7 @@ class Empresa_ClienteController extends Controller
          $cliente->delete();
     
          return redirect()->route('cliente.index')
-                         ->with('delete','Empresa deletada com sucesso!');
+                         ->with('delete','Cliente deletado com sucesso!');
      }
 
     }

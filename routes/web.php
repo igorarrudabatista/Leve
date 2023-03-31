@@ -109,8 +109,8 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
 // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 Route::get('/Objetos/piano',                 [ObjetosController::class, 'piano']);
-Route::get('/Objetos/teclado1',                 [ObjetosController::class, 'teclado']);
-Route::get('/Objetos/teclado2',                 [ObjetosController::class, 'teclado2']);
+Route::get('/Objetos/teclado1',              [ObjetosController::class, 'teclado']);
+Route::get('/Objetos/teclado2',              [ObjetosController::class, 'teclado2']);
 Route::get('/Escolas/index',                 [ObjetosController::class, 'Escolas']);
 
 

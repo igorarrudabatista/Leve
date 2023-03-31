@@ -26,11 +26,11 @@
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
-              <h1 class="app-page-title mb-0">PERFIS</h1><br>
+              <h1 class="app-page-title mb-0">PERFIL</h1><br>
         <a href="{{asset('/roles/create')}}"  button type="submit" class="btn bg-primary text-light ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-          </svg> Criar Perfil de acesso do sistema</button> </a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+              </svg> Criar Perfil do Sistema</button> </a>
 
         </div>
         <div class="col-auto">
@@ -60,6 +60,64 @@
      
 
     
+
+      <div class="card-body">
+        @if ($message = Session::get('success'))
+  
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-success" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+      
+        @elseif ($message = Session::get('edit'))
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-edit" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+      
+        @elseif ($message = Session::get('delete'))
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-delete" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+        </div>
+      
+        @endif
+
+    
     
     <div class="tab-content" id="orders-table-tab-content">
           <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
@@ -82,7 +140,6 @@
                     <td class="cell">{{$role->id}}</td>
                     <td class="cell" >{{ $role->name }}</td>
                     <td class="cell">
-                    <a class="btn bg-success text-light" href="{{ route('roles.show',$role->id) }}">Ver</a>
                     <a class="btn btn-outline-secondary dropdown-toggles" href="{{ route('roles.edit',$role->id) }}">Editar</a>
                     {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
                     {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
@@ -102,19 +159,7 @@
               </table>
                 </div><!--//table-responsive-->
             </div><!--//app-card-body-->		
-            <nav class="app-pagination">
-							<ul class="pagination justify-content-center">
-								<li class="page-item disabled">
-									<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Voltar</a>
-							    </li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item">
-								    <a class="page-link" href="#">Próxima</a>
-								</li>
-							</ul>
-						</nav><!--//app-pagination-->
+            
         </div><!--//app-card-->
           </div><!--//tab-pane-->
     </div><!--//tab-content-->

@@ -80,7 +80,7 @@ class ContratoController extends Controller
             }
 
         return redirect()->route('contrato.index')
-                        ->with('success','Product created successfully.');
+                        ->with('success','Contrato criado com sucesso!');
     }
     
      public function show(Contrato $contrato)
@@ -146,7 +146,7 @@ class ContratoController extends Controller
             }
 
             return redirect()->route('contrato.index')
-            ->with('success','Product updated successfully');
+            ->with('success','Contrato atualizado com sucesso!');
    
     }
 }   
@@ -155,6 +155,6 @@ class ContratoController extends Controller
     {
         $contrato->delete();
         return redirect()->route('contrato.index')
-                        ->with('success','Product deleted successfully');
+                        ->with('success','Contrato deletado com sucesso');
     }
 }

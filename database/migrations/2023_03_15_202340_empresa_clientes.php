@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('empresa__clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('Nome_Empresa');
+            $table->string('Nome_Empresa')->nullable();
             $table->string('Cnpj')->nullable();
-            $table->string('Nome_responsavel');
-            $table->string('Nome_fantasia');
+            $table->string('Nome_responsavel')->nullable();
+            $table->string('Nome_fantasia')->nullable();
             $table->string('Cpf')->nullable();
             $table->string('Email')->nullable();
             $table->string('Telefone')->nullable();

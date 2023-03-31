@@ -136,6 +136,6 @@ class RoleController extends Controller
     {
         DB::table("roles")->where('id',$id)->delete();
         return redirect()->route('roles.index')
-                        ->with('success','Perfil deletado com sucesso!');
+                        ->with('delete','Perfil deletado com sucesso!');
     }
 }

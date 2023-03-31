@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Empresa_Cliente;
 use App\Models\Produto;
 use App\Models\User;
+use App\Models\Contrato;
+use App\Models\Recibo;
 
 
 
@@ -16,17 +18,19 @@ class PainelGerencialController extends Controller
 
         public function dashboard() {
 
-            $usuarios = User::orderBy('id','DESC')->paginate(5);
-
-            // $userCount  =  FICHA::where('status_id', '=', auth()->id())
-            // ->count();
+            $contratos = Contrato::with('empresa_cliente')->orderBy('id','DESC')->paginate(5);  
+            $recibos        = Recibo::with('empresa_cliente')->orderBy('id','DESC')->paginate(5);
+         
              $clientes = Empresa_Cliente::count();
-             $produto = Produto::count();
-            // $totalfichas = FICHA::count();
-            // $fichasNAOtramitadas = FICHA::where('status_id', '=', NULL)->count();
-            // $fichasTramitadas = FICHA::where('status_id', '!=', NULL)->count();
+             $produto  = Produto::count();
+             $contrato = Contrato::count();
+             $recibo   = Recibo::count();
+ 
+             
+
+
         
-            return view('painel.painel-dashboard',compact('clientes', 'produto'));
+            return view('painel.painel-dashboard',compact('clientes', 'produto','contrato','recibo','contratos','recibos'));
 
         }
 

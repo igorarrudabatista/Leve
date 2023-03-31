@@ -74,15 +74,61 @@
           </div><!--//table-utilities-->
         </div><!--//col-auto-->
       </div><!--//row-->
-     
-{{--       
-      <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
-        <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab" href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">All</a>
-        <a class="flex-sm-fill text-sm-center nav-link"  id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Paid</a>
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pending</a>
-        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Cancelled</a>
-    </nav> --}}
-    
+      <div class="card-body">
+        @if ($message = Session::get('success'))
+  
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-success" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+      
+        @elseif ($message = Session::get('edit'))
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-edit" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+      
+        @elseif ($message = Session::get('delete'))
+        <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration-delete" role="alert">
+          <div class="inner">
+            <div class="app-card-body p-3 p-lg-4">
+              <center> <h3 class="mb-3">{{$message}}</h3> </center>
+              <div class="row gx-5 gy-3">
+                  <div class="col-12 col-lg-12">
+                    
+                </div><!--//col-->
+  
+              </div><!--//row-->
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div><!--//app-card-body-->
+            
+          </div><!--//inner-->
+        </div><!--//app-card-->
+        </div>
+      
+        @endif
     
     <div class="tab-content" id="orders-table-tab-content">
           <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">

@@ -16,6 +16,7 @@
         </div>
 
       </div><!--//row-->
+      <form action="{{asset('/cliente/create')}}" method="GET" enctype="multipart/form-data">
 
 <section id="multiple-column-form">
   <div class="row match-height">
@@ -35,19 +36,24 @@
             <div class="app-card-header p-3 border-bottom-0">
 
 
-            {!! Form::open(array('route' => 'cliente.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
+              
+              
+              
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationDefault01"> <strong> CNPJ </strong> </label>
+                  <input type="text" id="search" class="form-control" name="search" placeholder="Digite o CNPJ da empresa">
+                  <button class="btn btn-primary float-end">Pesquisar</button>
+                </div>
+                
+                @if ($search)
+                
+              </form>
+              {!! Form::open(array('route' => 'cliente.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
 
-
-
-        <div class="row">
-    <div class="col-md-4 mb-3">
-    <label for="validationDefault01"> <strong> CNPJ </strong> </label>
-    {!! Form::text('Cnpj', null, array('class' => 'form-control')) !!}
-
-    </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Nome da Empresa</strong></label>
-    {!! Form::text('Nome_Empresa', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Nome_Empresa', $data->razao_social, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Nome Fantasia</strong></label>
@@ -135,5 +141,8 @@
 </form>
 
 
+@else
+
+@endif
 
 @endsection

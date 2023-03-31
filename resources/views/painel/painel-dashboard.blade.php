@@ -39,11 +39,9 @@
                             <h4 class="stats-type mb-1">Clientes cadastrados</h4>
                             <div class="stats-figure">{{$clientes}}</div>
                             <div class="stats-meta text-success">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
-</svg> 20%</div>
+                                </div>
                         </div><!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                        <a class="app-card-link-mask" href="{{asset('/cliente')}}"></a>
                     </div><!--//app-card-->
                 </div><!--//col-->
                 
@@ -53,32 +51,30 @@
                             <h4 class="stats-type mb-1">Produtos Cadastrados</h4>
                             <div class="stats-figure">{{$produto}}</div>
                             <div class="stats-meta text-success">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
-</svg> 5% </div>
+                                </div>
                         </div><!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                        <a class="app-card-link-mask" href="{{asset('/produtos')}}"></a>
                     </div><!--//app-card-->
                 </div><!--//col-->
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Contratos</h4>
-                            <div class="stats-figure">23</div>
+                            <div class="stats-figure">{{$contrato}}</div>
                             <div class="stats-meta">
-                                Open</div>
+                                </div>
                         </div><!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                        <a class="app-card-link-mask" href="{{asset('/contrato')}}"></a>
                     </div><!--//app-card-->
                 </div><!--//col-->
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Recibos</h4>
-                            <div class="stats-figure">6</div>
-                            <div class="stats-meta">New</div>
+                            <div class="stats-figure">{{$recibo}}</div>
+                            <div class="stats-meta"></div>
                         </div><!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                        <a class="app-card-link-mask" href="{{asset('/recibos')}}"></a>
                     </div><!--//app-card-->
                 </div><!--//col-->
             </div><!--//row-->
@@ -97,16 +93,97 @@
                                     
                                 </div><!--//col-->
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Recibos</h4>
+                                    <h4 class="app-card-title">Clientes </h4>
                                 </div><!--//col-->
                             </div><!--//row-->
                         </div><!--//app-card-header-->
                         <div class="app-card-body px-4">
                             
-                            <div class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquet eros vel diam semper mollis.</div>
+                            <div class="intro">Cadastre os clientes aqui.</div>
                         </div><!--//app-card-body-->
                         <div class="app-card-footer p-4 mt-auto">
-                           <a class="btn app-btn-secondary" href="#">Criar</a>
+                           <a class="btn app-btn-secondary" href="{{asset('/cliente/create')}}">clique para acessar</a>
+                        </div><!--//app-card-footer-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
+                <div class="col-12 col-lg-4">
+                    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row align-items-center gx-3">
+                                <div class="col-auto">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+<path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+</svg>
+                                    </div><!--//icon-holder-->
+                                    
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Fornecedores </h4>
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body px-4">
+                            
+                            <div class="intro">Cadastre os seu Fornecedores.</div>
+                        </div><!--//app-card-body-->
+                        <div class="app-card-footer p-4 mt-auto">
+                           <a class="btn app-btn-secondary" href="{{asset('/fornecedor/create')}}">clique para acessar</a>
+                        </div><!--//app-card-footer-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
+                <div class="col-12 col-lg-4">
+                    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row align-items-center gx-3">
+                                <div class="col-auto">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+<path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+</svg>
+                                    </div><!--//icon-holder-->
+                                    
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Produtos </h4>
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body px-4">
+                            
+                            <div class="intro">Cadastre os seus produtos.</div>
+                        </div><!--//app-card-body-->
+                        <div class="app-card-footer p-4 mt-auto">
+                           <a class="btn app-btn-secondary" href="{{asset('/produtos/create')}}">Clique para acessar</a>
+                        </div><!--//app-card-footer-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
+                <div class="col-12 col-lg-4">
+                    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row align-items-center gx-3">
+                                <div class="col-auto">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+<path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+</svg>
+                                    </div><!--//icon-holder-->
+                                    
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Contratos </h4>
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body px-4">
+                            
+                            <div class="intro">Crie os seus contratos aqui.</div>
+                        </div><!--//app-card-body-->
+                        <div class="app-card-footer p-4 mt-auto">
+                           <a class="btn app-btn-secondary" href="{{asset('/contrato/create')}}">Clique para acessar</a>
                         </div><!--//app-card-footer-->
                     </div><!--//app-card-->
                 </div><!--//col-->
@@ -124,16 +201,16 @@
                                     
                                 </div><!--//col-->
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Apps</h4>
+                                    <h4 class="app-card-title">Recibos</h4>
                                 </div><!--//col-->
                             </div><!--//row-->
                         </div><!--//app-card-header-->
                         <div class="app-card-body px-4">
                             
-                            <div class="intro">Pellentesque varius, elit vel volutpat sollicitudin, lacus quam efficitur augue</div>
+                            <div class="intro">Crie os recibos aqui.</div>
                         </div><!--//app-card-body-->
                         <div class="app-card-footer p-4 mt-auto">
-                           <a class="btn app-btn-secondary" href="#">Create New</a>
+                           <a class="btn app-btn-secondary" href="{{asset('/recibos/create')}}">clique para acessar</a>
                         </div><!--//app-card-footer-->
                     </div><!--//app-card-->
                 </div><!--//col-->
@@ -157,173 +234,27 @@
                         </div><!--//app-card-header-->
                         <div class="app-card-body px-4">
                             
-                            <div class="intro">Sed maximus, libero ac pharetra elementum, turpis nisi molestie neque, et tincidunt velit turpis non enim.</div>
+                            <div class="intro">Fale com o suporte.</div>
                         </div><!--//app-card-body-->
                         <div class="app-card-footer p-4 mt-auto">
-                           <a class="btn app-btn-secondary" href="#">Fale com o Suporte</a>
+                           <a class="btn app-btn-secondary" href="{{asset('/suporte')}}">Fale com o Suporte</a>
                         </div><!--//app-card-footer-->
                     </div><!--//app-card-->
                 </div><!--//col-->
             </div><!--//row-->
+            
             <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Line Chart Example</h4>
-                                </div><!--//col-->
-                                <div class="col-auto">
-                                    <div class="card-header-action">
-                                        <a href="charts.html">More charts</a>
-                                    </div><!--//card-header-actions-->
-                                </div><!--//col-->
-                            </div><!--//row-->
-                        </div><!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">   
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-linechart" ></canvas>
-                            </div>
-                        </div><!--//app-card-body-->
-                    </div><!--//app-card-->
-                </div><!--//col-->
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Bar Chart Example</h4>
-                                </div><!--//col-->
-                                <div class="col-auto">
-                                    <div class="card-header-action">
-                                        <a href="charts.html">More charts</a>
-                                    </div><!--//card-header-actions-->
-                                </div><!--//col-->
-                            </div><!--//row-->
-                        </div><!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">   
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-barchart" ></canvas>
-                            </div>
-                        </div><!--//app-card-body-->
-                    </div><!--//app-card-->
-                </div><!--//col-->
                 
-            </div><!--//row-->
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-progress-list h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Progress</h4>
-                                </div><!--//col-->
-                                <div class="col-auto">
-                                    <div class="card-header-action">
-                                        <a href="#">All projects</a>
-                                    </div><!--//card-header-actions-->
-                                </div><!--//col-->
-                            </div><!--//row-->
-                        </div><!--//app-card-header-->
-                        <div class="app-card-body">
-                            <div class="item p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <div class="title mb-1 ">Project lorem ipsum dolor sit amet</div>
-                                        <div class="progress">
-<div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-                                    </div><!--//col-->
-                                    <div class="col-auto">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-</svg>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                                <a class="item-link-mask" href="#"></a>
-                            </div><!--//item-->
-                            
-                            
-                             <div class="item p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <div class="title mb-1 ">Project duis aliquam et lacus quis ornare</div>
-                                        <div class="progress">
-<div class="progress-bar bg-success" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-                                    </div><!--//col-->
-                                    <div class="col-auto">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-</svg>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                                <a class="item-link-mask" href="#"></a>
-                            </div><!--//item-->
-                            
-                            <div class="item p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <div class="title mb-1 ">Project sed tempus felis id lacus pulvinar</div>
-                                        <div class="progress">
-<div class="progress-bar bg-success" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-                                    </div><!--//col-->
-                                    <div class="col-auto">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-</svg>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                                <a class="item-link-mask" href="#"></a>
-                            </div><!--//item-->
-                            
-                            <div class="item p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <div class="title mb-1 ">Project sed tempus felis id lacus pulvinar</div>
-                                        <div class="progress">
-<div class="progress-bar bg-success" role="progressbar" style="width: 52%;" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-                                    </div><!--//col-->
-                                    <div class="col-auto">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-</svg>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                                <a class="item-link-mask" href="#"></a>
-                            </div><!--//item-->
-    
-                        </div><!--//app-card-body-->
-                    </div><!--//app-card-->
-                </div><!--//col-->
                 <div class="col-12 col-lg-6">
                     <div class="app-card app-card-stats-table h-100 shadow-sm">
                         <div class="app-card-header p-3">
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Stats List</h4>
+                                    <h4 class="app-card-title">Últimos recibos</h4>
                                 </div><!--//col-->
                                 <div class="col-auto">
                                     <div class="card-header-action">
-                                        <a href="#">View report</a>
+                                        <a href="#">Acessar</a>
                                     </div><!--//card-header-actions-->
                                 </div><!--//col-->
                             </div><!--//row-->
@@ -333,53 +264,69 @@
                                 <table class="table table-borderless mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="meta">Source</th>
-                                            <th class="meta stat-cell">Views</th>
-                                            <th class="meta stat-cell">Today</th>
+                                            <th class="meta">Clientes</th>
+                                            <th class="meta stat-cell">N° dos recibos</th>
                                         </tr>
                                     </thead>
+                                    @foreach ($recibos as $key => $item)
                                     <tbody>
                                         <tr>
-                                            <td><a href="#">google.com</a></td>
-                                            <td class="stat-cell">110</td>
-                                            <td class="stat-cell">
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up text-success" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
-                                </svg> 
-                                                30%
-                                            </td>
+                                            <td>{{$item->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</td>
+                                            <td class="stat-cell">{{$item->id ?? ''}}</td>
+                                        
                                         </tr>
-                                        <tr>
-                                            <td><a href="#">getbootstrap.com</a></td>
-                                            <td class="stat-cell">67</td>
-                                            <td class="stat-cell">23%</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">w3schools.com</a></td>
-                                            <td class="stat-cell">56</td>
-                                            <td class="stat-cell">
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down text-danger" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
-                                </svg>
-                                                20%
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">javascript.com </a></td>
-                                            <td class="stat-cell">24</td>
-                                            <td class="stat-cell">-</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">github.com </a></td>
-                                            <td class="stat-cell">17</td>
-                                            <td class="stat-cell">15%</td>
-                                        </tr>
+
+@endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div><!--//table-responsive-->
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
                 </div><!--//col-->
+                <div class="col-12 col-lg-6">
+                    <div class="app-card app-card-stats-table h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Últimos Contratos</h4>
+                                </div><!--//col-->
+                                <div class="col-auto">
+                                    <div class="card-header-action">
+                                        <a href="#">Acessar</a>
+                                    </div><!--//card-header-actions-->
+                                </div><!--//col-->
+                            </div><!--//row-->
+                        </div><!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="meta">Cliente</th>
+                                            <th class="meta stat-cell">N° do contrato</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach ($contratos as $key => $item)
+
+                                    <tbody>
+                                        <tr>
+                                            <td>{{$item->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</td>
+
+                                             <td class="stat-cell">{{$item->id ?? ''}}</td>
+                                        
+
+                                        </tr>
+                                        @endforeach
+                                        
+                                    </tbody>
+
+                                </table>
+                            </div><!--//table-responsive-->
+                        </div><!--//app-card-body-->
+                    </div><!--//app-card-->
+                </div><!--//col-->
+               
             </div><!--//row-->
 
             
