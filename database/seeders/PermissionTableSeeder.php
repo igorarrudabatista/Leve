@@ -37,6 +37,11 @@ class PermissionTableSeeder extends Seeder
             'cliente-create',
             'cliente-edit',
             'cliente-delete',
+            ///fornecedor
+            'fornecedor-list',
+            'fornecedor-create',
+            'fornecedor-edit',
+            'fornecedor-delete',
             ///recibos
             'recibo-list',
             'recibo-create',

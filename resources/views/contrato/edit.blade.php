@@ -31,7 +31,7 @@
                 <div class="text-center mb-5">
                     <img src="{{asset('/images/contratos.png')}}" height="188" class='mb-4'>
                     <h3>CONTRATOS</h3>
-                    <p>Editando o contrato da empresa: <strong> {{$contrato->empresa_cliente->Nome_Empresa}} </strong></p>
+                    <p>Editando o contrato da empresa: <strong> {{$contrato->empresa_cliente->Nome_fantasia}} </strong></p>
                 </div>
 
       
@@ -49,7 +49,7 @@
                                 <div class="col-md-5 col-6">
                                    
                                         <label for="first-name-column"><strong> Selecione o Cliente </strong></label>
-                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$contrato->empresa_cliente->Nome_Empresa}}" disabled> 
+                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$contrato->empresa_cliente->Nome_fantasia}}" disabled> 
 
                      
 
@@ -136,7 +136,7 @@
                             <h3>Passo 3</h3>
                             <div class="form-group">
                                 <label for="textarea">Observações:</label>
-                                <textarea class="form-control" name="Observacoes" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
+                                <input class="form-control" name="Observacoes" rows="4" value="Sendo o valor unitário de 40,00 para cada toalha, caso seja extraviada, manchada ou rasgada."> </textarea>
                             </div>
                             <br>
                             <div class="form-group">

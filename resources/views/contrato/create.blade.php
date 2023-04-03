@@ -56,7 +56,7 @@
                                         <select name="empresa_cliente_id" id="empresa_cliente_id" class="form-control">
                                             <option value="1"> Selecione a empresa </option>
                                             @foreach ($empresa_cliente as $empresa_clientes	)
-                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_Empresa}} </option>
+                                            <option value="{{ $empresa_clientes->id}}">{{$empresa_clientes->Nome_fantasia}} </option>
                                             @endforeach
                                         </select>
                                       </center>
@@ -116,7 +116,7 @@
                             <h3>Passo 3</h3>
                             <div class="form-group">
                                 <label for="textarea">Observações:</label>
-                                <textarea class="form-control" name="Observacoes" rows="4" placeholder="Esta mensagem será exibida no cupom"> </textarea>
+                                <input class="form-control" name="Observacoes" rows="4" value="Sendo o valor unitário de 40,00 para cada toalha, caso seja extraviada, manchada ou rasgada."> </textarea>
                             </div>
                             <br>
                             <div class="form-group">

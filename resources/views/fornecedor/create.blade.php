@@ -16,7 +16,7 @@
         </div>
 
       </div><!--//row-->
-      <form action="{{asset('/cliente/create')}}" method="GET" enctype="multipart/form-data">
+      <form action="{{asset('/fornecedor/create')}}" method="GET" enctype="multipart/form-data">
 
 <section id="multiple-column-form">
   <div class="row match-height">
@@ -25,9 +25,9 @@
     
 <br>
               <div class="text-center mb-5">
-                  <img src="{{asset('/images/clientes.png')}}" height="88" class='mb-4'>
-                  <h3>CLIENTES</h3>
-                  <p>Cadastre os clientes da sua loja aqui.</p>
+                  <img src="{{asset('/images/fornecedor.png')}}" height="150" class='mb-4'>
+                  <h3>FORNECEDOR</h3>
+                  <p>Cadastre os fornecedores da sua loja aqui.</p>
               </div>
 
             <div class="row gy-4">
@@ -40,28 +40,33 @@
               
               
               
-            
+                <div class="col-md-4 mb-3">
+                  <label for="validationDefault01"> <strong> CNPJ </strong> </label>
+                  <input type="text" id="search" class="form-control" name="search" placeholder="Digite o CNPJ da empresa sem pontos e /" >
+                  <button class="btn btn-primary float-end">Pesquisar</button>
+                </div>
+                @if ($search)
                 
               </div>
               </form>
-              {!! Form::model($cliente, ['method' => 'PATCH','route' => ['cliente.update', $cliente->id]]) !!}
+              {!! Form::open(array('route' => 'fornecedor.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
               <div class="row">
 
      <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> CNPJ</strong></label>
-    {!! Form::text('Cnpj', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Cnpj', $data->cnpj, array('class' => 'form-control')) !!}
   </div> 
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Nome Fantasia</strong></label>
-    {!! Form::text('Nome_fantasia', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Nome_fantasia', $data->nome_fantasia, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Nome do Responsável pela empresa</strong></label>
-    {!! Form::text('Nome_responsavel', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Nome_responsavel', $data->razao_social, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Telefone</strong></label>
-    {!! Form::text('Telefone', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Telefone', $data->ddd_telefone_1, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> E-mail</strong></label>
@@ -69,19 +74,19 @@
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Endereço</strong></label>
-    {!! Form::text('Endereco', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Endereco', $data->logradouro, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> CEP</strong></label>
-    {!! Form::text('Cep', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Cep', $data->cep, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> N°</strong></label>
-    {!! Form::text('Numero', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Numero', $data->numero, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Bairro</strong></label>
-    {!! Form::text('Bairro', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Bairro', $data->bairro, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Estado</strong></label>
@@ -89,12 +94,12 @@
     'ES' => 'ES', 'GO' => 'GO', 'MA' => 'MA', 'MT' => 'MT', 'MS' => 'MS', 'MG' => 'MG', 'PA' => 'PA',
     'PB' => 'PB', 'PR' => 'PR', 'PE' =>'PE', 'PI' => 'PI', 'RJ' => 'RJ', 'RN' => 'RN', 'RS' =>'RS',
     'RO' => 'RO', 'RR' => 'RR', 'SC' => 'SC', 'SP' => 'SP', 'SE' => 'SE', 'TO' => 'TO', 'Estrangeiro' => 'Estrangeiro'    
-     ], null, ['class' => 'choices form-select']) !!}
+     ], $data->uf, ['class' => 'choices form-select']) !!}
        </div>
     
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Cidade:</strong></label>
-    {!! Form::text('Cidade', null, array('class' => 'form-control')) !!}
+    {!! Form::text('Cidade', $data->municipio, array('class' => 'form-control')) !!}
   </div>
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Web Site</strong></label>
@@ -117,6 +122,8 @@
 </form>
 
 
+@else
 
+@endif
 
 @endsection

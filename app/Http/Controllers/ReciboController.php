@@ -36,7 +36,7 @@ class ReciboController extends Controller
         $search = request('search');
 
         if($search) {
-            $empresa_cliente = Empresa_Cliente::where([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
+            $empresa_cliente = Empresa_Cliente::where([['Nome_fantasia', 'like', '%'.$search. '%' ]])->get();
 
              } else {
                 $empresa_cliente = Empresa_Cliente::all();
@@ -88,7 +88,7 @@ class ReciboController extends Controller
             }
 
         return redirect()->route('recibos.index')
-                        ->with('success','Product created successfully.');
+                        ->with('success','Recibo criado com sucesso!');
     }
     
     /**
@@ -167,7 +167,7 @@ class ReciboController extends Controller
             }
 
             return redirect()->route('recibos.index')
-            ->with('success','Product updated successfully');
+            ->with('edit','Recibo atualizado com sucesso!');
    
     }
 }   
@@ -186,6 +186,6 @@ class ReciboController extends Controller
     {
         $recibo->delete();
         return redirect()->route('recibos.index')
-                        ->with('success','Product deleted successfully');
+                        ->with('delete','Recibo deletado com sucesso!');
     }
 }

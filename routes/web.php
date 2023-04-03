@@ -9,7 +9,7 @@ use App\Http\Controllers\
 
     Empresa_ClienteController, MinhaEmpresaController, ProdutoController, OrcamentoController, ReciboController, ContratoController,
     AgendaController,
-    HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
+    HomeController, AlunosController, APIController, FichaController, PainelGerencialController, FornecedorController,
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
     PrazoController, ConselhoController,
@@ -37,12 +37,15 @@ Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
 // Route::resource('conselho',                  ConselhoController::class);
 Route::resource('cliente',                   Empresa_ClienteController::class);
+Route::resource('fornecedor',                FornecedorController::class);
 Route::resource('minhaempresa',              MinhaEmpresaController::class);
 Route::resource('produtos',                  ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
 Route::resource('contrato',                 ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
 
+
+Route::get('/produto/export',              [ProdutoController::class,   'export']);
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

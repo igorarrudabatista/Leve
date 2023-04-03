@@ -172,5 +172,12 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.index')
                         ->with('delete','Produto deletado com sucesso!');
     }
+
+    public function export () {
+        
+
+        return Excel::download(new ProdutoExport, 'Produtos.xlsx');
+      //  return Excel::download(new Empresa_Cliente, 'users.xlsx');
+    }
 }
 

@@ -2,7 +2,7 @@
 <html lang="pt-br" >
 <head>
   <meta charset="UTF-8">
-  <title>Contrato - Leve Limpo</title>
+  <title>Leve Limpo</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
   <link id="theme-style" rel="stylesheet" href="{{asset('css/recibo/style.css')}}">
 
@@ -61,9 +61,8 @@
               </tbody>
             </table>
 
-          <small><i> O valor unitário de {{$contrato->minha_empresa ?? ''  }} 40,00 para cada toalha, caso seja extraviada, manchada ou rasgada.
-
-          Por estar de acordo, declaro estar ciente das condições, assino o presente em duas vias de igual teor. </br></i> </small> </br></br>
+          <small><i>  {{$contrato->Observacoes ?? 'Nao encontrado'  }} <br>
+            Por estar de acordo, declaro estar ciente das condições, assino o presente em duas vias de igual teor. </br></i> </small> </br></br>
           
           <strong>Cuiabá, </strong><i>{{ date('d/m/Y')}}</i></br></br>
 

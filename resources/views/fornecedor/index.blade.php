@@ -9,8 +9,8 @@
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
-              <h1 class="app-page-title mb-0">CLIENTES</h1> <br>
-        <a href="{{asset('/cliente/create')}}"  button type="submit" class="btn app-btn-secondary">Adicionar Clientes</button> </a>
+              <h1 class="app-page-title mb-0">FORNECEDORES</h1> <br>
+        <a href="{{asset('/fornecedor/create')}}"  button type="submit" class="btn app-btn-secondary">Adicionar Fornecedor</button> </a>
 
         </div>
         <div class="col-auto">
@@ -119,18 +119,18 @@
 
                   </tr>
                 </thead>
-                @foreach($cliente as $empresa_clientes )
+                @foreach($fornecedor as $fornecedores )
                 
                 <tbody>
                   <tr>
-                    <td class="cell">{{$empresa_clientes->id}}</td>
-                    <td class="cell"><span class="truncate">{{$empresa_clientes->Nome_fantasia}}</span></td>
-                    <td class="cell">{{$empresa_clientes->Telefone}}</td>
-                    <td class="cell"><span>{{$empresa_clientes->Cidade}}</span><span class="note">{{$empresa_clientes->Estado}}</span>
+                    <td class="cell">{{$fornecedores->id}}</td>
+                    <td class="cell"><span class="truncate">{{$fornecedores->Nome_fantasia}}</span></td>
+                    <td class="cell">{{$fornecedores->Telefone}}</td>
+                    <td class="cell"><span>{{$fornecedores->Cidade}}</span><span class="note">{{$fornecedores->Estado}}</span>
           
                     <td class="cell">
-                      <a class="btn btn-warning" href="{{ route('cliente.edit',$empresa_clientes->id) }}">Editar</a>
-                      {!! Form::open(['method' => 'DELETE','route' => ['cliente.destroy', $empresa_clientes->id],'style'=>'display:inline']) !!}
+                      <a class="btn btn-warning" href="{{ route('fornecedor.edit',$fornecedores->id) }}">Editar</a>
+                      {!! Form::open(['method' => 'DELETE','route' => ['fornecedor.destroy', $fornecedores->id],'style'=>'display:inline']) !!}
                       {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
 
 

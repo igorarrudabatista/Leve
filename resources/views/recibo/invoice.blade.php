@@ -33,7 +33,7 @@
       <div class="col-5">
         <br><br><br>
         <p>
-          <strong>{{$recibo->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</strong><br>
+          <strong>{{$recibo->empresa_cliente->Nome_fantasia ?? 'Sem registros'  }}</strong><br>
          CNPJ: <em>{{$recibo->empresa_cliente->Cnpj ?? 'Sem registros'  }}</em><br>
          {{$recibo->empresa_cliente->Endereco ?? 'Sem registros'  }} {{$recibo->empresa_cliente->Cidade ?? 'Sem registros'  }} - {{$recibo->empresa_cliente->Estado ?? 'Sem registros'  }}<br>
         Tel: <i>{{$recibo->empresa_cliente->Telefone ?? 'Sem registros'  }} </i>
@@ -88,7 +88,7 @@
       </div>
     </div>
     <hr><br>
-    <h6> <strong> <center> {{$recibo->MensagemCliente}} </strong>   </center> </h6>
+    <h6> <strong> <center><i>"{{$recibo->MensagemCliente}}" </strong>  </i> </center> </h6>
     
 
     

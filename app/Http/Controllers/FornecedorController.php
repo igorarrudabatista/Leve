@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 
-use App\Models\Empresa_Cliente;
+use App\Models\Fornecedor;
 
 
 use App\Exports\ClienteExport;
@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-class Empresa_ClienteController extends Controller
+class FornecedorController extends Controller
 {
 
       /**
@@ -22,10 +22,10 @@ class Empresa_ClienteController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:cliente-list|cliente-create|cliente-edit|cliente-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:cliente-create', ['only' => ['create','store']]);
-         $this->middleware('permission:cliente-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:cliente-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:fornecedor-list|fornecedor-create|fornecedor-edit|fornecedor-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:fornecedor-create', ['only' => ['create','store']]);
+         $this->middleware('permission:fornecedor-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:fornecedor-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -34,18 +34,18 @@ class Empresa_ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = Empresa_Cliente::all();
+        $fornecedor = Fornecedor::all();
 
         $search = request('search');
 
         if($search) {
-            $cliente = Empresa_Cliente::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
+            $cliente = Fornecedor::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $cliente = Empresa_Cliente::all();
+                $cliente = Fornecedor::all();
             }
         
-        return view('cliente.index', ['cliente'=> $cliente, 'search' => $search]);
+        return view('fornecedor.index', ['fornecedor'=> $fornecedor, 'search' => $search]);
 
     }
     
@@ -56,7 +56,7 @@ class Empresa_ClienteController extends Controller
 //      */
    public function create()
    {
-    $clientes = Empresa_Cliente::all();
+    $fornecedor = Fornecedor::all();
 
     $search = request('search');
     $response = Http::get('https://brasilapi.com.br/api/cnpj/v1/' . $search);
@@ -66,9 +66,9 @@ class Empresa_ClienteController extends Controller
     $data = json_decode($response); // convert JSON into objects 
     
     //dd($data);
-    return view('cliente.create', ['search' => $search,
+    return view('fornecedor.create', ['search' => $search,
                                    'data' =>$data,
-                                   'clientes' =>$clientes,
+                                   'fornecedor' =>$fornecedor,
                                    'result' =>$result,
                                   ]);
 
@@ -76,9 +76,9 @@ class Empresa_ClienteController extends Controller
 
    public function export () {
         
-    $cliente = Empresa_Cliente::all();
+    $fornecedor = Fornecedor::all();
 
-    return Excel::download(new ClienteExport, 'clientes.xlsx');
+    return Excel::download(new fornecedorExport, 'fornecedor.xlsx');
 }
 
     
@@ -92,10 +92,10 @@ class Empresa_ClienteController extends Controller
     {
 
     
-        Empresa_Cliente::create($request->all());
+        Fornecedor::create($request->all());
     
-         return redirect()->route('cliente.index')
-                         ->with('success','Cliente criado com sucesso!');
+         return redirect()->route('fornecedor.index')
+                         ->with('success','Fornecedor criado com sucesso!');
      }
     
 //     /**
@@ -105,9 +105,9 @@ class Empresa_ClienteController extends Controller
 //      * @return \Illuminate\Http\Response
 //      */
 
-    public function show(Empresa_Cliente $cliente)
+    public function show(Fornecedor $fornecedor)
     {
-        return view('cliente.show',compact('cliente'));
+        return view('fornecedor.show',compact('fornecedor'));
     }
 //     /**
 //      * Show the form for editing the specified resource.
@@ -115,9 +115,9 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(Empresa_Cliente $cliente)
+     public function edit(Fornecedor $fornecedor)
      {
-         return view('cliente.edit',compact('cliente'));
+         return view('fornecedor.edit',compact('fornecedor'));
      }
     
 //     /**
@@ -127,13 +127,13 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, Empresa_Cliente $cliente)
+     public function update(Request $request, Fornecedor $fornecedor)
      {
     
-         $cliente->update($request->all());
+         $fornecedor->update($request->all());
     
-         return redirect()->route('cliente.index')
-                         ->with('edit','Cliente Atualiazado com sucesso!');
+         return redirect()->route('fornecedor.index')
+                         ->with('edit','Fornecedor Atualiazado com sucesso!');
      }
     
 //     /**
@@ -142,12 +142,12 @@ class Empresa_ClienteController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(Empresa_Cliente $cliente)
+     public function destroy(Fornecedor $fornecedor)
      {
-         $cliente->delete();
+         $fornecedor->delete();
     
-         return redirect()->route('cliente.index')
-                         ->with('delete','Cliente deletado com sucesso!');
+         return redirect()->route('fornecedor.index')
+                         ->with('delete','Fornecedor deletado com sucesso!');
      }
 
     }

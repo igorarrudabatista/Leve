@@ -165,8 +165,8 @@
                             <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                           </svg> </td>
                            <td>{{$recibos->id }}</td>
-                               {{$order->empresa_cliente->Nome_Empresa ?? ''}}
-                           <td>{{$recibos->empresa_cliente->Nome_Empresa ?? 'Sem registros'  }}</td>
+                               {{$order->empresa_cliente->Nome_fantasia ?? ''}}
+                           <td>{{$recibos->empresa_cliente->Nome_fantasia ?? 'Sem registros'  }}</td>
                            {{-- <td> <small> {{json_encode ($recibos->DescProdutos)  }} </small></td> --}}
                            
                            <td>{{date('d-m-Y', strtotime($recibos->DataEntrega))??  'Sem registros'}} </td>

@@ -146,7 +146,7 @@ class ContratoController extends Controller
             }
 
             return redirect()->route('contrato.index')
-            ->with('success','Contrato atualizado com sucesso!');
+            ->with('edit','Contrato atualizado com sucesso!');
    
     }
 }   
@@ -155,6 +155,6 @@ class ContratoController extends Controller
     {
         $contrato->delete();
         return redirect()->route('contrato.index')
-                        ->with('success','Contrato deletado com sucesso');
+                        ->with('delete','Contrato deletado com sucesso');
     }
 }

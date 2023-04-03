@@ -16,7 +16,7 @@
         </div>
 
       </div><!--//row-->
-      <form action="{{asset('/cliente/create')}}" method="GET" enctype="multipart/form-data">
+      <form action="{{asset('/fornecedor/create')}}" method="GET" enctype="multipart/form-data">
 
 <section id="multiple-column-form">
   <div class="row match-height">
@@ -44,7 +44,7 @@
                 
               </div>
               </form>
-              {!! Form::model($cliente, ['method' => 'PATCH','route' => ['cliente.update', $cliente->id]]) !!}
+              {!! Form::model($fornecedor, ['method' => 'PATCH','route' => ['fornecedor.update', $fornecedor->id]]) !!}
               <div class="row">
 
      <div class="col-md-4 mb-3">

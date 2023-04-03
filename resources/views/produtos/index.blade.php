@@ -14,7 +14,7 @@
       
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
-              <h1 class="app-page-title mb-0">Produtos</h1> <br>
+              <h1 class="app-page-title mb-0">PRODUTOS</h1> <br>
 
         <a href="{{asset('/produtos/create')}}"  button type="submit" class="btn app-btn-secondary">Adicionar Produto </button> </a>
 
@@ -29,6 +29,7 @@
                           </div>
                           <div class="col-auto">
                               <button type="submit" class="btn app-btn-secondary">Procurar</button>
+                              <a href="{{asset('produtos/export')}}" button type="submit" class="btn app-btn-secondary">Download Excel</button> </a>
                           </div>
                       </form>
                       
