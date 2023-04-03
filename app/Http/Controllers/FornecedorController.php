@@ -3,23 +3,17 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 
-use App\Models\Fornecedor;
-
-
-use App\Exports\ClienteExport;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Concerns\FromCollection;
+
+
+use App\Models\Fornecedor;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\FornecedorExport;
 
 
 class FornecedorController extends Controller
 {
 
-      /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     function __construct()
     {
          $this->middleware('permission:fornecedor-list|fornecedor-create|fornecedor-edit|fornecedor-delete', ['only' => ['index','show']]);
@@ -39,21 +33,16 @@ class FornecedorController extends Controller
         $search = request('search');
 
         if($search) {
-            $cliente = Fornecedor::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
+            $fornecedor = Fornecedor::where ([['Nome_Empresa', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $cliente = Fornecedor::all();
+                $fornecedor = Fornecedor::all();
             }
         
         return view('fornecedor.index', ['fornecedor'=> $fornecedor, 'search' => $search]);
 
     }
-    
-//     /**
-//      * Show the form for creating a new resource.
-//      *
-//      * @return \Illuminate\Http\Response
-//      */
+
    public function create()
    {
     $fornecedor = Fornecedor::all();
@@ -73,21 +62,6 @@ class FornecedorController extends Controller
                                   ]);
 
    }
-
-   public function export () {
-        
-    $fornecedor = Fornecedor::all();
-
-    return Excel::download(new fornecedorExport, 'fornecedor.xlsx');
-}
-
-    
-//     /**
-//      * Store a newly created resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @return \Illuminate\Http\Response
-//      */
     public function store(Request $request)
     {
 
@@ -98,36 +72,19 @@ class FornecedorController extends Controller
                          ->with('success','Fornecedor criado com sucesso!');
      }
     
-//     /**
-//      * Display the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
 
     public function show(Fornecedor $fornecedor)
     {
         return view('fornecedor.show',compact('fornecedor'));
     }
-//     /**
-//      * Show the form for editing the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
-     public function edit(Fornecedor $fornecedor)
+
+    public function edit(Fornecedor $fornecedor)
      {
          return view('fornecedor.edit',compact('fornecedor'));
      }
+
     
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
-     public function update(Request $request, Fornecedor $fornecedor)
+    public function update(Request $request, Fornecedor $fornecedor)
      {
     
          $fornecedor->update($request->all());
@@ -135,13 +92,8 @@ class FornecedorController extends Controller
          return redirect()->route('fornecedor.index')
                          ->with('edit','Fornecedor Atualiazado com sucesso!');
      }
-    
-//     /**
-//      * Remove the specified resource from storage.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
+
      public function destroy(Fornecedor $fornecedor)
      {
          $fornecedor->delete();
@@ -150,4 +102,10 @@ class FornecedorController extends Controller
                          ->with('delete','Fornecedor deletado com sucesso!');
      }
 
+     
+   public function export () {   
+
+    return Excel::download(new FornecedorExport, 'Fornecedores.xlsx');
     }
+
+}

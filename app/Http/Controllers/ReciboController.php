@@ -8,6 +8,12 @@ use App\Models\MinhaEmpresa;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Maatwebsite\Excel\Facades\Excel;
+
+
+
+use App\Exports\ReciboExport;
+
 
 class ReciboController extends Controller
 { 
@@ -187,5 +193,13 @@ class ReciboController extends Controller
         $recibo->delete();
         return redirect()->route('recibos.index')
                         ->with('delete','Recibo deletado com sucesso!');
+    }
+
+
+    
+    public function export () {
+        
+
+        return Excel::download(new ReciboExport, 'Recibos.xlsx');
     }
 }

@@ -11,7 +11,8 @@ class Contrato_Produto extends Model
 
     protected $guarded = [];
 
-
+    protected $fillable = [
+        'Quantidade', 'contrato_id', 'produto_id'  ];
     public function contrato(){
         return $this->belongsTo(Contrato::class);
     }

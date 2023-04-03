@@ -9,6 +9,9 @@ use App\Models\MinhaEmpresa;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use App\Exports\ContratoExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ContratoController extends Controller
 { 
@@ -156,5 +159,10 @@ class ContratoController extends Controller
         $contrato->delete();
         return redirect()->route('contrato.index')
                         ->with('delete','Contrato deletado com sucesso');
+    }
+
+    public function export () {
+        
+        return Excel::download(new ContratoExport, 'Contratos.xlsx');
     }
 }

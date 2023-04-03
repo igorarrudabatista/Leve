@@ -6,10 +6,13 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Empresa_Cliente;
 
 
-use App\Exports\ClienteExport;
+use App\Exports\Empresa_ClienteExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Facades\Excel;
+
+
+
 
 
 class Empresa_ClienteController extends Controller
@@ -74,14 +77,10 @@ class Empresa_ClienteController extends Controller
 
    }
 
-   public function export () {
-        
-    $cliente = Empresa_Cliente::all();
 
-    return Excel::download(new ClienteExport, 'clientes.xlsx');
-}
 
     
+
 //     /**
 //      * Store a newly created resource in storage.
 //      *
@@ -149,5 +148,10 @@ class Empresa_ClienteController extends Controller
          return redirect()->route('cliente.index')
                          ->with('delete','Cliente deletado com sucesso!');
      }
+
+     public function export () {
+        
+        return Excel::download(new Empresa_ClienteExport, 'clientes.xlsx');
+    }
 
     }

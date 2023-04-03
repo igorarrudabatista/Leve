@@ -190,6 +190,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
 
 
 
@@ -213,6 +215,8 @@ return [
     
     'guzzle_test_url' => env('GUZZLE_TEST_URL'),
     'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
 
 
 ];

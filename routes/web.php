@@ -35,17 +35,20 @@ Route::get('/contrato/contrato/{id}',   [ContratoController::class, 'contrato'])
 
 Route::resource('roles',                     RoleController::class);
 Route::resource('users',                     UserController::class);
-// Route::resource('conselho',                  ConselhoController::class);
 Route::resource('cliente',                   Empresa_ClienteController::class);
 Route::resource('fornecedor',                FornecedorController::class);
 Route::resource('minhaempresa',              MinhaEmpresaController::class);
 Route::resource('produtos',                  ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
-Route::resource('contrato',                 ContratoController::class);
+Route::resource('contrato',                  ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
 
 
-Route::get('/produto/export',              [ProdutoController::class,   'export']);
+Route::get('/produto/export',     [ProdutoController::class,         'export']); //OK
+Route::get('/recibo/export',      [ReciboController::class,          'export']); //OK
+Route::get('/fornecedores/export',  [FornecedorController::class,      'export']);
+Route::get('/clientes/export',     [Empresa_ClienteController::class, 'export']);
+Route::get('/contratos/export',    [ContratoController::class,        'export']);
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
