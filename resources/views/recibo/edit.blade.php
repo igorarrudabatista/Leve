@@ -49,7 +49,7 @@
                                    
                                         <label for="first-name-column"><strong> Cliente </strong></label>
 
-                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$recibo->empresa_cliente->Nome_Empresa}}" disabled> 
+                                        <input type="text" class="form-control" id="empresa_cliente_id" name="empresa_cliente_id" value="{{$recibo->empresa_cliente->Nome_fantasia}}" disabled> 
 
 
 

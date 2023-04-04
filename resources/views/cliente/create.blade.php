@@ -35,27 +35,24 @@
                 <div class="app-card app-card-account shadow-sm  flex-column align-items-start">
             <div class="app-card-header p-3 border-bottom-0">
               <div class="row">
-
-
               
-              
-              
-                <div class="col-md-4 mb-3">
-                  <label for="validationDefault01"> <strong> CNPJ </strong> </label>
-                  <input type="text" id="search" class="form-control" name="search" placeholder="Digite o CNPJ da empresa sem pontos e /" >
-                  <button class="btn btn-primary float-end">Pesquisar</button>
+            <center>    <div class="col-md-4 mb-3">
+                  <input type="text" id="Cnpj" class="form-control inpt " name="search" data-mask="00000000000000" data-mask-selectonfocus="true" placeholder="Digite o CNPJ da empresa" >
+                  <br> <center><button class="btn btn-primary float">Pesquisar</button>
                 </div>
-                @if ($search)
                 
               </div>
-              </form>
-              {!! Form::open(array('route' => 'cliente.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
-              <div class="row">
+              @if ($search)
 
-     <div class="col-md-4 mb-3">
-    <label for="validationDefault02"> <strong> CNPJ</strong></label>
-    {!! Form::text('Cnpj', $data->cnpj, array('class' => 'form-control')) !!}
-  </div> 
+            </form>
+            {!! Form::open(array('route' => 'cliente.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
+            <div class="row">
+
+              <div class="input-group flex-nowrap col-md-4 mb-4 ">
+                <label class="input-group-text" for="rua">CNPJ</label>
+                {!! Form::text('Cnpj', $data->cnpj, array('class' => 'form-control')) !!}
+                </div>
+
     <div class="col-md-4 mb-3">
     <label for="validationDefault02"> <strong> Nome Fantasia</strong></label>
     {!! Form::text('Nome_fantasia', $data->nome_fantasia, array('class' => 'form-control')) !!}
@@ -116,11 +113,19 @@
 
   </div>
     
-  </div>
   
   <button type="submit" class="btn btn-primary me-1 mb-1">Salvar</button>
 </form>
 
+<script>
+$(document).ready(function(){
+  $('#Cnpj').mask('00000000000000');
+});
+
+$(document).ready(function(){
+    $('#telefone').mask('(00) 0000-0000#');
+});
+</script>
 
 @else
 

@@ -9952,8 +9952,20 @@ button.close:focus{
     padding-bottom:.6rem;
     height:2.5rem;
     border-color:#e7e9ed;
-    color:#5d6778
+
 }
+
+.inpt {
+    border: none;
+    color: #4ead11 !important; 
+    background-color: #ececec;
+    padding: 5% 20%;
+    margin-top: 4%;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
 .form-control:focus{
     box-shadow:none;
     outline:none;

@@ -46,9 +46,9 @@ Route::resource('orcamento',                 OrcamentoController::class);
 
 Route::get('/produto/export',     [ProdutoController::class,         'export']); //OK
 Route::get('/recibo/export',      [ReciboController::class,          'export']); //OK
-Route::get('/fornecedores/export',  [FornecedorController::class,      'export']);
-Route::get('/clientes/export',     [Empresa_ClienteController::class, 'export']);
-Route::get('/contratos/export',    [ContratoController::class,        'export']);
+Route::get('/fornecedores/export',  [FornecedorController::class,      'export']); // OK
+Route::get('/clientes/export',     [Empresa_ClienteController::class, 'export']); //Ok
+Route::get('/contratos/export',    [ContratoController::class,        'export']); 
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

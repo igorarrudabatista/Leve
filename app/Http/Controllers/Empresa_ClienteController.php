@@ -67,6 +67,8 @@ class Empresa_ClienteController extends Controller
     $result = '';
 
     $data = json_decode($response); // convert JSON into objects 
+
+    
     
     //dd($data);
     return view('cliente.create', ['search' => $search,
