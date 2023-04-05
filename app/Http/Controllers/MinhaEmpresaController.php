@@ -26,8 +26,9 @@ class MinhaEmpresaController extends Controller
      */
     public function index()
     {
+        $empresa = Minhaempresa::where('Cnpj', '==', 'NULL');
         $minhaempresa = MinhaEmpresa::get();
-        return view('minhaempresa.index',compact('minhaempresa'));
+        return view('minhaempresa.index',compact('minhaempresa','empresa'));
         
     }
     
@@ -40,6 +41,8 @@ class MinhaEmpresaController extends Controller
     {
         return view('minhaempresa.create');
     }
+
+
     
     /**
      * Store a newly created resource in storage.

@@ -10,7 +10,9 @@
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
               <h1 class="app-page-title mb-0">CLIENTES</h1> <br>
-        <a href="{{asset('/cliente/create')}}"  button type="submit" class="btn app-btn-secondary">Adicionar Clientes</button> </a>
+        <a href="{{asset('/cliente/create')}}"  button type="submit" class="btn bg-primary text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/>
+        </svg> Adicionar Clientes</button> </a>
 
         </div>
         <div class="col-auto">
@@ -129,9 +131,9 @@
                     <td class="cell"><span>{{$empresa_clientes->Cidade}}</span><span class="note">{{$empresa_clientes->Estado}}</span>
           
                     <td class="cell">
-                      <a class="btn btn-warning" href="{{ route('cliente.edit',$empresa_clientes->id) }}">Editar</a>
+                      <a class="btn btn-warning text-light" href="{{ route('cliente.edit',$empresa_clientes->id) }}">Editar</a>
                       {!! Form::open(['method' => 'DELETE','route' => ['cliente.destroy', $empresa_clientes->id],'style'=>'display:inline']) !!}
-                      {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+                      {!! Form::submit('Deletar', ['class' => 'btn btn-danger text-light']) !!}
 
 
                     {!! Form::close() !!}

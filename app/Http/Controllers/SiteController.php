@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Produto;
 
 class SiteController extends Controller
 {
     public function index() {
 
-        $ultimos_produtos = Product::orderBy('id', 'DESC')->limit(8)->get();
+        $ultimos_produtos = Produto::orderBy('id', 'DESC')->limit(8)->get();
 
-     $produtos = Product::limit(2)->get();
-     //   $produtos = Product::paginate(10);
+     $produtos = Produto::limit(2)->get();
+     //   $produtos = Produto::paginate(10);
 
         $search = request('search');
 
         if($search) {
-            $produtos = Product::where ([['name', 'like', '%'.$search. '%' ]])->get();
+            $produtos = Produto::where ([['name', 'like', '%'.$search. '%' ]])->get();
 
              } else {
-                $produtos = Product::all();
+                $produtos = Produto::all();
             }
        
 

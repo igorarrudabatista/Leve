@@ -9960,9 +9960,9 @@ button.close:focus{
     color: #4ead11 !important; 
     background-color: #ececec;
     padding: 5% 20%;
-    margin-top: 4%;
+    margin-top: -12%;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
 }
 

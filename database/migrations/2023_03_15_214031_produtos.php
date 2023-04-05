@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Nome_Produto')->nullable();
             $table->string('Categoria_Produto')->nullable();
             $table->string('Status_Produto')->nullable();
-            $table->decimal('Preco_Produto')->nullable();
+            $table->decimal('Preco_Produto',10,4)->nullable();
             $table->string('Estoque_Produto')->nullable();
             $table->string('Quantidade_Produto')->nullable();
 

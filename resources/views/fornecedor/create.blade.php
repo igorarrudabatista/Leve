@@ -30,25 +30,20 @@
                   <p>Cadastre os fornecedores da sua loja aqui.</p>
               </div>
 
-            <div class="row gy-4">
               <div class="col-12 col-lg-12">
                 <div class="app-card app-card-account shadow-sm  flex-column align-items-start">
             <div class="app-card-header p-3 border-bottom-0">
-              <div class="row">
-
-
               
-              
-              
-                <div class="col-md-4 mb-3">
-                  <label for="validationDefault01"> <strong> CNPJ </strong> </label>
-                  <input type="text" id="search" class="form-control" name="search" placeholder="Digite o CNPJ da empresa sem pontos e /" >
-                  <button class="btn btn-primary float-end">Pesquisar</button>
+            <center>    <div class="col-md-4">
+                  <input type="text" id="Cnpj" class="form-control inpt " name="search" data-mask="00000000000000" data-mask-selectonfocus="true" placeholder="Digite o CNPJ da empresa" >
+                  <br> 
+                  <center><button class="btn btn-primary float text-light">Pesquisar</button>
+                    <br> <br>
                 </div>
-                @if ($search)
                 
-              </div>
-              </form>
+              @if ($search)
+
+            </form>
               {!! Form::open(array('route' => 'fornecedor.store','method'=>'POST', 'enctype' => "multipart/form-data")) !!}
               <div class="row">
 
@@ -118,7 +113,7 @@
     
   </div>
   
-  <button type="submit" class="btn btn-primary me-1 mb-1">Salvar</button>
+  <button type="submit" class="btn btn-primary me-1 mb-1 text-light"> Salvar</button>
 </form>
 
 

@@ -10,7 +10,9 @@
       <div class="row g-3 mb-4 align-items-center justify-content-between">
         <div class="col-auto">
               <h1 class="app-page-title mb-0">FORNECEDORES</h1> <br>
-        <a href="{{asset('/fornecedor/create')}}"  button type="submit" class="btn app-btn-secondary">Adicionar Fornecedor</button> </a>
+        <a href="{{asset('/fornecedor/create')}}"  button type="submit" class="btn bg-primary text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+        </svg> Adicionar Fornecedor</button> </a>
 
         </div>
         <div class="col-auto">
@@ -127,9 +129,9 @@
                     <td class="cell"><span>{{$fornecedores->Cidade}}</span><span class="note">{{$fornecedores->Estado}}</span>
           
                     <td class="cell">
-                      <a class="btn btn-warning" href="{{ route('fornecedor.edit',$fornecedores->id) }}">Editar</a>
+                      <a class="btn btn-warning text-light" href="{{ route('fornecedor.edit',$fornecedores->id) }}">Editar</a>
                       {!! Form::open(['method' => 'DELETE','route' => ['fornecedor.destroy', $fornecedores->id],'style'=>'display:inline']) !!}
-                      {!! Form::submit('Deletar', ['class' => 'btn btn-danger']) !!}
+                      {!! Form::submit('Deletar', ['class' => 'btn btn-danger text-light']) !!}
 
 
                     {!! Form::close() !!}

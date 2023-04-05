@@ -137,7 +137,7 @@
           <div class="profile-img-wrapper">
             <img src="https://source.unsplash.com/featured/1200x900/?woman,cool" alt="Review">
           </div>
-          <p>{{$Produto->name ?? 'Não encontrado' }} </p>
+          <p>{{$Produto->name ?? 'Produ não encontrado' }} </p>
         </div>
         <p> {{$Produto->name ?? 'Não encontrado' }}</p>
       </div>
