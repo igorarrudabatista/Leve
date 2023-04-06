@@ -118,6 +118,7 @@ Route::get('/Objetos/piano',                 [ObjetosController::class, 'piano']
 Route::get('/Objetos/teclado1',              [ObjetosController::class, 'teclado']);
 Route::get('/Objetos/teclado2',              [ObjetosController::class, 'teclado2']);
 Route::get('/Escolas/index',                 [ObjetosController::class, 'Escolas']);
+Route::get('/Suporte/index',                 [ObjetosController::class, 'Suporte']);
 
 
 

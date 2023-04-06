@@ -22,11 +22,11 @@ class ObjetosController extends Controller
         return view('/Objetos/teclado2/index');
 
     }
-    public function Escolas() {
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
+    
+    public function Suporte() {
 
-        return view('/Escolas/index', compact('userCount'));
+
+        return view('/Suporte/index');
 
     }
 }
