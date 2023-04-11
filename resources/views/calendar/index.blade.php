@@ -46,7 +46,7 @@
           <span id="titleError" class="text-danger"></span>
         </div>
         <div class="modal-footer">
-          <button type="button" id="saveBtn" class="btn btn-primary">Salvar</button>
+          <button type="button" id="saveBtn" class="btn btn-primary text-light">Salvar</button>
         </div>
       </div>
     </div>
