@@ -46,6 +46,24 @@ class APIController extends Controller
           //dd($search);
 
   }
+    public Function cpf() {
+
+ 
+        $search = request('search');
+        $response = Http::post('https://h-apigateway.conectagov.estaleiro.serpro.gov.br/api-cpf-light/v2/consulta/cpf' . $search);
+
+      // dd($response);
+
+        $data = json_decode($response); // convert JSON into objects 
+
+      //  dd($data);
+  return view('API.CPF/index', ['search' => $search,
+                                 'data' =>$data,
+                                ]);
+
+          //dd($search);
+
+  }
 
 public Function filmes(){
   

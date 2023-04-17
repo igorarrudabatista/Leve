@@ -24,6 +24,11 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'igor.batista@edu.mt.gov.br',
             'password' => bcrypt('senha123')
         ]);
+        $user = User::create([
+            'name' => 'Carol', 
+            'email' => 'levelimpo@webmonkey.com.br',
+            'password' => bcrypt('carol@@23123')
+        ]);
       
         $role = Role::create(['name' => 'Admin']);
        

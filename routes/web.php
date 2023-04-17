@@ -60,6 +60,7 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 /// API
 Route::get('/API/CEP/',   [APIController::class, 'cep']);
 Route::get('/API/CNPJ/',  [APIController::class, 'cnpj']);
+Route::get('/API/CPF/',  [APIController::class, 'cpf']);
 Route::get('/API/FILMES/',[APIController::class, 'filmes']);
 
 

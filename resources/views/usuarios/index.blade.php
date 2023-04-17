@@ -69,8 +69,8 @@
                            <td> <a class="btn btn-primary" href="{{ route('usuario.show',$usuarios->id) }}">Ver</a>
                            <td> <a class="btn btn-warning" href="{{ route('usuario.edit',$usuarios->id) }}">Editar</a>
                            <!-- <td> <a class="btn btn-danger" href="{{ route('usuario.show',$usuarios->id) }}">Excluir</a> -->
-                           {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $usuarios->id],'style'=>'display:inline']) !!}
-                {!! Form::close() !!}
+                           {{-- {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $usuarios->id],'style'=>'display:inline']) !!}
+                           {!! Form::close() !!} --}}
  </td>
 
 

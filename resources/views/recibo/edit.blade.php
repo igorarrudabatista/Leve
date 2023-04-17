@@ -108,8 +108,10 @@
                                               @foreach ($produto as $produtos)
                                                   <option value="{{ $recibo->id }}"
                                                       @if (old('products.' . $loop->parent->index, optional($order_product)->id) == $produtos->id) selected @endif
-                                                  >{{ $produtos->Nome_Produto }} (${{ number_format($produtos->Preco_Produto, 2) }})</option>
-                                              @endforeach
+                                                  {{-- >{{ $produtos->Nome_Produto }} (${{ number_format($produtos->Preco_Produto, 2) }})</option> --}}
+                                                  > {{ $produtos->Nome_Produto }} </option>
+
+                                                  @endforeach
                                           </select>
                                       </td>
                                       <td>

@@ -71,18 +71,7 @@
 
                         <div class="app-utilities col-auto">
                             <div class="app-utility-item app-notifications-dropdown dropdown">
-                                <a class="dropdown-toggle no-toggle-arrow" id="notifications-dropdown-toggle"
-                                    data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
-                                    title="Notifications">
-                                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell icon"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" />
-                                        <path fill-rule="evenodd"
-                                            d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                                    </svg>
-                                    <span class="icon-badge">3</span>
-                                </a>
+                         
                                 <!--//dropdown-toggle-->
 
                                 <div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
@@ -189,13 +178,14 @@
 
                                     <div class="dropdown-menu-footer p-2 text-center">
                                         <a href="notifications.html">View all</a>
+                                        
                                     </div>
 
                                 </div>
                                 <!--//dropdown-menu-->
-                            </div>
+                            </div> 
                             <!--//app-utility-item-->
-                            <div class="app-utility-item">
+                            {{-- <div class="app-utility-item">
                                 <a href="settings.html" title="Settings">
                                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear icon"
@@ -206,7 +196,7 @@
                                             d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
                                     </svg>
                                 </a>
-                            </div>
+                            </div> --}}
                             <!--//app-utility-item-->
 
                             <div class="app-utility-item app-user-dropdown dropdown">
@@ -215,13 +205,13 @@
                                     <img src="{{ asset('/images/user-logo.png') }}">
                                     {{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}</a>
                                 <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                                    <li><a class="dropdown-item" href="account.html">Minha conta</a></li>
-                                    <li><a class="dropdown-item" href="settings.html">Configurações</a></li>
-                                    <li>
+                                    {{-- <li><a class="dropdown-item" href="account.html">Minha conta</a></li>
+                                    <li><a class="dropdown-item" href="settings.html">Configurações</a></li> --}}
+                                    {{-- <li>
                                         <hr class="dropdown-divider">
-                                    </li>
+                                    </li> --}}
                                     <li><a href="{{ asset('/logout') }}" class="dropdown-item"
-                                            href="{{ asset('/logout') }}">Sair</a></li>
+                                            href="{{ asset('/logout') }}">Sair do sitema</a></li>
                                 </ul>
                             </div>
                             <!--//app-user-dropdown-->
@@ -457,6 +447,20 @@
                             <!--//nav-link-->
                         </li>
                         <!--//nav-item-->
+                        {{-- <li class="nav-item">
+                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                            <a href="{{ asset('/API/CPF') }}" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+                                    </svg>
+                                </span>
+                                <span class="nav-link-text">Consulta de CPF</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li> --}}
                         <li class="nav-item">
                             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <a href="{{ asset('/API/CNPJ') }}" class="nav-link">
